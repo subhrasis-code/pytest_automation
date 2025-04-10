@@ -1,0 +1,15 @@
+To run the file : "python3 enableModules_main.py enable_disable_config.json"
+
+Steps that happens when we run the above command.
+
+At 1st Set Kubeconfig to a Kubeconfig path using the file setKubeConfig.py
+Get jobmanager podname and postgress podname using the file getJobMngrPodName.py
+We set the remote file path i.e- "/opt/rapid4/{siteName}/isv_service_config.xml". This is the path of the isv_service_config.xml file present in the Kubernetes pod.
+Next we login to the jobmanager(i.e- the kubernetes pod) and copy the file i.e- the remote file path to a local path using the script copyFromJobMngr.py
+Next we edit the file by enabling required modules and disabling modules using the script editFile.py
+At last we copy the file present in local to the remote file path using the script copyToJobMngr.py
+
+Note : No.of modules present till now are in the list below
+"""
+["<hypodensitystandalone>", "<hypodensitywithctp>", "<enablehyperdensity>", "<enablehvs>", "<enablectpa>", "<enableich>", "<enableaspects>", "<enableNcctArtifactDetection>", "<enablencctstroke>", "<enableneuro3d>", "<enableanrtn>", "<enablepetn>", "<enablervlv>"]
+"""

@@ -1,0 +1,99 @@
+{
+    "dicomTaskList": [
+        {
+            "patientId": "Aly Artery",
+            "patientName": "Aly Artery",
+            "seriesDateTime": "2021-05-01 02:50:16",
+            "taskScheduledDateTime": "2024-07-08 15:05:43.802241",
+            "localAET": "0",
+            "remoteAET": "rn",
+            "taskId": "337",
+            "modulename": "PETN",
+            "anonymizedPatientId": "site_rma_4109458",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:05:43.805625",
+                    "retryenddatetime": "2024-07-08 15:05:45.070482",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "ki1",
+            "patientName": "ki1,di1",
+            "seriesDateTime": "2021-05-01 02:50:16",
+            "taskScheduledDateTime": "2024-07-08 15:39:45.485046",
+            "localAET": "0",
+            "remoteAET": "rn",
+            "taskId": "356",
+            "modulename": "PETN",
+            "anonymizedPatientId": "site_rma_9600383",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:39:45.489708",
+                    "retryenddatetime": "2024-07-08 15:39:46.850368",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "Aly Artery",
+            "patientName": "Aly Artery",
+            "seriesDateTime": "2021-05-01 02:50:16",
+            "taskScheduledDateTime": "2024-07-08 15:06:13.826485",
+            "localAET": "0",
+            "remoteAET": "rn",
+            "taskId": "341",
+            "modulename": "RVLV",
+            "anonymizedPatientId": "site_rma_4109458",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:06:13.829794",
+                    "retryenddatetime": "2024-07-08 15:06:14.660703",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "ki1",
+            "patientName": "ki1,di1",
+            "seriesDateTime": "2021-05-01 02:50:16",
+            "taskScheduledDateTime": "2024-07-08 15:40:05.603927",
+            "localAET": "0",
+            "remoteAET": "rn",
+            "taskId": "360",
+            "modulename": "RVLV",
+            "anonymizedPatientId": "site_rma_9600383",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:40:05.608975",
+                    "retryenddatetime": "2024-07-08 15:40:06.449701",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "1840299",
+            "patientName": "Miler Brian",
+            "seriesDateTime": "2019-09-06 16:22:37",
+            "taskScheduledDateTime": "2024-07-08 16:07:17.963018",
+            "localAET": "0",
+            "remoteAET": "rn",
+            "taskId": "366",
+            "modulename": "Mismatch",
+            "anonymizedPatientId": "site_rma_1586824",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 16:07:17.966865",
+                    "retryenddatetime": "2024-07-08 16:07:46.779325",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+To run the logger, just run the below command
+
+python3 fetchTaskIDWorkflowID_main.py fetch_task_workflow_id.json
+
+Make changes in "fetch_task_workflow_id.json" as per the need

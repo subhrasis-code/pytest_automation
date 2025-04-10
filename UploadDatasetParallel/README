@@ -1,0 +1,13 @@
+upload_dataset_main.py is the Main Function.
+UploadDataset_config.json takes all the arugemts we need to pass. We can execute by passing 1 or more datasets.
+If we pass multiple datasets, then all the datasets will be pushed in parallel. So we are covering Parallel Processing datas push here as well.
+To add datasets path make sure to insert a key having prefix in there variable names as "dataset_path".
+
+To run the script the command will be :-
+python3 upload_dataset_main.py <path of UploadDataset_config.json>
+
+Elaborating (output = process.stdout.readline().decode().strip()) in "jobManager_portForward.py"
+    process.stdout: This refers to the standard output stream of a subprocess.
+    readline(): This method reads a single line from the standard output stream of the subprocess.
+    decode(): This method decodes the bytes-like object returned by readline() into a string. The decoding is typically done using a specified encoding, but in this case, it's likely using the default encoding.
+    strip(): This method removes leading and trailing whitespace from the string.

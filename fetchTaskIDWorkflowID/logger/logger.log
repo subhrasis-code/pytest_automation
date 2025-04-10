@@ -1,0 +1,1863 @@
+{
+    "5c6e1b43-7b04-454a-b121-bf8c40ad63f9": {
+        "workflows": [
+            {
+                "workflowType": "PETN_subworkflow",
+                "workflowId": "042091df-fe00-4606-80a9-13a36a068148",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "rapid_petn_task",
+                        "referenceTaskName": "rapid_petn_task",
+                        "taskId": "2eef82cc-0142-4f67-b140-fbc60e8655e2",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "2f08a7be-2be0-49cb-a9cf-b223e74442d3",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "8fcc5a0e-83f1-47cc-b855-befdc8a39248",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "6dfd40de-2bbf-4864-a5aa-9df1b5505023",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "79f84700-fb49-45d3-aeef-96f1df5e1e48",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "f1190bca-b18f-42ef-a57f-00c3d7bb4fe3",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "5e7db03e-0e41-4647-9336-bc9414ac296a",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "PETN_subworkflow",
+                        "taskId": "36d48632-1665-4cec-bba5-f197316ed33b",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "715990c0-98e7-4e86-bb6d-42907dab22bd",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "1ccdc62f-eab6-4056-b297-c83e364daf9d",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "bed73207-c323-4f31-b24a-27f7b64b8432",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "jq_prepare_result_task_ref",
+                        "taskId": "682bb800-5fd5-4c77-8ecc-44ee2d72a9fe",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "result_send_switch",
+                        "taskId": "8ccc18f2-2bd9-42cb-ba93-449d9334bd5f",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_results",
+                        "taskId": "27173985-d40a-41ea-bb68-eda0eae2ebc0",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_results",
+                        "taskId": "55012821-69d6-41ad-bae1-176ca5a04a2f",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "init_onprem",
+                "workflowId": "1630ee52-f44c-4685-adb7-5eb06e9857f0",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "85413c7c-0e06-4355-ab95-7ae2e1a6213f",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            }
+        ]
+    },
+    "d2149847-c5fc-40ed-ad65-427516714277": {
+        "workflows": [
+            {
+                "workflowType": "RVLV_subworkflow",
+                "workflowId": "b26dcad6-0db5-41d0-b886-d4fca4feb6c0",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "cloud_processing_switch",
+                        "taskId": "4052b25e-fc4b-4fb7-89ba-b8109ac0c574",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "parallel_processing_switch_task",
+                        "taskId": "9b07ddca-dff2-468a-aaea-a35ab305b36a",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_sequencer_task",
+                        "referenceTaskName": "rapid_rvlv_sequencer_task_serial",
+                        "taskId": "357a8358-3006-41e0-8b89-d86f976956d9",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_rvlv_task",
+                        "referenceTaskName": "rapid_rvlv_task_serial",
+                        "taskId": "32590c93-a1ad-41ed-99a5-a866bd278cd5",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SET_VARIABLE",
+                        "referenceTaskName": "set_module_output_rvlv_serial",
+                        "taskId": "6bb3c04e-4d87-4736-9d80-85d5866135cc",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "77d1b6d0-4682-4dac-bcea-6a7ec359b46b",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "c0fc78a2-827b-47ff-bc75-88bb484f9203",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "57070371-8f60-44e0-8bb0-c1f2fb15a3e3",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "25b118a8-eef5-4503-965a-63e725bcbb4a",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "82f5dbd1-db61-4f1a-9291-fe8241066a74",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "943d0492-e23e-4ed8-bbfa-736e71522885",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "RVLV_subworkflow",
+                        "taskId": "f18bb079-4ca6-4748-8446-820c37bca3a4",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "25babf39-f48f-4b21-a581-b8f969018e58",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "1a270a4e-8d2a-4264-a020-882bcbc86508",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "a681e24c-0b23-4807-bd92-30257617d7cf",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "jq_prepare_result_task_ref",
+                        "taskId": "074797a6-966a-42cc-bc94-0ef0ad1eebf0",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "result_send_switch",
+                        "taskId": "5089e081-36c4-4fba-be18-c559a776c5d1",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_results",
+                        "taskId": "296cb9b8-f8b8-4a67-9671-29d43174ed35",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_results",
+                        "taskId": "d90e2572-1316-4de7-b484-8256efadb6cc",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "init_onprem",
+                "workflowId": "bb6f07c2-eb81-430d-8c8c-3903b8ff9ac0",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "5bbef082-a07c-4ae5-9b7b-ee61811a3d9c",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            }
+        ]
+    },
+    "9cf9672a-f54d-4430-b392-5b419c769f69": {
+        "workflows": [
+            {
+                "workflowType": "NCCTSTROKE_task_serial",
+                "workflowId": "7c31ceec-7755-4ab2-b677-d9df358599f7",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "rapid_aspects3_task",
+                        "referenceTaskName": "rapid_aspects3_task",
+                        "taskId": "0d148633-f451-42e7-be41-3bbec07d1142",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_hvs_task",
+                        "referenceTaskName": "rapid_hvs_task",
+                        "taskId": "8c56d9f4-749d-49dd-a7a1-95bcd02e5aa0",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_ncctstroke_task",
+                        "referenceTaskName": "rapid_ncctstroke_task",
+                        "taskId": "181c3a56-dc6d-4c48-adba-5271f39d2d07",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "NCCTSTROKE_subworkflow",
+                "workflowId": "5b1fdac7-f890-4be7-a4e8-a018b4789fa2",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "cloud_processing_switch",
+                        "taskId": "8d22cb90-4497-4750-8ce9-a4d00370c205",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "ncctstroke_parallel_processing_switch_task",
+                        "taskId": "6a74a473-56ca-4e05-9316-1d4c150b9c7d",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_sequencer_task",
+                        "referenceTaskName": "rapid_ncctstroke_sequencer_task_serial",
+                        "taskId": "2828ad70-5397-478e-aa55-cd3aef88b0ea",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "rapid_ncctstroke_sequencer_switch_task",
+                        "taskId": "aae15d59-804c-4020-81ae-c7f92442b792",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "ncctstroke_serial_subworkflow",
+                        "taskId": "13ae2fa3-4fcf-4f3b-8bb2-b3affa3a43d1",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SET_VARIABLE",
+                        "referenceTaskName": "set_workflow_output_ncctstroke_serial_run_module",
+                        "taskId": "bf3d92e3-7bf5-4396-8c25-737e302bb680",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "af753af2-d4ee-4522-8365-3ab5fadc38d3",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "c969981e-1c50-42f5-b143-9b790804f8c0",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "60613e45-63b9-4d5f-ba76-03512c464393",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "fe67bdff-be15-443b-ac5d-f0443394f8ee",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "0f678cd5-0acd-47e1-91a8-a741c7d60203",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "39c88804-1ec0-43ea-b5ef-4d9c704a30c8",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "NCCTSTROKE_subworkflow",
+                        "taskId": "64391123-4e5a-451f-be07-d8e5b4280a26",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "e03ee5bd-8bea-48b5-aa77-1b80044457fc",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "52a181bd-b58c-438d-9da9-08bc730e8cd5",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "55db2194-c89a-4ba4-884b-0ca7440a97a1",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "jq_prepare_result_task_ref",
+                        "taskId": "1921b560-fbaa-4e7c-9993-52b3249722d4",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "result_send_switch",
+                        "taskId": "c3aa9f60-9dfb-4672-8e15-e7a5fdafab62",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_results",
+                        "taskId": "e4721c83-522d-4054-9598-0f0a341bf972",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_results",
+                        "taskId": "254876d2-3f8c-40ea-96fa-dde54dbab798",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "init_onprem",
+                "workflowId": "7ba1fdd5-56cd-4310-bb38-293799621487",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "04997aad-8019-4f41-96da-51eb33ac1ede",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            }
+        ]
+    },
+    "1885dc09-4673-43fc-8209-61248e6249e2": {
+        "workflows": [
+            {
+                "workflowType": "NEURO3D_wait_subworkflow",
+                "workflowId": "1b2cc4bf-a119-4d43-b991-b5e909a894ad",
+                "status": "RUNNING",
+                "tasks": [
+                    {
+                        "taskType": "WAIT",
+                        "referenceTaskName": "wait_for_results",
+                        "taskId": "dd410e73-fa19-424f-880d-249aa7e2a374",
+                        "taskStatus": "IN_PROGRESS"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "6061c3df-4000-4816-b303-a32aa952d647",
+                "status": "RUNNING",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "88526d4f-ad39-44aa-bc56-3b272d6973b4",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "80435bd6-c913-4bc2-aa2e-67de0ba73949",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "3acb4bfb-bd81-4029-ac79-44f3c721fc2d",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "ce96c819-5481-4114-8b8b-5ab23afe21f0",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "381a56ac-8c73-4904-b234-83a157b8aca9",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "NEURO3D_wait_subworkflow",
+                        "taskId": "d0dfe7b1-937a-4781-87a2-2630f3e0077d",
+                        "taskStatus": "IN_PROGRESS"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "da3ed618-fb6e-41eb-ae8d-3439e9240f5d",
+                        "taskStatus": "IN_PROGRESS"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "ad95c7a9-5b3b-41b1-9e3c-bd7e1c1ce7c3",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "97e0ee16-f2d9-4644-95f2-12f8ccfc2fb0",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "ee4426ab-2f5d-461b-a19e-eb6f0af50fc9",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "df494eda-4910-4489-8150-0ac60b38bae2",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "f183759d-3bd2-40df-9036-62a2d8001497",
+                        "taskStatus": "COMPLETED_WITH_ERRORS"
+                    }
+                ]
+            },
+            {
+                "workflowType": "NEURO3D_wait_subworkflow",
+                "workflowId": "3514d976-43f1-4554-b20e-fe4a4aa4f857",
+                "status": "TIMED_OUT",
+                "tasks": [
+                    {
+                        "taskType": "WAIT",
+                        "referenceTaskName": "wait_for_results",
+                        "taskId": "0665f966-42bc-4143-bf07-f92fb738fc09",
+                        "taskStatus": "TIMED_OUT"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "289b1f95-32ec-4437-bb84-8651a8c83cbf",
+                "status": "TIMED_OUT",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "831a1672-fbfa-415b-8219-1265faf29a2f",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "d24a1911-f887-4483-af20-4caf7876c08b",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "6b654296-2b74-438b-9f5e-b1a7c7b46a67",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "a3b894a5-d3d1-40ed-b929-46c3591b1760",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "b2e8f436-6ade-4186-a63c-64f62ddacf1a",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "NEURO3D_wait_subworkflow",
+                        "taskId": "3bb2bb54-4bda-4bba-b984-afb0ea4b14de",
+                        "taskStatus": "TIMED_OUT"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "656643b6-abfb-4eec-874d-b7926a0a6376",
+                        "taskStatus": "CANCELED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "fb7c226f-bd91-41a6-831c-c1173bd768a4",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "f7a7902c-2915-4e66-8953-2dc7071b7392",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "fa17e577-e49f-4863-9269-de5ef094ab4f",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "90a19b3e-b221-4fa8-be32-8298d9d541f4",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "391374c9-09b9-4072-aa3c-f07be77c8435",
+                        "taskStatus": "COMPLETED_WITH_ERRORS"
+                    }
+                ]
+            },
+            {
+                "workflowType": "init_onprem",
+                "workflowId": "88921dbf-256d-4a02-bd26-cc266fe26902",
+                "status": "RUNNING",
+                "tasks": [
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "088c5947-630b-4ff4-9181-d5d49c81172a",
+                        "taskStatus": "TIMED_OUT"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "ae1f70e4-f67e-4a71-962b-e93ab071ae7d",
+                        "taskStatus": "IN_PROGRESS"
+                    }
+                ]
+            }
+        ]
+    },
+    "cd6411e6-941a-4cf5-942e-6e9fdb0a2e8b": {
+        "workflows": [
+            {
+                "workflowType": "ANRTN_wait_subworkflow",
+                "workflowId": "d7e9ade5-5d30-489e-9f1a-2f356819ea11",
+                "status": "RUNNING",
+                "tasks": [
+                    {
+                        "taskType": "WAIT",
+                        "referenceTaskName": "wait_for_results",
+                        "taskId": "bfb136b8-b68f-42be-b1cc-2bdb966e7f60",
+                        "taskStatus": "IN_PROGRESS"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "8a4c23e5-ca47-4ca9-a5a0-52b56df94d52",
+                "status": "RUNNING",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "b6cf40c5-f794-4d99-86df-316bafc5adb2",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "cd3dc6b4-0f74-4267-996c-6ad94426607c",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "712b4c54-185f-42d6-a5b5-f3b62f4c4ebd",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "dd3e39ba-5b74-498a-be35-2ef8f07f029d",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "88edf63f-7f71-489e-becb-bc5758758af6",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "ANRTN_wait_subworkflow",
+                        "taskId": "4e289553-c62d-41cb-b481-e6a9eee774de",
+                        "taskStatus": "IN_PROGRESS"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "9450ce66-9e26-4bf3-b485-2eee2eccc140",
+                        "taskStatus": "IN_PROGRESS"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "895a5b87-ae14-44fb-98a8-5a3ad451ed5b",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "67e55a54-ea23-4d83-bb05-1369ef8cf5d7",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "59c6359d-a632-46b9-a2fa-f5f6c6f98e0e",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "e8f8c7fe-27be-4ba0-bfb2-08fb5ff1c1d4",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "1145e6ac-a8a7-43e7-9ee5-249151b57459",
+                        "taskStatus": "COMPLETED_WITH_ERRORS"
+                    }
+                ]
+            },
+            {
+                "workflowType": "ANRTN_wait_subworkflow",
+                "workflowId": "11563920-4308-4e68-a791-45c6ea69d224",
+                "status": "TIMED_OUT",
+                "tasks": [
+                    {
+                        "taskType": "WAIT",
+                        "referenceTaskName": "wait_for_results",
+                        "taskId": "de7ff039-3b8a-407c-9256-e386017ca05e",
+                        "taskStatus": "TIMED_OUT"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "b7829258-6f59-4406-93d7-bf839346f732",
+                "status": "TIMED_OUT",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "42852c33-a6c9-411a-aacc-2fdb603e35f4",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "11b401bf-90b9-4660-aa7d-516f1c3d0fc8",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "a5598c39-a45b-49b5-960f-d478ee48e543",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "650dfdd4-ecfb-421e-b2b9-af9008dae242",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "deab470e-33a5-4005-bdec-d878fc751d43",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "ANRTN_wait_subworkflow",
+                        "taskId": "44ac4de8-832b-4e1c-9042-7273fac890fc",
+                        "taskStatus": "TIMED_OUT"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "018e485a-68f5-4475-accf-fb0e5389fa81",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "64ceb638-321a-4df0-9aad-356dbd56e281",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "6579f810-0d70-4b3d-b906-008ba9ba1d14",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "c80127b6-20cb-4915-ae10-8d4785caabb7",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "2be9fb93-8a9c-408f-881e-a4ad64523749",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "1f577d4e-c596-420b-a244-473c80ec92b6",
+                        "taskStatus": "COMPLETED_WITH_ERRORS"
+                    }
+                ]
+            },
+            {
+                "workflowType": "init_onprem",
+                "workflowId": "32b3a06b-f7f3-41c8-a8f2-02da0047dbe9",
+                "status": "RUNNING",
+                "tasks": [
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "da5aef86-0750-45e1-8260-1d8d33573833",
+                        "taskStatus": "TIMED_OUT"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "3c94c516-05b2-4548-aeb4-4b7320875dfa",
+                        "taskStatus": "IN_PROGRESS"
+                    }
+                ]
+            }
+        ]
+    },
+    "e53d0c81-22ab-4e4f-b2cf-6b71d3d7e0b5": {
+        "workflows": [
+            {
+                "workflowType": "ANRTN_wait_subworkflow",
+                "workflowId": "656944ba-8d7e-448a-a90e-c42743081fec",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "WAIT",
+                        "referenceTaskName": "wait_for_results",
+                        "taskId": "a9c4b32f-00c0-49b5-b80c-3d6c0029dcfb",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "9d082a34-6fb5-41c5-94b8-08ca902b57bc",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "8ece88d9-acf3-4951-a9ad-73466e743b3e",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "a47f1abe-95e9-44d7-b9c7-a49c4e96dfd2",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "d658c795-c177-476b-9200-87be8b144a4e",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "c8e693a3-4676-4a25-aae6-f3f29fae779e",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "b38c9e36-edb1-47eb-9829-0d2234a93df0",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "ANRTN_wait_subworkflow",
+                        "taskId": "df9444f3-a560-4a28-9930-bf5878da4881",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "52239e38-b5cf-430e-a3f0-fd303533e10f",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "292a8db9-f274-46d0-b8be-441ddc884bb6",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "99ab0946-74b6-433a-8ccf-904d66618829",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "jq_prepare_result_task_ref",
+                        "taskId": "0ef829e8-c5ea-4826-bf5c-c5b8b468fcd2",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "result_send_switch",
+                        "taskId": "3b53efc8-0f4b-413b-b374-c340955035cd",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "init_onprem",
+                "workflowId": "c4ae664c-811b-4e0d-87fb-70ef68da2f2f",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "f111036a-fe83-411c-8cd8-1909080182aa",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            }
+        ]
+    },
+    "b4074119-3f62-42d6-ac01-b36f47a91a4d": {
+        "workflows": [
+            {
+                "workflowType": "rapid_aspects_task_wrapper",
+                "workflowId": "ce483f0d-34a5-4374-bdae-ecd733bf4058",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "version_evaluator_switch",
+                        "taskId": "403b15f6-bea7-4246-b887-4a967709d50d",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_aspects_task",
+                        "referenceTaskName": "rapid_aspects_task",
+                        "taskId": "ffc139e9-e37f-40db-b574-63c09e0243c1",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SET_VARIABLE",
+                        "referenceTaskName": "set_workflow_output_v1",
+                        "taskId": "7bf9a7fd-8e03-4f5d-8334-5db8c493df96",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "ASPECTS_subworkflow",
+                "workflowId": "8a852347-a7e1-41d0-99b2-15f87de0e391",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "cloud_processing_switch",
+                        "taskId": "3bf75fd3-8428-4738-b16f-17857c5b3a33",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "aspects_parallel_processing_switch_task",
+                        "taskId": "df611ca4-49c4-4959-b93a-c5eee5f00e8a",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_sequencer_task",
+                        "referenceTaskName": "rapid_aspects_sequencer_task_serial",
+                        "taskId": "47176561-0ff2-4047-9805-433793e5ce7a",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "rapid_aspects_sequencer_switch_task",
+                        "taskId": "9ef6dae0-cc68-4202-aa00-026c45813481",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "rapid_aspects_task_serial",
+                        "taskId": "fcc05b6f-90ed-4d9c-96ba-3b22d451fa73",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SET_VARIABLE",
+                        "referenceTaskName": "set_workflow_output_aspects_serial_run_module",
+                        "taskId": "234bef6f-4c1a-4678-bf21-6dc89bfc6aaf",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "a2736d41-3722-475b-89cd-e16d9d898c1f",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "79adab07-d30e-4d5c-8433-bf6720bef176",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "0730f533-d1f6-474c-b864-e0ceae264bc8",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "b9b88479-4104-4efa-bc3c-3850d78f06c7",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "3d627a44-b30f-4d89-8bdb-57f063075939",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "a96b2682-4671-45f3-97e1-2165228c19bb",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "ASPECTS_subworkflow",
+                        "taskId": "76e64e31-21a4-407d-9e0e-0b4d41edebb6",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "e280c0fc-beaa-45fd-904e-fe59125c1ca0",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "cce61066-3aee-4f6c-bc43-ad7907ba5a3c",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "7a7e7cdc-dec0-46d2-82ad-31d6a538e31e",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "jq_prepare_result_task_ref",
+                        "taskId": "10734b93-b0ef-48fb-a107-cedc7cd806c1",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "result_send_switch",
+                        "taskId": "c262e97b-238d-41a8-9a2d-b6142a4c7afa",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_results",
+                        "taskId": "0697addd-6efe-402e-94e6-bd38eb003232",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_results",
+                        "taskId": "bdc26dec-49df-49da-b1c6-12ec70429269",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "init_onprem",
+                "workflowId": "060828aa-7371-4976-8b2b-db8b31d41913",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "895c9bef-7514-4f0d-9849-631b76f68520",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            }
+        ]
+    },
+    "18eabc21-ed7f-4dc2-a746-e582f96d75dc": {
+        "workflows": [
+            {
+                "workflowType": "CTA_subworkflow",
+                "workflowId": "e7a1c15a-6077-4333-8f90-c6574a912cc2",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "rapid_cta_task",
+                        "referenceTaskName": "rapid_cta_task",
+                        "taskId": "852e1347-7be0-4a15-851e-97fcd02031d6",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "e116144c-91c4-4fab-adf5-a418ced57096",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "89c3b718-87db-4eb0-8488-4ec5456c2a77",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "ac2ad1a0-52e0-49f5-84f3-0ec2a2d15e96",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "0c35a8dc-216f-4c24-ba65-19131a20ee46",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "00ab211f-d67d-42cd-bcdc-cc7ff841797c",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "7586ce0c-6927-4934-86b7-a2c3a4763a48",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "CTA_subworkflow",
+                        "taskId": "f4b023fd-c378-4c09-b301-4a491d88b941",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "5b19e344-0fa6-4820-8fce-f49d8f71693d",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "3641e716-0cae-4b4f-8b69-6eaede121d08",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "d0e83e9a-b33f-437b-ac82-64e9e68ef56e",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "9f19b3ad-5e8c-428d-8ea0-a3190a239802",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "bf6261c1-e3b9-43a6-a6d3-d2918bf5e83b",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "442e5715-b41b-4a3b-a903-05d87f8b9dc6",
+                        "taskStatus": "COMPLETED_WITH_ERRORS"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "jq_prepare_result_task_ref",
+                        "taskId": "18c09018-39d6-47fe-a79f-b8597f7fb726",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "result_send_switch",
+                        "taskId": "59d8add2-968f-460f-8759-4c4d2b2fe833",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_results",
+                        "taskId": "b5523580-a962-4f14-b94f-dfca60d47f41",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_results",
+                        "taskId": "8df48464-0965-46fa-8634-1cc0cf0584bb",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_results",
+                        "taskId": "4c153150-0e95-49f1-bc22-e42e383be7e1",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_results",
+                        "taskId": "63d015f6-e209-4c13-9dbe-047c6e485d29",
+                        "taskStatus": "FAILED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_results",
+                        "taskId": "ce4182eb-6e77-40c4-bb2b-1dc36515db0c",
+                        "taskStatus": "FAILED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "init_onprem",
+                "workflowId": "84ffbeea-e5f5-48d9-8959-efafd72ffde9",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "aca69ee6-df5c-42ab-b277-7a5a4d8226b3",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            }
+        ]
+    },
+    "c322cfc5-9e5e-40b3-841d-b4a777ba456a": {
+        "workflows": [
+            {
+                "workflowType": "CTA_subworkflow",
+                "workflowId": "e9f23c9c-94da-41c1-9320-0869a9d7b50c",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "rapid_cta_task",
+                        "referenceTaskName": "rapid_cta_task",
+                        "taskId": "f7f5efbd-4dfa-4bc6-ae54-55f3fd65c242",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "41c43eee-ad74-4690-82cf-5b23786d549d",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "0d311de9-1318-486a-b7d3-18ac6eef11df",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "6fa4374d-e77c-446d-85d3-a894d0235a7a",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "1df5872a-8810-4ffb-b4a9-d9ec4cfa6ef2",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "35f415f9-c59d-401e-9b5c-47f42f76f3a8",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "b4b027b9-b178-498a-9c1d-edec77bc7c8d",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "CTA_subworkflow",
+                        "taskId": "66d108d2-20b2-45da-9a91-96f2f305fc96",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "36b9b3b5-92d4-4d03-be78-a9357b2c764b",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "c3537b63-3ecc-4939-8805-f191a8058ad1",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "c445defd-f10b-494e-a71e-c6162ac06778",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "jq_prepare_result_task_ref",
+                        "taskId": "4f1c2702-8b6f-43ca-8500-caa64a06ca4f",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "result_send_switch",
+                        "taskId": "e529e4cf-25e5-4ac8-bdda-eaa5664ba757",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_results",
+                        "taskId": "383a7654-4a4d-449b-9866-5d5e3d007112",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_results",
+                        "taskId": "d2aba553-75ee-4065-a1b5-5b0dec744e7d",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "init_onprem",
+                "workflowId": "0eed1d6e-95ba-468c-af78-3d8311d24644",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "bd24cfcc-e2b1-46af-8f6c-d1e4a60fb764",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            }
+        ]
+    },
+    "e7f50bcd-f11f-43ef-801b-fbc188747b59": {
+        "workflows": [
+            {
+                "workflowType": "MISMATCH_subworkflow",
+                "workflowId": "343e84e1-c277-4f61-90ec-55bf849b79aa",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "rapid_mismatch_task",
+                        "referenceTaskName": "rapid_mismatch_task",
+                        "taskId": "bcc86efe-08b7-4aca-8caf-3df41a76e4b6",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "741fd407-a3d3-4b90-ab6b-aedac108fb2e",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "bc76bc08-fb78-4649-8398-728eadac4245",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "457230e7-e370-477c-ba4d-4320e1c56d58",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "c328ce9b-6a60-4576-be7d-3a738b84be4d",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "be4038c1-d398-452f-baf9-306ebf4c63cc",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "027af2d8-22ce-4bab-8362-2678d7be173d",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "MISMATCH_subworkflow",
+                        "taskId": "d615ba55-d888-4505-840b-6ff109bae849",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "96b3badb-a362-4a3e-a6b9-1b84c2f0a4f3",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "bef6c5b4-58fa-42bc-a879-cc82d7307d75",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "425b017b-4b7a-4175-9362-a584b68a8c8b",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "jq_prepare_result_task_ref",
+                        "taskId": "1df0ad1c-61af-4cf3-80ce-0418d076b335",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "result_send_switch",
+                        "taskId": "32e09517-bfb1-4ac7-bdce-fdecc63ef511",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_results",
+                        "taskId": "826bc69d-774d-4d1a-907f-e03fd4249376",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_results",
+                        "taskId": "20342d82-8121-4d38-90a9-28388ada5eb4",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "init_onprem",
+                "workflowId": "95ff103d-1799-4b76-97a7-825779845715",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "d31c1694-96a2-4536-bd27-4c5e68a9ac56",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            }
+        ]
+    },
+    "4c3570aa-b412-46d2-874c-36e34a954b95": {
+        "workflows": [
+            {
+                "workflowType": "HYPERDENSITY_subworkflow",
+                "workflowId": "175fee34-a633-4c76-bd81-6a900c6b422e",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "parallel_processing_switch_task",
+                        "taskId": "123c4e93-9dd8-4554-9c4d-634e6c7197d5",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_hyperdensity_task",
+                        "referenceTaskName": "rapid_hyperdensity_task",
+                        "taskId": "9a6e5da9-4c2a-4fb8-8ab4-4b08839eabb3",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SET_VARIABLE",
+                        "referenceTaskName": "set_serial_processing_output",
+                        "taskId": "bb61e900-93f1-4011-b551-459e2b6f5de3",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "d1417354-184f-4710-88f2-d08a7e9228c0",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "f54b6ccd-452a-4031-8391-2715bf7deb53",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "93699a5a-d7ea-42b9-bd3c-e5d324d6220e",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "ed4a4462-f6da-4dd4-9e04-e91012fe794e",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "c8dff813-e8c4-4c83-9d6e-3498e3cb4ccf",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "7dbe9eca-618c-4985-986a-106c4e347e62",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "HYPERDENSITY_subworkflow",
+                        "taskId": "5ea079ad-5ba3-4c9c-9a6d-cc843bbe1259",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "5694676e-9e16-45fe-b666-62b930e06a49",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "f6dcae7f-7219-4cc0-9e9d-2f6507181d88",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "d11bcc6b-b975-40e0-bfe1-7bde7a2a7b44",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "jq_prepare_result_task_ref",
+                        "taskId": "2fbcf915-002b-46d7-990a-5fbc4959563c",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "result_send_switch",
+                        "taskId": "8dc651b4-f931-410c-a6e5-441d34953bf4",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_results",
+                        "taskId": "86b410f3-4deb-49dd-95ba-4595d3b11f39",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_results",
+                        "taskId": "cb1f336a-414a-49c3-a69e-bdebc901e035",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "init_onprem",
+                "workflowId": "d8841506-5971-4bef-994c-7f4d01a124f2",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "111c5052-52eb-4015-9752-86dd215f16a3",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            }
+        ]
+    },
+    "6e4c1fd2-49d6-4301-a77d-2a5548e26110": {
+        "workflows": [
+            {
+                "workflowType": "ICH_subworkflow",
+                "workflowId": "44ce1ab6-115e-4437-8697-277c5a29570a",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "version_evaluator_switch",
+                        "taskId": "0afabe27-8dbd-478c-8813-a225a4840d40",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_ichv3_task",
+                        "referenceTaskName": "rapid_ichv3_task",
+                        "taskId": "a64ad473-f0f3-4a72-9df9-f36015fc85c2",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SET_VARIABLE",
+                        "referenceTaskName": "set_workflow_output_v3",
+                        "taskId": "a99f288c-d5e6-443d-8e0e-a4fb389ac307",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "cc66f96c-508c-43ee-a49c-82e5f13358e1",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "0b4e6d3f-2342-41d4-98fa-375efa4544c4",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "34cc3da3-a6d7-4cab-bde2-a97639e7b9e0",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "eb8a699d-c246-493d-b8c9-f3c85067d000",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "5890503e-0f2d-43ae-9b05-10ba36251676",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "9228487b-9e59-4d53-82e1-2efa43a19fb2",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "ICH_subworkflow",
+                        "taskId": "6f726f2b-2f1c-4920-9d8f-9ade15839b9e",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "efdef3af-2d98-4a07-a126-041d7c22534f",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "aa49eab2-31f9-4c1e-869d-f1081bdf785d",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "c8a5ed26-bc7f-49bb-b7a0-64f39f3eab4c",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "jq_prepare_result_task_ref",
+                        "taskId": "a9a148bd-7dfb-46ca-b567-805799894e2f",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "result_send_switch",
+                        "taskId": "bc5514d1-651b-45c1-b44a-57fe21a57db0",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_results",
+                        "taskId": "838f8af9-ef5a-4697-94e0-f67f869d5a95",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_results",
+                        "taskId": "d74ef1b7-9894-4714-9c7f-8c9c2552e248",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "init_onprem",
+                "workflowId": "fb79a9d4-b90b-4bb8-b480-d318eee1dd6e",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "60f983a2-0214-4308-a31e-cf2689a45842",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            }
+        ]
+    },
+    "d538b1f7-784d-48d0-a803-ea5245c5dd8b": {
+        "workflows": [
+            {
+                "workflowType": "HYPODENSITY_subworkflow",
+                "workflowId": "e0170fc1-8ac7-4330-be80-ea84d8e291c2",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "rapid_hypodensity_task",
+                        "referenceTaskName": "rapid_hypodensity_task",
+                        "taskId": "d22615d4-84d6-42e2-bc15-d929f012138a",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "process_onprem",
+                "workflowId": "f2e8d6e9-7dad-4cd9-863f-3a46f2ff0d10",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "workflow_selector",
+                        "referenceTaskName": "workflow_selector",
+                        "taskId": "095e109a-7a8a-4a36-b039-3142a3ad2988",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "data_receive_fork",
+                        "taskId": "ae8c5912-4379-46d6-9aa5-f9b35718d886",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "source_send_switch",
+                        "taskId": "3fd981e1-95fa-4e5c-bab4-49be5b3fdb41",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_source",
+                        "taskId": "00b2496b-f323-4619-b9e0-546171194713",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "FORK",
+                        "referenceTaskName": "dynamic_subworkflow",
+                        "taskId": "fb86bc93-21b8-467c-9a22-93797054e4bc",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "HYPODENSITY_subworkflow",
+                        "taskId": "5c64d481-7b1c-40bb-9002-370cebd73373",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "dynamic_subworkflow_join_ref",
+                        "taskId": "c0f1be6a-ce14-4c9a-81ab-2f31f740d0fd",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JOIN",
+                        "referenceTaskName": "data_receive_join",
+                        "taskId": "a7b1daa6-26a5-4dc5-a492-fede3274f56c",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_source",
+                        "taskId": "45812b0a-1c66-4db5-8d36-f6390aecc8d5",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "jq_prepare_result_task_ref",
+                        "taskId": "3e103916-10c8-4d31-b261-bddbad355fd1",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "SWITCH",
+                        "referenceTaskName": "result_send_switch",
+                        "taskId": "1382f3d4-e36b-42ae-b183-2474ec132b55",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "JSON_JQ_TRANSFORM",
+                        "referenceTaskName": "insert_datatype_jq_transform_results",
+                        "taskId": "735a7839-ea9c-4b9b-8459-a641b5e08bd8",
+                        "taskStatus": "COMPLETED"
+                    },
+                    {
+                        "taskType": "rapid_cloud_connector_task",
+                        "referenceTaskName": "cloud_connector_results",
+                        "taskId": "079135c5-5a70-43f2-a64b-4ce1c14546d6",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            },
+            {
+                "workflowType": "init_onprem",
+                "workflowId": "1f31ab81-d63b-4848-81cc-14ea6a49630f",
+                "status": "COMPLETED",
+                "tasks": [
+                    {
+                        "taskType": "SUB_WORKFLOW",
+                        "referenceTaskName": "process_on_prem_subworkflow",
+                        "taskId": "39ab6bda-c960-46fc-9f35-3dc877ee82c6",
+                        "taskStatus": "COMPLETED"
+                    }
+                ]
+            }
+        ]
+    }
+}

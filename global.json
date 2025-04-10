@@ -1,0 +1,61 @@
+{
+  "kubeConfigFile": "/Users/zinnov/Documents/Rapid/Performance/kubeConfigFiles/admin.op-pf-test-1.kubeconfig",
+  "namespace": "rapid-apps",
+  "siteName": "site2",
+  "userEmail_list": ["rapid.receive@ischemaview.com"],
+  "tomcatServer_username": "isvadmin",
+  "tomcatServer_password": "Stroke@2013!",
+  "tomcatServer_remote_port": "443",
+  "tomcatServer_local_port": "8443",
+  "cloud_processing": "False",
+
+  "enable_disable_params": {
+    "emailConfig": {
+        "<smtpserverip>": "email-smtp.us-west-2.amazonaws.com",
+        "<smtpusername>": "AKIAZWWTQMHQHIKDQWEB",
+        "<smtppassword>": "BEyYiYvfoEmFTPhWeEjkwYfbp0aRRW/OTc+B79zffWcp",
+        "<rapidreceiveemailaddress>": "sahu@ischemaview.com",
+        "<smtpuseextendedparams>": 1,
+        "<smtpport>": 587
+    },
+    "moduleToEnable": ["<enableich>"],
+    "list_of_modules": ["<hypodensitystandalone>", "<hypodensitywithctp>", "<enablehyperdensity>", "<enablehvs>", "<enablectpa>", "<enableich>", "<enableaspects>", "<enableNcctArtifactDetection>", "<enablencctstroke>", "<enableneuro3d>", "<enableanrtn>", "<enablepetn>", "<enablervlv>", "<enablecta>", "<enablemismatch>", "<enablesdh>"]
+  },
+
+  "upload_dataset_params":{
+    "parallel_push": "True",
+    "remote_port": "5331",
+    "IP": "127.0.0.1",
+    "waitPop": 60,
+    "statusCheckInterval": 30,
+    "dataset_path3": "/Users/zinnov/Documents/auto_6.2.x/rapid-testpulse/test_pulse_data/dataset_bundles/MiniRegression/RVLV"
+  },
+
+  "fetch_logs_params": {
+    "s3_server_name": "serverquail",
+    "s3bucket_name": "ischemaview-qa-us-west-2",
+    "path_jobManager": "/root/rapid-release/",
+    "conductorUI_remote_port": "5000",
+    "conductorUI_local_port": "5000",
+    "time_traversed": 24
+  },
+
+  "cloud_conductorUI_params": {
+    "region":  "us-west-2",
+    "profile": "qa",
+    "cluster_name": "gamma-stg188d692",
+    "alias": "gamma-stg188d692",
+    "cloud_kubeconfig_path": "/Users/subhrasis/Documents/Rapid_pythonScripts/Performance/kubeConfigFiles/admin.gamma-stg188d692.kubeconfig",
+    "cloud_conductorUI_remote_port": "5001",
+    "cloud_conductorUI_local_port": "5000"
+  },
+
+  "performance_params": {
+    "onPrem_conductorServer_local_port": "8080",
+    "onPrem_conductorServer_remote_port": "8080",
+    "onCloud_conductorServer_local_port": "8081",
+    "onCloud_conductorServer_remote_port": "8080",
+    "duration": "4h"
+  }
+
+}

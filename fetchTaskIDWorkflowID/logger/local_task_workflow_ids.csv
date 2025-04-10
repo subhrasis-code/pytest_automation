@@ -1,0 +1,20 @@
+OnPremResultsDir,WorkflowID,corelationID,ResultFile_JM,PatientID,ReturnCodeDescription
+/rapid_data/task_data/site1/NCCTStroke/24_34,b1909a48-5846-4311-a80a-8407a5f398c6,8db2b63a-3eac-43ca-b1a7-75985b490be8,True,91a16875,no error
+/rapid_data/task_data/site1/NCCTStroke/4_7,37f8a9ae-e0dd-4e3b-9761-441a2be3e91c,cf4956ae-a05a-4234-9dea-983f7e7b93c2,True,92711_Q_N,no error
+/rapid_data/task_data/site1/Hypodensity/26_40,ba0f348d-7fae-4339-9fa7-d6002cc4e1c9,b278d9c8-7de9-4801-842b-cfb73523340c,True,91a16875,
+/rapid_data/task_data/site1/Hypodensity/6_14,830847f1-23fa-4855-a6bc-6906a0dd318b,a1445c70-52d1-4193-b66b-fc5421451c06,True,92711_Q_N,
+/rapid_data/task_data/site1/Octopus/23_30,926e30a6-ddfd-40cf-b248-e0db12cb38ff,c534be7a-ef47-44d3-b2f2-34a8c6bf48a0,True,91a16875,
+/rapid_data/task_data/site1/Octopus/3_4,2933eac2-259e-4bd3-96c7-a18d260ba360,85f4930a-22a9-46be-89e9-9dc7685b4c50,True,92711_Q_N,
+/rapid_data/task_data/site1/angio/59_274,de454bb9-e6f0-43e1-ad6a-d5a1a0006aae,4f9aaedd-98c7-4ed7-8204-867f76bf68f4,True,98765432,no error
+/rapid_data/task_data/site1/angio/31_45,b09abe85-895c-4750-9df7-d993e60cbd88,1ce63ef5-1a24-4a25-86cc-d228eb01119a,True,91a16875,no error
+/rapid_data/task_data/site1/hemorrhage/2_2,fbb0fd74-e3dd-4db4-b21b-ef00ae749794,13c96e65-dbef-44cf-acae-c24cedc4f62c,True,92711_Q_N,No error
+/rapid_data/task_data/site1/hemorrhage/22_27,0fb11c0e-3514-4ae6-961d-e37afbb51c22,b9de1ba9-f754-42a7-9516-e482fd7aad20,True,91a16875,No error
+/rapid_data/task_data/site1/ANRTN/60_278,9d0a1443-7374-45dc-ae75-0bfc52ce36d4,3e2add8d-1814-4ace-a34f-cd1a231a6e9d,False,98765432,No error
+/rapid_data/task_data/site1/ANRTN/32_49,8fbf25df-2063-4718-8d19-83dff419cd76,f98456b1-9e1f-4055-bd8f-c628bc7815e5,True,91a16875,No error
+/rapid_data/task_data/site1/sdh/7_16,fd1fb1a1-4162-4e62-873c-f40cded0fdee,d7d03785-19bf-4af4-9016-a50237e0b18d,True,92711_Q_N,No error
+/rapid_data/task_data/site1/sdh/27_42,219ca2d1-e5f7-41aa-8979-ea2729601b93,8b13cc92-2a7a-428a-85c6-28d5570c61ae,True,91a16875,No error
+/rapid_data/task_data/site1/neuro3d/61_279,f250a153-4793-4bc3-b3b8-8fc039873ab6,866b4f1f-e5b9-4505-8462-19e5d1820f53,False,98765432,No error
+/rapid_data/task_data/site1/neuro3d/33_50,4255d144-6556-4bee-a152-02bcff8488d7,c099affb-bb52-439c-9248-d3603a852546,False,91a16875,No error
+/rapid_data/task_data/site1/Mismatch/69_372,31da9519-6acc-4ba8-a5b1-1bbbae78f802,f8acb75f-fbe5-4b85-b796-709e574862a3,True,582a_835627_new,No error
+/rapid_data/task_data/site1/Hyperdensity/5_11,3899777e-ed7a-48f9-aa38-2aec9f8402df,cf3f86d4-1524-43c8-9ca5-8a8cd823ea89,True,92711_Q_N,No error
+/rapid_data/task_data/site1/Hyperdensity/25_37,4ef89481-8955-4ea6-9cc4-a41bfa6835f2,d7acda32-e28d-4339-91cc-1892a58dadfa,True,91a16875,No error

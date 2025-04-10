@@ -1,0 +1,308 @@
+{
+    "emailTaskList": [
+        {
+            "patientId": "7888892011",
+            "patientName": "Bell Karen",
+            "seriesDateTime": "2019-09-25 15:16:34",
+            "taskScheduledDateTime": "2024-07-08 15:31:27.914534",
+            "taskId": "352",
+            "modulename": "sdh",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "sahu@ischemaview.com",
+            "anonymizedPatientId": "site_rma_5789178",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:31:27.920093",
+                    "retryenddatetime": "2024-07-08 15:31:28.497684",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "ki1",
+            "patientName": "ki1,di1",
+            "seriesDateTime": "2021-05-01 02:50:16",
+            "taskScheduledDateTime": "2024-07-08 15:39:46.464219",
+            "taskId": "357",
+            "modulename": "PETN",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "rapid.receive@ischemaview.com, iamsubhrasis@gmail.com",
+            "anonymizedPatientId": "site_rma_9600383",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:39:46.468657",
+                    "retryenddatetime": "2024-07-08 15:39:47.092885",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "ki1",
+            "patientName": "ki1,di1",
+            "seriesDateTime": "2021-05-01 02:50:16",
+            "taskScheduledDateTime": "2024-07-08 15:39:46.472921",
+            "taskId": "358",
+            "modulename": "PETN",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "sahu@ischemaview.com",
+            "anonymizedPatientId": "site_rma_9600383",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:39:46.477247",
+                    "retryenddatetime": "2024-07-08 15:39:47.062437",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "ki1",
+            "patientName": "ki1,di1",
+            "seriesDateTime": "2021-05-01 02:50:16",
+            "taskScheduledDateTime": "2024-07-08 15:40:06.591062",
+            "taskId": "361",
+            "modulename": "RVLV",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "rapid.receive@ischemaview.com, iamsubhrasis@gmail.com",
+            "anonymizedPatientId": "site_rma_9600383",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:40:06.596658",
+                    "retryenddatetime": "2024-07-08 15:40:07.177609",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "ki1",
+            "patientName": "ki1,di1",
+            "seriesDateTime": "2021-05-01 02:50:16",
+            "taskScheduledDateTime": "2024-07-08 15:40:06.60041",
+            "taskId": "362",
+            "modulename": "RVLV",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "sahu@ischemaview.com",
+            "anonymizedPatientId": "site_rma_9600383",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:40:06.606078",
+                    "retryenddatetime": "2024-07-08 15:40:07.156177",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "7888892011",
+            "patientName": "Bell Karen",
+            "seriesDateTime": "2019-09-25 15:16:34",
+            "taskScheduledDateTime": "2024-07-08 13:47:30.565273",
+            "taskId": "332",
+            "modulename": "sdh",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "iamsubhrasis@gmail.com",
+            "anonymizedPatientId": "site_rma_5789178",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 13:47:30.570963",
+                    "retryenddatetime": "2024-07-08 13:47:31.066671",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "7888892011",
+            "patientName": "Bell Karen",
+            "seriesDateTime": "2019-09-25 15:16:34",
+            "taskScheduledDateTime": "2024-07-08 13:47:30.574777",
+            "taskId": "333",
+            "modulename": "sdh",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "sahu@ischemaview.com",
+            "anonymizedPatientId": "site_rma_5789178",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 13:47:30.579646",
+                    "retryenddatetime": "2024-07-08 13:47:31.190519",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "1840299",
+            "patientName": "Miler Brian",
+            "seriesDateTime": "2019-09-06 16:22:37",
+            "taskScheduledDateTime": "2024-07-08 16:07:17.968622",
+            "taskId": "367",
+            "modulename": "Mismatch",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "rapid.receive@ischemaview.com, iamsubhrasis@gmail.com",
+            "anonymizedPatientId": "site_rma_1586824",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 16:07:17.9746",
+                    "retryenddatetime": "2024-07-08 16:07:18.984487",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "1840299",
+            "patientName": "Miler Brian",
+            "seriesDateTime": "2019-09-06 16:22:37",
+            "taskScheduledDateTime": "2024-07-08 16:07:17.978431",
+            "taskId": "368",
+            "modulename": "Mismatch",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "sahu@ischemaview.com",
+            "anonymizedPatientId": "site_rma_1586824",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 16:07:17.985839",
+                    "retryenddatetime": "2024-07-08 16:07:18.979026",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "Aly Artery",
+            "patientName": "Aly Artery",
+            "seriesDateTime": "2021-05-01 02:50:16",
+            "taskScheduledDateTime": "2024-07-08 15:05:44.933591",
+            "taskId": "338",
+            "modulename": "PETN",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "rapid.receive@ischemaview.com, iamsubhrasis@gmail.com",
+            "anonymizedPatientId": "site_rma_4109458",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:05:44.937036",
+                    "retryenddatetime": "2024-07-08 15:05:45.647189",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "Aly Artery",
+            "patientName": "Aly Artery",
+            "seriesDateTime": "2021-05-01 02:50:16",
+            "taskScheduledDateTime": "2024-07-08 15:05:44.941265",
+            "taskId": "339",
+            "modulename": "PETN",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "sahu@ischemaview.com",
+            "anonymizedPatientId": "site_rma_4109458",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:05:44.944753",
+                    "retryenddatetime": "2024-07-08 15:05:45.573365",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "Aly Artery",
+            "patientName": "Aly Artery",
+            "seriesDateTime": "2021-05-01 02:50:16",
+            "taskScheduledDateTime": "2024-07-08 15:06:14.755462",
+            "taskId": "342",
+            "modulename": "RVLV",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "rapid.receive@ischemaview.com, iamsubhrasis@gmail.com",
+            "anonymizedPatientId": "site_rma_4109458",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:06:14.759596",
+                    "retryenddatetime": "2024-07-08 15:06:15.365567",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "Aly Artery",
+            "patientName": "Aly Artery",
+            "seriesDateTime": "2021-05-01 02:50:16",
+            "taskScheduledDateTime": "2024-07-08 15:06:14.764352",
+            "taskId": "343",
+            "modulename": "RVLV",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "sahu@ischemaview.com",
+            "anonymizedPatientId": "site_rma_4109458",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:06:14.770136",
+                    "retryenddatetime": "2024-07-08 15:06:15.29849",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "80f7472d",
+            "patientName": "Brion Ardella",
+            "seriesDateTime": "2019-08-24 20:27:46",
+            "taskScheduledDateTime": "2024-07-08 15:26:08.690192",
+            "taskId": "347",
+            "modulename": "Mismatch",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "rapid.receive@ischemaview.com",
+            "anonymizedPatientId": "site_rma_4038497",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:26:08.697815",
+                    "retryenddatetime": "2024-07-08 15:26:09.253867",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "80f7472d",
+            "patientName": "Brion Ardella",
+            "seriesDateTime": "2019-08-24 20:27:46",
+            "taskScheduledDateTime": "2024-07-08 15:26:08.701912",
+            "taskId": "348",
+            "modulename": "Mismatch",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "sahu@ischemaview.com",
+            "anonymizedPatientId": "site_rma_4038497",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:26:08.707839",
+                    "retryenddatetime": "2024-07-08 15:26:09.146692",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        },
+        {
+            "patientId": "7888892011",
+            "patientName": "Bell Karen",
+            "seriesDateTime": "2019-09-25 15:16:34",
+            "taskScheduledDateTime": "2024-07-08 15:31:27.906814",
+            "taskId": "351",
+            "modulename": "sdh",
+            "sender": "donotreply@rapidai.com",
+            "recipients": "iamsubhrasis@gmail.com",
+            "anonymizedPatientId": "site_rma_5789178",
+            "retryList": [
+                {
+                    "retrystartdatetime": "2024-07-08 15:31:27.910618",
+                    "retryenddatetime": "2024-07-08 15:31:28.397744",
+                    "statuscode": 0,
+                    "description": "Task is successful"
+                }
+            ]
+        }
+    ]
+}

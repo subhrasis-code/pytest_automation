@@ -1,0 +1,222 @@
+
+/rapid_data/task_data/site_rma/emailSend/367_369Starting emailing at Mon, Jul  8 2024, 16:07:18
+SMTP Server: email-smtp.us-west-2.amazonaws.com
+Number of recipients: 2
+--------------------------
+Email:
+	From: donotreply@rapidai.com
+	To: rapid.receive@ischemaview.com,iamsubhrasis@gmail.com
+	Subject: [Baptist Communit...] CTP CBF<30% volume = 15 ml, Tmax>6s volume = 48 ml, AnonID site_rma_1586824 
+	No. of attachments: 9
+Creating message ...
+Total attachment size: 2.4 MB
+Adding image(s):
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view01_CBF_Tmax_Mismatch.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view02_Tmax_Thresholds.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view03_CBF_Thresholds.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view04_CBV_Thresholds.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view05_Columned_View.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view06_AIF_VOF_Locations.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view07_tsMIP_AIF_VOF_Locations.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view08_Motion_Estimates.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view09_AIF_VOF_Curves.jpg
+Sending (via email-smtp.us-west-2.amazonaws.com) ...
+--------------------------
+Return code: 0
+Ending emailing at Mon, Jul  8 2024, 16:07:18
+
+*******************************************************************************************************
+
+/rapid_data/task_data/site_rma/emailSend/368_370Starting emailing at Mon, Jul  8 2024, 16:07:18
+SMTP Server: email-smtp.us-west-2.amazonaws.com
+Number of recipients: 1
+--------------------------
+Email:
+	From: donotreply@rapidai.com
+	To: sahu@ischemaview.com
+	Subject: [Baptist Communit...] CTP CBF<30% volume = 15 ml, Tmax>6s volume = 48 ml, AnonID site_rma_1586824 
+	No. of attachments: 11
+Creating message ...
+Total attachment size: 2.5 MB
+Adding image(s):
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view01_CBF_Tmax_Mismatch.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view02_Tmax_Thresholds.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view03_CBF_Thresholds.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view04_CBV_Thresholds.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view05_Columned_View.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view06_AIF_VOF_Locations.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view07_tsMIP_AIF_VOF_Locations.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view08_Motion_Estimates.jpg
+	/rapid_data/task_data/site_rma/Mismatch/365_367/results/site_rma_000365_series1601_view09_AIF_VOF_Curves.jpg
+Adding attachment(s):
+	/rapid_data/task_data/site_rma/Mismatch/365_367/site_rma_000365_rapid_processing.log.txt
+	/rapid_data/task_data/site_rma/Mismatch/365_367/site_rma_000365.CTP.dicomheader.txt
+Sending (via email-smtp.us-west-2.amazonaws.com) ...
+--------------------------
+Return code: 0
+Ending emailing at Mon, Jul  8 2024, 16:07:18
+
+*******************************************************************************************************
+
+/rapid_data/task_data/site_rma/emailSend/352_354Starting emailing at Mon, Jul  8 2024, 15:31:28
+SMTP Server: email-smtp.us-west-2.amazonaws.com
+Number of recipients: 1
+--------------------------
+Email:
+	From: donotreply@rapidai.com
+	To: sahu@ischemaview.com
+	Subject: [-] Error: Input data with invalid image or pixel dimensions, AnonID site_rma_5789178 
+	No. of attachments: 2
+Creating message ...
+Total attachment size: 0.1 MB
+Adding attachment(s):
+	/rapid_data/task_data/site_rma/sdh/350_352/site_rma_000350_sdh_processing.log.txt
+	/rapid_data/task_data/site_rma/sdh/350_352/site_rma_000350.sdh.dicomheader.txt
+Sending (via email-smtp.us-west-2.amazonaws.com) ...
+--------------------------
+Return code: 0
+Ending emailing at Mon, Jul  8 2024, 15:31:28
+
+*******************************************************************************************************
+
+/rapid_data/task_data/site_rma/emailSend/361_363Starting emailing at Mon, Jul  8 2024, 15:40:06
+SMTP Server: email-smtp.us-west-2.amazonaws.com
+Number of recipients: 2
+--------------------------
+Email:
+	From: donotreply@rapidai.com
+	To: rapid.receive@ischemaview.com,iamsubhrasis@gmail.com
+	Subject: [Jxxx Dxxxxxx] RV/LV Ratio = 0.99, AnonID site_rma_9600383 
+	No. of attachments: 1
+Creating message ...
+Total attachment size: 0.1 MB
+Adding image(s):
+	/rapid_data/task_data/site_rma/RVLV/355_357/results/site_rma_000355_rvlv_ratio_output.jpg
+Sending (via email-smtp.us-west-2.amazonaws.com) ...
+--------------------------
+Return code: 0
+Ending emailing at Mon, Jul  8 2024, 15:40:07
+
+*******************************************************************************************************
+
+/rapid_data/task_data/site_rma/emailSend/362_364Starting emailing at Mon, Jul  8 2024, 15:40:06
+SMTP Server: email-smtp.us-west-2.amazonaws.com
+Number of recipients: 1
+--------------------------
+Email:
+	From: donotreply@rapidai.com
+	To: sahu@ischemaview.com
+	Subject: [Jxxx Dxxxxxx] RV/LV Ratio = 0.99, AnonID site_rma_9600383 
+	No. of attachments: 3
+Creating message ...
+Total attachment size: 0.1 MB
+Adding image(s):
+	/rapid_data/task_data/site_rma/RVLV/355_357/results/site_rma_000355_rvlv_ratio_output.jpg
+Adding attachment(s):
+	/rapid_data/task_data/site_rma/RVLV/355_357/rapid_processing.log.txt
+	/rapid_data/task_data/site_rma/RVLV/355_357/site_rma_000355.RVLV.dicomheader.txt
+Sending (via email-smtp.us-west-2.amazonaws.com) ...
+--------------------------
+Return code: 0
+Ending emailing at Mon, Jul  8 2024, 15:40:07
+
+*******************************************************************************************************
+
+/rapid_data/task_data/site_rma/emailSend/347_349Starting emailing at Mon, Jul  8 2024, 15:26:08
+SMTP Server: email-smtp.us-west-2.amazonaws.com
+Number of recipients: 1
+--------------------------
+Email:
+	From: donotreply@rapidai.com
+	To: rapid.receive@ischemaview.com
+	Subject: [-] Error: Exception: no pixel data found in /rapid_data/WebUpload/site_rma/isvadmin/2cf49a24-dda3-4897-996d-d93674df9059/Ardella_Brion_056YF/007_AX_PWI__15SEC_INJ_DELAY/01001_C_W_20080714_1847_007_AX_PWI__15SEC_INJ_DELAY_image0023.dcm, AnonID site_rma_4038497 
+Creating message ...
+Sending (via email-smtp.us-west-2.amazonaws.com) ...
+--------------------------
+Return code: 0
+Ending emailing at Mon, Jul  8 2024, 15:26:09
+
+*******************************************************************************************************
+
+/rapid_data/task_data/site_rma/emailSend/351_353Starting emailing at Mon, Jul  8 2024, 15:31:28
+SMTP Server: email-smtp.us-west-2.amazonaws.com
+Number of recipients: 1
+--------------------------
+Email:
+	From: donotreply@rapidai.com
+	To: iamsubhrasis@gmail.com
+	Subject: [-] Error: Input data with invalid image or pixel dimensions, AnonID site_rma_5789178 
+Creating message ...
+Sending (via email-smtp.us-west-2.amazonaws.com) ...
+--------------------------
+Return code: 0
+Ending emailing at Mon, Jul  8 2024, 15:31:28
+
+*******************************************************************************************************
+
+/rapid_data/task_data/site_rma/emailSend/358_360Starting emailing at Mon, Jul  8 2024, 15:39:46
+SMTP Server: email-smtp.us-west-2.amazonaws.com
+Number of recipients: 1
+--------------------------
+Email:
+	From: donotreply@rapidai.com
+	To: sahu@ischemaview.com
+	Subject: [Jxxx Dxxxxxx] Suspected PE, AnonID site_rma_9600383 
+	No. of attachments: 4
+Creating message ...
+Total attachment size: 0.5 MB
+Adding image(s):
+	/rapid_data/task_data/site_rma/PETN/354_356/results/site_rma_000354_peSuspected.jpg
+	/rapid_data/task_data/site_rma/PETN/354_356/results/site_rma_000354_overview.jpg
+Adding attachment(s):
+	/rapid_data/task_data/site_rma/PETN/354_356/site_rma_000354_pe_processing.log.txt
+	/rapid_data/task_data/site_rma/PETN/354_356/site_rma_000354site_rma_000354.petn.dicomheader.txt
+Sending (via email-smtp.us-west-2.amazonaws.com) ...
+--------------------------
+Return code: 0
+Ending emailing at Mon, Jul  8 2024, 15:39:47
+
+*******************************************************************************************************
+
+/rapid_data/task_data/site_rma/emailSend/348_350Starting emailing at Mon, Jul  8 2024, 15:26:08
+SMTP Server: email-smtp.us-west-2.amazonaws.com
+Number of recipients: 1
+--------------------------
+Email:
+	From: donotreply@rapidai.com
+	To: sahu@ischemaview.com
+	Subject: [-] Error: Exception: no pixel data found in /rapid_data/WebUpload/site_rma/isvadmin/2cf49a24-dda3-4897-996d-d93674df9059/Ardella_Brion_056YF/007_AX_PWI__15SEC_INJ_DELAY/01001_C_W_20080714_1847_007_AX_PWI__15SEC_INJ_DELAY_image0023.dcm, AnonID site_rma_4038497 
+	No. of attachments: 3
+Creating message ...
+Total attachment size: 0.0 MB
+Adding attachment(s):
+	/rapid_data/task_data/site_rma/Mismatch/346_348/site_rma_000346_rapid_processing.log.txt
+	/rapid_data/task_data/site_rma/Mismatch/346_348/site_rma_000346.DWI1.dicomheader.txt
+	/rapid_data/task_data/site_rma/Mismatch/346_348/site_rma_000346.PWI2.dicomheader.txt
+Sending (via email-smtp.us-west-2.amazonaws.com) ...
+--------------------------
+Return code: 0
+Ending emailing at Mon, Jul  8 2024, 15:26:09
+
+*******************************************************************************************************
+
+/rapid_data/task_data/site_rma/emailSend/357_359Starting emailing at Mon, Jul  8 2024, 15:39:46
+SMTP Server: email-smtp.us-west-2.amazonaws.com
+Number of recipients: 2
+--------------------------
+Email:
+	From: donotreply@rapidai.com
+	To: rapid.receive@ischemaview.com,iamsubhrasis@gmail.com
+	Subject: [Jxxx Dxxxxxx] Suspected PE, AnonID site_rma_9600383 
+	No. of attachments: 2
+Creating message ...
+Total attachment size: 0.5 MB
+Adding image(s):
+	/rapid_data/task_data/site_rma/PETN/354_356/results/site_rma_000354_peSuspected.jpg
+	/rapid_data/task_data/site_rma/PETN/354_356/results/site_rma_000354_overview.jpg
+Sending (via email-smtp.us-west-2.amazonaws.com) ...
+--------------------------
+Return code: 0
+Ending emailing at Mon, Jul  8 2024, 15:39:47
+
+*******************************************************************************************************

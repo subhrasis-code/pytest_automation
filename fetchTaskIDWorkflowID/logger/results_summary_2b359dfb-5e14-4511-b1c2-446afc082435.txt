@@ -1,0 +1,12 @@
+2024-09-03 14:43:05.295000+00:00: Workflow process_onprem start
+2024-09-03 14:43:05.401000+00:00: Task workflow_selector (process_onprem) start
+2024-09-03 14:43:05.416000+00:00: Task workflow_selector (process_onprem) end (status=COMPLETED, time taken = 0.015 seconds)
+2024-09-03 14:43:05.547000+00:00: Task MISMATCH_wait_subworkflow (process_onprem) start
+2024-09-03 14:43:06.220000+00:00: Workflow process_cloud_upload start
+2024-09-03 14:43:06.421000+00:00: Task cloud_connector_source (process_cloud_upload) start
+2024-09-03 14:43:52.800000+00:00: Task cloud_connector_source (process_cloud_upload) end (status=COMPLETED, time taken = 46.379 seconds)
+2024-09-03 14:43:52.813000+00:00: Workflow process_cloud_upload end (status=COMPLETED, time taken = 46.593 seconds)
+2024-09-03 14:47:14.023000+00:00: Task MISMATCH_wait_subworkflow (process_onprem) end (status=COMPLETED, time taken = 248.476 seconds)
+2024-09-03 14:47:14.041000+00:00: Workflow result_processing start
+2024-09-03 14:47:14.088000+00:00: Workflow result_processing end (status=COMPLETED, time taken = 0.047 seconds)
+2024-09-03 14:47:16.620000+00:00: Workflow process_onprem end (status=COMPLETED, time taken = 251.325 seconds)

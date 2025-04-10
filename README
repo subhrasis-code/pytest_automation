@@ -1,0 +1,13 @@
+enableModule_pushDatasets.sh file is to do Enable/Disable moduldes in the selected server and after that it will Push the required
+dataset into that server at once.
+
+We just need to put our required elements in
+/Users/subhrasis/Documents/Rapid_pythonScripts/Automation/EnableDisableModules/enable_disable_config.json --->
+and
+/Users/subhrasis/Documents/Rapid_pythonScripts/Automation/UploadDatasetParallel/UploadDataset_config.json --->
+
+To run enableModule_pushDatasets.sh we need to do the following steps in the terminal:-
+
+chmod +x run_commands.sh
+
+./run_commands.sh
