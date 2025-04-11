@@ -52,6 +52,50 @@ def pipeExtention_port_forward(kubeconfig_path, remote_port, NAMESPACE):
     while True:
         time.sleep(1)
 
+def jobManager_port_forward(kubeconfig_path, remote_port, NAMESPACE):
+    print("<---------------Port Forward JobManager port--------------->")
+    # Set the KUBECONFIG environment variable
+    # kubeconfig_path = kubeconfig_folder_path + kubeConfigFile
+    os.environ["KUBECONFIG"] = kubeconfig_path
+    # Get the name of the pipeExtention pod in the specified namespace
+    result = subprocess.run(["kubectl", "get", "pods", "-n", NAMESPACE], capture_output=True, text=True, check=True)
+    jobManager_pod = None
+    for line in result.stdout.split('\n'):
+        if "rapid-jobmanager" in line:
+            print("rapid-jobmanager exists")
+            jobManager_pod = line.split()[0]
+            print(jobManager_pod)
+            break
+
+    # Check if a pipeExtention pod is found
+    if not jobManager_pod:
+        print(f"No JobManager pod found in the {NAMESPACE} namespace.")
+        sys.exit(1)
+
+    # Perform port forwarding to a random local port
+    process = subprocess.Popen(["kubectl", "port-forward", "-n", NAMESPACE, jobManager_pod, ":" + remote_port],
+                               stdout=subprocess.PIPE)
+
+    # Wait for a moment to ensure port forwarding is established
+    time.sleep(1)
+
+    # Check if the process started successfully and read its output
+    if process.stdout:
+        output = process.stdout.readline().decode().strip()
+        print(output)
+
+        # Use regex to extract the local port number
+        match = re.search(r"Forwarding from \S+:(\d+)", output)
+        if match:
+            forwarded_port = match.group(1)
+            # yielding the required forwarded_port. If we return it then the process will terminate. We want it to be in running state.
+            yield forwarded_port
+    else:
+        print("Error: Unable to start port forwarding process")
+
+    # Keep the script running
+    while True:
+        time.sleep(1)
 
 def terminate_port_forward():
     try:

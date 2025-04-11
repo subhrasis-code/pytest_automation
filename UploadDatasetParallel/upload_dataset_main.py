@@ -1,7 +1,7 @@
 import argparse
 import json
 import time
-from portForward import pipeExtention_port_forward, terminate_port_forward, tomcatServer_port_forward, getAuthToken
+from portForward import pipeExtention_port_forward, terminate_port_forward, tomcatServer_port_forward, getAuthToken, jobManager_port_forward
 from push_datasets import push_executor
 from retrievePatienID import get_patient_id
 from check_outputjson import check_outputjson_main
@@ -71,7 +71,7 @@ def poll_for_output_files(folder, module_name, kubeConfigFile, jomManager_pod, N
 
 def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push, kubeconfig_path,
              tomcatServer_local_port, tomcatServer_remote_port, tomcatServer_username, tomcatServer_password,
-             siteName, waitPop, statusCheckInterval):
+             siteName, waitPop, statusCheckInterval, push_via):
 
     base_path = f"/rapid_data/task_data/{siteName}"
     excluded_modules = {"emailSend", "temp_ich", "temp_petn"}
@@ -98,7 +98,13 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
 
     # Push Datasets
     # terminate_port_forward()
-    forwarded_port = pipeExtention_port_forward(kubeConfigFile, remote_port, NAMESPACE)
+    if push_via == "pipe":
+        forwarded_port = pipeExtention_port_forward(kubeConfigFile, remote_port, NAMESPACE)
+    elif push_via == "jobmanager":
+        forwarded_port = jobManager_port_forward(kubeConfigFile, remote_port, NAMESPACE)
+    else:
+        raise ValueError(f"Invalid push_via value: {push_via}")
+
     for value in forwarded_port:
         port = value
         print(f"Port forwarded to: {port}")
@@ -210,4 +216,5 @@ executor(global_data["kubeConfigFile"], global_data["upload_dataset_params"]['re
          global_data["upload_dataset_params"]['IP'], datasets, global_data["upload_dataset_params"]["parallel_push"],
          global_data["kubeConfigFile"], global_data["tomcatServer_local_port"], global_data["tomcatServer_remote_port"],
          global_data["tomcatServer_username"], global_data["tomcatServer_password"], global_data["siteName"],
-         global_data["upload_dataset_params"]['waitPop'], global_data["upload_dataset_params"]['statusCheckInterval'])
+         global_data["upload_dataset_params"]['waitPop'], global_data["upload_dataset_params"]['statusCheckInterval'],
+         global_data["push_via"])

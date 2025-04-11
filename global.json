@@ -1,13 +1,14 @@
 {
-  "kubeConfigFile": "/Users/zinnov/Documents/Rapid/Performance/kubeConfigFiles/admin.op-pf-test-1.kubeconfig",
+  "kubeConfigFile": "/Users/zinnov/Documents/Rapid/Performance/kubeConfigFiles/admin.po-pf-test1.kubeconfig",
   "namespace": "rapid-apps",
-  "siteName": "site2",
+  "siteName": "site1",
   "userEmail_list": ["rapid.receive@ischemaview.com"],
   "tomcatServer_username": "isvadmin",
   "tomcatServer_password": "Stroke@2013!",
   "tomcatServer_remote_port": "443",
   "tomcatServer_local_port": "8443",
   "cloud_processing": "False",
+  "push_via": "pipe",
 
   "enable_disable_params": {
     "emailConfig": {
@@ -24,11 +25,11 @@
 
   "upload_dataset_params":{
     "parallel_push": "True",
-    "remote_port": "5331",
+    "remote_port": "5980",
     "IP": "127.0.0.1",
     "waitPop": 60,
     "statusCheckInterval": 30,
-    "dataset_path3": "/Users/zinnov/Documents/auto_6.2.x/rapid-testpulse/test_pulse_data/dataset_bundles/MiniRegression/RVLV"
+    "dataset_path3": "/Users/zinnov/Documents/auto_6.2.x/rapid-testpulse/test_pulse_data/dataset_bundles/Datasets/Stroke_Demo_Larry_LVO"
   },
 
   "fetch_logs_params": {

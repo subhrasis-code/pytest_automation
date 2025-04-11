@@ -3,10 +3,11 @@ import json
 import os
 
 # Keys you want to extract
-keys_to_extract = ["ReturnCodeDescription", "ReturnCode", "ProcessingTimeInSeconds", "ProcessingTimeSeconds", "NumberOfSlices", "NumberOfSlicesAffected",
-                   "RVLVRatio", "ich_version", "HemorrhageDetected", "scoreLeftHemisphere", "scoreRightHemisphere", "aspects_version", "Region",
-                   "LVOOnNCCTSuspected", "AneurysmSuspected", "valueString", "scanCaution", "scanRejected", "LVODetectionEnabled", "LVODetected",
-                   "USAVersionLimitation", "VesselDensityRatio", "Description", "ModuleName", "ArtifactsDetected"]
+keys_to_extract = ["ReturnCodeDescription", "ReturnCode", "ProcessingTimeInSeconds", "ProcessingTimeSeconds", "processingTimeInSeconds",
+                   "NumberOfSlices", "NumberOfSlicesAffected", "RVLVRatio", "ich_version", "HemorrhageDetected", "scoreLeftHemisphere",
+                   "scoreRightHemisphere", "aspects_version", "Region", "LVOOnNCCTSuspected", "AneurysmSuspected", "valueString",
+                   "scanCaution", "scanRejected", "LVODetectionEnabled", "LVODetected", "USAVersionLimitation", "VesselDensityRatio",
+                   "Description", "ModuleName", "moduleName", "ArtifactsDetected"]
 
 diagnosis_modules = {
                 "Rapid PE" : "Description",
@@ -87,16 +88,16 @@ def check_outputjson_main(json_path, kubeconfig_path, pod_name, namespace):
         print(f"{moduleName} is processed successfully and ReturnCode is {returncode} ")
 
     # Now locate and read workflow_input.json
-    base_dir = os.path.dirname(json_path)
-    workflow_input_path = os.path.join(base_dir, "workflow_input.json")
-    workflow_data = read_json_from_pod(workflow_input_path, kubeconfig_path, pod_name, namespace)
-
-    if workflow_data:
-        workflow_id = find_key_recursive(workflow_data, "workflowID")
-        corelation_id = find_key_recursive(workflow_data, "corelationID")
-        print(f"workflowID: {workflow_id} | corelationID: {corelation_id} | {workflow_input_path} \n")
-    else:
-        print(f"Could not read or parse workflow_input.json at {workflow_input_path}")
+    # base_dir = os.path.dirname(json_path)
+    # workflow_input_path = os.path.join(base_dir, "workflow_input.json")
+    # workflow_data = read_json_from_pod(workflow_input_path, kubeconfig_path, pod_name, namespace)
+    #
+    # if workflow_data:
+    #     workflow_id = find_key_recursive(workflow_data, "workflowID")
+    #     corelation_id = find_key_recursive(workflow_data, "corelationID")
+    #     print(f"workflowID: {workflow_id} | corelationID: {corelation_id} | {workflow_input_path} \n")
+    # else:
+    #     print(f"Could not read or parse workflow_input.json at {workflow_input_path}")
 
 # json_path = "/rapid_data/task_data/site2/Hyperdensity/110_383/output.json"
 # # Configuration
