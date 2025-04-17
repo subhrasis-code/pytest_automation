@@ -7,7 +7,6 @@ from concurrent.futures import ThreadPoolExecutor
 
 
 def push(dataset_path, IP, port):
-    """Push DICOM files using dcmsend instead of storescu."""
     # Get the list of DICOM files recursively from all subdirectories
     dicom_files = glob.glob(f"{dataset_path}/**/*.dcm", recursive=True)
 
@@ -27,7 +26,7 @@ def push(dataset_path, IP, port):
         subprocess.run(command, check=True)
         print(f"✅ DICOM files successfully sent from: {dataset_path}")
     except subprocess.CalledProcessError as e:
-        print(f"❌ Error executing dcmsend for {dataset_path}: {e}")
+        print(f"❌ Error executing storescu for {dataset_path}: {e}")
 
 
 def push_in_3_batches(dataset_path, IP, port):
@@ -64,7 +63,7 @@ def push_in_3_batches(dataset_path, IP, port):
             subprocess.run(command, check=True)
             print(f"✅ Batch {i} successfully sent.")
         except subprocess.CalledProcessError as e:
-            print(f"❌ Error executing dcmsend for Batch {i}: {e}")
+            print(f"❌ Error executing storescu for Batch {i}: {e}")
 
 
 # def push_in_2batches(dataset_path, IP, port):

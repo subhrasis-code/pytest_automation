@@ -1,0 +1,145 @@
+
+[2025-04-15 10:39:12] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 69.2379195690155 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/159_10239/output.json
+
+[2025-04-15 10:50:18] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 70.15268898010254 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/164_10267/output.json
+
+[2025-04-15 10:59:52] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 68.53524613380432 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/169_10297/output.json
+
+[2025-04-15 11:17:37] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 69.17153978347778 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/174_10344/output.json
+
+[2025-04-15 12:03:40] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 68.9587836265564 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/178_10480/output.json
+
+[2025-04-15 12:07:47] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 68.70474123954773 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/182_10498/output.json
+
+[2025-04-15 12:17:01] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 68.60871386528015 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/186_10517/output.json
+
+[2025-04-15 12:26:53] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 69.93748044967651 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/190_10540/output.json
+
+[2025-04-15 13:42:32] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 70.22987246513367 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/194_10670/output.json
+
+[2025-04-15 14:00:55] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 69.56312870979309 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/198_10708/output.json
+
+[2025-04-15 14:08:21] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 69.75601840019226 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/202_10716/output.json
+
+[2025-04-15 14:17:07] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 68.99970984458923 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/206_10724/output.json
+
+[2025-04-15 15:16:15] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 69.55017232894897 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/210_10750/output.json
+
+[2025-04-15 15:22:38] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 69.30576491355896 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/214_10757/output.json
+
+[2025-04-15 15:39:44] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 68.74797821044922 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/218_10772/output.json
+
+[2025-04-15 15:51:36] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 69.03567290306091 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/222_10785/output.json
+
+[2025-04-15 16:05:43] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 68.96640872955322 | NumberOfSlices: 1 | Description: CTPA processed.
+Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/226_10806/output.json
+
+[2025-04-15 16:44:13] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 77.49060797691345 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/230_10858/output.json
+
+[2025-04-15 16:44:18] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 46.3463020324707 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site1/RVLV/231_10859/output.json
+
+[2025-04-15 16:56:39] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 46.35078740119934 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site1/RVLV/238_10882/output.json
+
+[2025-04-15 17:31:24] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 8 | NumberOfSlices: 36 | NumberOfSlicesAffected: 17 | ArtifactsDetected: True | /rapid_data/task_data/site1/ncctArtifactDetection/243_10918/artifact_output.json
+
+[2025-04-15 17:31:28] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 26.358315467834473 | NumberOfSlices: 36 | NumberOfSlicesAffected: 17 | ich_version: 3.0 | HemorrhageDetected: False | Description: Overview of all slices | ModuleName: ICH | ArtifactsDetected: True | /rapid_data/task_data/site1/hemorrhage/243_10918/output.json
+
+[2025-04-15 17:31:36] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 24.554868459701538 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | /rapid_data/task_data/site1/Hyperdensity/246_10921/output.json
+
+[2025-04-15 17:31:40] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 77 | NumberOfSlices: 36 | Description: Report hypodensity | ModuleName: Hypodensity | ArtifactsDetected: True | /rapid_data/task_data/site1/Hypodensity/247_10922/output.json
+
+[2025-04-15 17:31:46] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 27.862884759902954 | NumberOfSlices: 36 | ich_version: 3.0 | HemorrhageDetected: False | Description: Overview of all slices | ModuleName: ICH | /rapid_data/task_data/site1/Octopus/244_10919/ich/output.json
+
+[2025-04-15 18:08:31] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 24.071776390075684 | NumberOfSlices: 36 | NumberOfSlicesAffected: 17 | ich_version: 3.0 | HemorrhageDetected: False | Description: Overview of all slices | ModuleName: ICH | ArtifactsDetected: True | /rapid_data/task_data/site1/hemorrhage/257_10953/output.json
+
+[2025-04-15 18:08:35] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 26.188979625701904 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | /rapid_data/task_data/site1/Hyperdensity/260_10956/output.json
+
+[2025-04-15 18:08:38] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 78 | NumberOfSlices: 36 | Description: Report hypodensity | ModuleName: Hypodensity | ArtifactsDetected: True | /rapid_data/task_data/site1/Hypodensity/261_10957/output.json
+
+[2025-04-15 18:08:44] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 230 | ProcessingTimeSeconds: 230 | NumberOfSlices: 36 | scoreLeftHemisphere: 4 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS1 | ArtifactsDetected: True | /rapid_data/task_data/site1/Octopus/258_10954/output.json
+
+[2025-04-15 18:08:49] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 0.358 | NumberOfSlices: 36 | Description: NCCT Stroke Summary Image | ModuleName: NCCT Stroke | ArtifactsDetected: True | /rapid_data/task_data/site1/NCCTStroke/259_10955/output.json
+
+[2025-04-15 18:52:37] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 79.0052182674408 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/272_11084/output.json
+
+[2025-04-15 18:52:41] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 45.797157526016235 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site1/RVLV/273_11085/output.json
+
+[2025-04-16 10:30:45] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 45.393088579177856 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site1/RVLV/281_13757/output.json
+
+[2025-04-16 10:30:50] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 81.06901860237122 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/280_13756/output.json
+
+[2025-04-16 11:03:50] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 46.05348753929138 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site1/RVLV/289_13859/output.json
+
+[2025-04-16 11:03:55] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 76.07605481147766 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/288_13858/output.json
+
+[2025-04-16 11:15:54] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 46.839646339416504 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site1/RVLV/297_13901/output.json
+
+[2025-04-16 11:15:59] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 77.50900483131409 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/296_13900/output.json
+
+[2025-04-16 11:28:50] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 46.625967502593994 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site1/RVLV/305_13949/output.json
+
+[2025-04-16 11:28:55] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 77.67055821418762 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/304_13948/output.json
+
+[2025-04-16 12:26:53] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 46.309264183044434 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site1/RVLV/313_14196/output.json
+
+[2025-04-16 12:27:02] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 79.82687187194824 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/312_14195/output.json
+
+[2025-04-16 12:39:45] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 45.897051095962524 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site1/RVLV/321_14251/output.json
+
+[2025-04-16 12:39:49] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 82.0932445526123 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/320_14250/output.json
+
+[2025-04-16 13:12:19] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 46.1189239025116 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site1/RVLV/329_14413/output.json
+
+[2025-04-16 13:12:23] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 80.8096923828125 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | /rapid_data/task_data/site1/PETN/328_14412/output.json
+
+[2025-04-17 15:52:21] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 36.5203 | NumberOfSlices: 36 | NumberOfSlicesAffected: 15 | Description: Overview of all slices | ModuleName: SDH | ArtifactsDetected: True | /rapid_data/task_data/site1/sdh/1033_7847/output.json
+
+[2025-04-17 15:52:25] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 33.29392099380493 | NumberOfSlices: 36 | NumberOfSlicesAffected: 15 | ich_version: 3.0 | HemorrhageDetected: True | Description: ICH suspected | ModuleName: ICH | ArtifactsDetected: True | /rapid_data/task_data/site1/hemorrhage/1032_7846/output.json
+
+[2025-04-17 15:52:30] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 26.531906843185425 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | /rapid_data/task_data/site1/Hyperdensity/1034_7848/output.json
+
+[2025-04-17 15:52:34] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 62 | NumberOfSlices: 36 | Description: Report hypodensity | ModuleName: Hypodensity | ArtifactsDetected: True | /rapid_data/task_data/site1/Hypodensity/1035_7849/output.json
+
+[2025-04-17 16:09:05] returnCodeDescription: Input DICOM data invalid | processingTimeInSeconds: 6.13 | scanCaution: {'cautionReasons': [], 'scanCaution': False} | scanRejected: False | moduleName: CINA_IPE | /rapid_data/task_data/site1/IPE/1045_8190/output.json
+
+[2025-04-17 16:09:10] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeSeconds: 126 | NumberOfSlices: 11 | Description: CBF/Tmax Mismatch | ModuleName: Mismatch | /rapid_data/task_data/site1/Mismatch/1044_8189/output.json
+
+[2025-04-17 16:45:08] returnCodeDescription: Input DICOM data invalid | processingTimeInSeconds: 6.14 | scanCaution: {'cautionReasons': [], 'scanCaution': False} | scanRejected: False | moduleName: CINA_IPE | /rapid_data/task_data/site1/IPE/1050_8665/output.json
+
+[2025-04-17 16:45:14] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeSeconds: 122 | NumberOfSlices: 11 | Description: CBF/Tmax Mismatch | ModuleName: Mismatch | /rapid_data/task_data/site1/Mismatch/1049_8664/output.json
+
+[2025-04-17 17:18:18] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 36.1518 | NumberOfSlices: 36 | NumberOfSlicesAffected: 15 | Description: Overview of all slices | ModuleName: SDH | ArtifactsDetected: True | NCCTArtifactsJSONFilename: /rapid_data/task_data/site1/ncctArtifactDetection/995_7296/artifact_output.json | SDHSuspected: False | /rapid_data/task_data/site1/sdh/1055_9068/output.json
+
+[2025-04-17 17:18:23] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 23.41219449043274 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | /rapid_data/task_data/site1/Hyperdensity/1056_9069/output.json
+
+[2025-04-17 17:18:27] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 56 | NumberOfSlices: 36 | Description: Report hypodensity | ModuleName: Hypodensity | ArtifactsDetected: True | /rapid_data/task_data/site1/Hypodensity/1057_9070/output.json
+
+[2025-04-17 17:18:33] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 33.22633934020996 | NumberOfSlices: 36 | NumberOfSlicesAffected: 15 | ich_version: 3.0 | HemorrhageDetected: True | Description: ICH suspected | ModuleName: ICH | ArtifactsDetected: True | NCCTArtifactsJSONFilename: /rapid_data/task_data/site1/ncctArtifactDetection/995_7296/artifact_output.json | /rapid_data/task_data/site1/hemorrhage/1054_9067/output.json
+
+[2025-04-17 17:32:36] returnCodeDescription: Input DICOM data invalid | processingTimeInSeconds: 7.61 | scanCaution: {'cautionReasons': [], 'scanCaution': False} | scanRejected: False | moduleName: CINA_IPE | /rapid_data/task_data/site1/IPE/1067_9142/output.json
+
+[2025-04-17 17:32:40] ReturnCodeDescription: Input data with invalid slice thickness | ReturnCode: -8 | ProcessingTimeInSeconds: 5.2524 | ModuleName: RAPIDNEURO3D | /rapid_data/task_data/site1/neuro3d/1069_9144/output.json
+
+[2025-04-17 17:32:44] ReturnCodeDescription: invalid input data contents | ReturnCode: -4 | ModuleName: CTA/LVO | /rapid_data/task_data/site1/angio/1066_9141/output.json
+
+[2025-04-17 17:32:48] ReturnCodeDescription: Input data with invalid inplane fleid of view | ReturnCode: -8 | ProcessingTimeInSeconds: 9.075 | ModuleName: ANRTN | /rapid_data/task_data/site1/ANRTN/1068_9143/output.json
+
+[2025-04-17 17:59:39] ReturnCodeDescription: invalid input data contents | ReturnCode: -4 | ModuleName: CTA/LVO | /rapid_data/task_data/site1/angio/1080_9635/output.json
+
+[2025-04-17 17:59:43] returnCodeDescription: Input DICOM data invalid | processingTimeInSeconds: 7.14 | scanCaution: {'cautionReasons': [], 'scanCaution': False} | scanRejected: False | moduleName: CINA_IPE | /rapid_data/task_data/site1/IPE/1081_9636/output.json

@@ -4,12 +4,13 @@ import time
 from portForward import pipeExtention_port_forward, terminate_port_forward, tomcatServer_port_forward, getAuthToken, jobManager_port_forward
 from push_datasets import push_executor
 from retrievePatienID import get_patient_id
-from check_outputjson import check_outputjson_main
+from check_outputjson import check_outputjson_executor, print_test_summary
 from tomcatStatusCheck import tomcatModuleStatusChecker
 import requests
 import subprocess
 import os
 import threading
+import re
 
 def list_module_task_paths(kubeConfigFile, NAMESPACE, jomManager_pod, base_path, excluded_modules):
     cmd = [
@@ -32,18 +33,22 @@ def list_module_task_paths(kubeConfigFile, NAMESPACE, jomManager_pod, base_path,
     return task_paths
 
 def poll_for_output_files(folder, module_name, kubeConfigFile, jomManager_pod, NAMESPACE):
-    output_files_to_check = (
-        ["output.json", "output_cta.json", "output_lvo.json"]
-        if module_name == "angio"
-        else ["output.json"]
-    )
+    # if module_name == "angio":
+    #     output_files_to_check = ["output.json", "output_cta.json", "output_lvo.json"]
+    # elif module_name == "ncctArtifactDetection":
+    #     output_files_to_check = ["artifact_output.json"]
+    # else:
+    #     output_files_to_check = ["output.json"]
+
+    output_files_to_check = ["output.json"]
 
     print(f"⏳ Waiting for {', '.join(output_files_to_check)} in: {folder}")
     found_files = set()
     start_json_poll = time.time()
 
-    while time.time() - start_json_poll < 900:  # 15 minutes max
-        file_list_cmd = f"find {folder} -type f"
+    while time.time() - start_json_poll < 600:  # 10 minutes max
+        # -maxdepth 1: Limits the search to the specified directory only (i.e., no recursion into subfolders).
+        file_list_cmd = f"find {folder} -maxdepth 1 -type f"
         result = subprocess.run([
             "kubectl", "exec", "-n", NAMESPACE, jomManager_pod,
             "--", "/bin/sh", "-c", file_list_cmd
@@ -52,16 +57,16 @@ def poll_for_output_files(folder, module_name, kubeConfigFile, jomManager_pod, N
         files = result.stdout.strip().split("\n") if result.returncode == 0 else []
 
         for output_file in output_files_to_check:
+            # f is the path of files
             for f in files:
                 if f.endswith(output_file) and output_file not in found_files:
-                    print(f"📄 {output_file} created: {f}")
                     found_files.add(output_file)
                     time.sleep(2)
-                    if output_file == "output.json":
-                        check_outputjson_main(f, kubeConfigFile, jomManager_pod, NAMESPACE)
+                    if output_file == "output.json" or output_file== "artifact_output.json":
+                        case_id = f"{module_name.upper()}_Case{len(found_files)}"
+                        check_outputjson_executor(f, kubeConfigFile, jomManager_pod, NAMESPACE, module_name)
 
-        if len(found_files) == len(output_files_to_check) or (
-                module_name != "angio" and "output.json" in found_files):
+        if len(found_files) == len(output_files_to_check) or (module_name != "angio" and "output.json" in found_files):
             break
 
         time.sleep(5)
@@ -69,14 +74,22 @@ def poll_for_output_files(folder, module_name, kubeConfigFile, jomManager_pod, N
     else:
         print(f"⚠️ Timeout: Not all output files found in {folder} within 15 minutes.\n")
 
+def is_task_folder(new_folders):
+    valid_folders = set()
+    for folder_path in new_folders:
+        folder_name = os.path.basename(folder_path)
+        if re.fullmatch(r'\d+_\d+', folder_name):
+            valid_folders.add(folder_path)
+    return valid_folders
+
 def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push, kubeconfig_path,
              tomcatServer_local_port, tomcatServer_remote_port, tomcatServer_username, tomcatServer_password,
              siteName, waitPop, statusCheckInterval, push_via):
 
     base_path = f"/rapid_data/task_data/{siteName}"
-    excluded_modules = {"emailSend", "temp_ich", "temp_petn"}
+    excluded_modules = {"emailSend", "temp_ich", "temp_petn", "DicomSend"}
     poll_duration = 180  # seconds
-    poll_interval = 5  # seconds
+    poll_interval = 10  # seconds
 
     # Set the KUBECONFIG environment variable
     os.environ["KUBECONFIG"] = kubeconfig_path
@@ -94,7 +107,6 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
     print("📸 Taking initial snapshot of task folders...")
     initial_task_folders = list_module_task_paths(kubeConfigFile, NAMESPACE, jomManager_pod, base_path, excluded_modules)
     print(f"Inital task folders : {initial_task_folders}")
-
 
     # Push Datasets
     # terminate_port_forward()
@@ -114,7 +126,7 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
         # terminate_port_forward()
         break
     print(f"Waiting for {waitPop} seconds so that the studies get populate on Tomcat and start to process...")
-    time.sleep(90)
+    time.sleep(waitPop)
     start_time = time.time()
 
     # Polling for new folders
@@ -122,20 +134,24 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
     while time.time() - start_time < poll_duration:
         current_task_folders = list_module_task_paths(kubeConfigFile, NAMESPACE, jomManager_pod, base_path, excluded_modules)
         new_folders = current_task_folders - initial_task_folders
-        if new_folders:
+        task_folders = is_task_folder(new_folders)
+
+        if task_folders:
             threads = []
-            for folder in new_folders:
-                print(f"✅ New task folder detected: {folder}")
-                module_name = folder.split('/')[4]
+            for folder in task_folders:
+                if folder.split('/')[4] != "ncctArtifactDetection":
+                    print(f"✅ New task folder detected: {folder}")
+                    module_name = folder.split('/')[4]
 
-                # Start a thread for each folder
-                t = threading.Thread(
-                    target=poll_for_output_files,
-                    args=(folder, module_name, kubeConfigFile, jomManager_pod, NAMESPACE)
-                )
-                t.start()
-                threads.append(t)
-
+                    # Start a thread for each folder
+                    t = threading.Thread(
+                        target=poll_for_output_files,
+                        args=(folder, module_name, kubeConfigFile, jomManager_pod, NAMESPACE)
+                    )
+                    t.start()
+                    threads.append(t)
+                else:
+                    pass
             # Wait for all threads to finish
             for t in threads:
                 t.join()
@@ -144,49 +160,9 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
         time.sleep(poll_interval)
     else:
         print("⌛ No new task folder detected within 2 minutes.")
+    # ✅ Final summary
+    print_test_summary()
 
-
-
-
-    # time.sleep(waitPop)
-    # print("<---------------Port Forward TomcatServer to check Live status of the modules--------------->")
-    # forwarded_port = tomcatServer_port_forward(kubeconfig_path, tomcatServer_local_port, tomcatServer_remote_port,
-    #                                            tomcatServer_username, tomcatServer_password, namespace)
-    # for value in forwarded_port:
-    #     port = value
-    #     print(f"TomcatServer pod Port forwarded to: {port}")
-    #     authorization_token = getAuthToken(port, tomcatServer_password, tomcatServer_username)
-    #     tomcatModuleStatusChecker(authorization_token, siteName, port, statusCheckInterval)
-    #     print("Logging Out the user")
-    #     time.sleep(5)
-    #     logout_user(port, authorization_token)
-    #     print("Sleeping for few seconds before Terminating Tomcat Server Port forward.")
-    #     time.sleep(10)
-    #
-    #     # Terminating all the processes that has kubectl after Tomcat Port Forward
-    #     terminate_port_forward()
-    # print("Sleeping for few seconds before starting logger.")
-    # time.sleep(30)
-
-# def logout_user(port, authorization_token):
-#     url = f"https://localhost:{port}/isvapi/service/v1/authenticate/logoutx"
-#
-#     # Define request headers
-#     headers = {
-#         'Authorization': str(authorization_token)
-#     }
-#
-#     try:
-#         # Send DELETE request with payload as JSON string
-#         response = requests.delete(url=url, headers=headers, verify=False)
-#         # Check response status code
-#         if response.status_code == 200:
-#             print(f"Logged out tomcat user successfully.")
-#         else:
-#             print(f"Error: {response.status_code}")
-#             print(response.text)  # Print response body for further debugging if needed
-#     except requests.exceptions.RequestException as e:
-#         print("Error:", e)
 
 # Add all the dataset paths into a list
 def dataset_list(config_data):
@@ -195,26 +171,3 @@ def dataset_list(config_data):
         if key.startswith("dataset_path"):
             datasets.append(config_data[key])
     return datasets
-
-# Create ArgumentParser object
-parser = argparse.ArgumentParser(description='Takes argumrnts and push the datasets')
-# config_file = '/Users/subhrasis/Documents/Rapid_pythonScripts/Automation_no_global/UploadDatasetParallel/UploadDataset_config.json'
-parser.add_argument('global_json_file', help='Path to the global JSON file')
-
-# Parse arguments
-args = parser.parse_args()
-
-with open(args.global_json_file, 'r') as f:
-    global_data = json.load(f)  # dictionary
-
-datasets = dataset_list(global_data["upload_dataset_params"])
-
-# Printing the Pushed Dataset(s) PatientID into a csv file
-get_patient_id(datasets)
-
-executor(global_data["kubeConfigFile"], global_data["upload_dataset_params"]['remote_port'], global_data['namespace'],
-         global_data["upload_dataset_params"]['IP'], datasets, global_data["upload_dataset_params"]["parallel_push"],
-         global_data["kubeConfigFile"], global_data["tomcatServer_local_port"], global_data["tomcatServer_remote_port"],
-         global_data["tomcatServer_username"], global_data["tomcatServer_password"], global_data["siteName"],
-         global_data["upload_dataset_params"]['waitPop'], global_data["upload_dataset_params"]['statusCheckInterval'],
-         global_data["push_via"])
