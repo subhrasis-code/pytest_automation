@@ -66,7 +66,10 @@ def poll_for_output_files(folder, module_name, kubeConfigFile, jomManager_pod, N
                         case_id = f"{module_name.upper()}_Case{len(found_files)}"
                         check_outputjson_executor(f, kubeConfigFile, jomManager_pod, NAMESPACE, module_name)
 
-        if len(found_files) == len(output_files_to_check) or (module_name != "angio" and "output.json" in found_files):
+        # if len(found_files) == len(output_files_to_check) or (module_name != "angio" and "output.json" in found_files):
+        #     break
+
+        if len(found_files) == len(output_files_to_check):
             break
 
         time.sleep(5)
