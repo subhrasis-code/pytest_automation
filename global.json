@@ -29,7 +29,7 @@
     "IP": "127.0.0.1",
     "waitPop": 60,
     "statusCheckInterval": 30,
-    "dataset_path1": "/Users/zinnov/Documents/auto_6.2.x/rapid-testpulse/test_pulse_data/dataset_bundles/Rejected_Cases_From_Mastermind"
+    "dataset_path1": "/Users/zinnov/Documents/auto_6.2.x/rapid-testpulse/test_pulse_data/dataset_bundles/MiniRegression/Ncct/"
   },
 
   "fetch_logs_params": {

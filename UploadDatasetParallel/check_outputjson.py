@@ -193,11 +193,11 @@ def execute_all_tests():
                                 status = False
                                 fail_reason = str(e)
                                 print(fail_reason)
-                        return True  # ✅ Matching dataset found
-                return False  # ❌ No match
+                        return True, dataset_type, expected_key, actual_value  # ✅ Matching dataset found
+                return False, None, None, None  # ❌ No match
 
             if moduleName != "CINA_IPE":
-                matched_dataset = validate_dataset_type(moduleName, json_path, info_dict, ["positive", "negative"], overall_map)
+                matched_dataset, dataset_type, expected_key, actual_value = validate_dataset_type(moduleName, json_path, info_dict, ["positive", "negative"], overall_map)
                 if not matched_dataset:
                     status = False
                     positive_map = overall_map["positive"]
@@ -216,7 +216,7 @@ def execute_all_tests():
                 # matched_dataset = validate_dataset_type(moduleName, json_path, info_dict, ["positive", "negative", "ncctArtifactDetection_positive", "ncctArtifactDetection_negative"], overall_map)
 
             else:  # For CINA_IPE
-                matched_dataset = validate_dataset_type(moduleName, json_path, info_dict, ["positive", "negative", "error"], overall_map)
+                matched_dataset, dataset_type, expected_key, actual_value = validate_dataset_type(moduleName, json_path, info_dict, ["positive", "negative", "error"], overall_map)
                 if not matched_dataset:
                     status = False
                     positive_map = overall_map["positive"]
@@ -233,98 +233,6 @@ def execute_all_tests():
                         f"🔻 Error: {error_key} = {error_value}"
                     )
                     print(fail_reason)
-
-            # if moduleName != "CINA_IPE":
-            #     for dataset_type in ["positive", "negative"]:
-            #         dataset_detail = overall_map.get(dataset_type)
-            #         if not dataset_detail:
-            #             continue
-            #         # Check one key-value pair to determine if this is the right dataset type
-            #         expected_key, expected_value = list(dataset_detail.items())[0]
-            #         actual_value = info_dict.get(expected_key)
-            #         if actual_value == expected_value:
-            #             matched_dataset = True
-            #             # ✅ It's a matching dataset type, now validate all keys under it
-            #             print(f"[{moduleName}] {json_path}: 🔍 Detected as [{dataset_type}] dataset")
-            #             for expected_key, expected_value in dataset_detail.items():
-            #                 # Re-fetch for each key
-            #                 actual_value = info_dict.get(expected_key)
-            #                 print(f"[{moduleName}] {json_path}: 🧪 Validating [{dataset_type}] {expected_key}...")
-            #                 try:
-            #                     print(
-            #                         f"[{moduleName}] {json_path}: ✅ PASSED - [{dataset_type}] {expected_key} = {actual_value}")
-            #                     assert actual_value == expected_value, (
-            #                         f"[{moduleName}] {json_path}: ❌ FAILED - [{dataset_type}] Expected {expected_key}={expected_value}, | Actual {expected_key}={actual_value}"
-            #                     )
-            #                 except AssertionError as e:
-            #                     status = False
-            #                     fail_reason = str(e)
-            #                     print(fail_reason)
-            #             break  # ✅ Done with validation, no need to check other type
-            #     # ❌ If neither positive nor negative matched
-            #     if not matched_dataset:
-            #         status = False
-            #         positive_map = overall_map["positive"]
-            #         negative_map = overall_map["negative"]
-            #
-            #         positive_key, positive_value = list(positive_map.items())[0]
-            #         negative_key, negative_value = list(negative_map.items())[0]
-            #
-            #         actual_value = info_dict.get(positive_key)
-            #
-            #         fail_reason = (
-            #             f"[{module_name}] {json_path}: ❌ FAILED - '{positive_key} : {actual_value}' does not match either:\n"
-            #             f"🔸 Positive: {positive_key} = {positive_value}\n"
-            #             f"🔹 Negative: {negative_key} = {negative_value}"
-            #         )
-            #         print(fail_reason)
-            # else:
-            #     for dataset_type in ["positive", "negative", "error"]:
-            #         dataset_detail = overall_map.get(dataset_type)
-            #         if not dataset_detail:
-            #             continue
-            #         # Check one key-value pair to determine if this is the right dataset type
-            #         expected_key, expected_value = list(dataset_detail.items())[0]
-            #         actual_value = info_dict.get(expected_key)
-            #         if actual_value == expected_value:
-            #             matched_dataset = True
-            #             # ✅ It's a matching dataset type, now validate all keys under it
-            #             print(f"[{moduleName}] {json_path}: 🔍 Detected as [{dataset_type}] dataset")
-            #             for expected_key, expected_value in dataset_detail.items():
-            #                 # Re-fetch for each key
-            #                 actual_value = info_dict.get(expected_key)
-            #                 print(f"[{moduleName}] {json_path}: 🧪 Validating [{dataset_type}] {expected_key}...")
-            #                 try:
-            #                     print(
-            #                         f"[{moduleName}] {json_path}: ✅ PASSED - [{dataset_type}] {expected_key} = {actual_value}")
-            #                     assert actual_value == expected_value, (
-            #                         f"[{moduleName}] {json_path}: ❌ FAILED - [{dataset_type}] Expected {expected_key}={expected_value}, | Actual {expected_key}={actual_value}"
-            #                     )
-            #                 except AssertionError as e:
-            #                     status = False
-            #                     fail_reason = str(e)
-            #                     print(fail_reason)
-            #             break  # ✅ Done with validation, no need to check other type
-            #     # ❌ If neither positive nor negative matched
-            #     if not matched_dataset:
-            #         status = False
-            #         positive_map = overall_map["positive"]
-            #         negative_map = overall_map["negative"]
-            #         error_map = overall_map["error"]
-            #
-            #         positive_key, positive_value = list(positive_map.items())[0]
-            #         negative_key, negative_value = list(negative_map.items())[0]
-            #         error_key, error_value = list(error_map.items())[0]
-            #
-            #         actual_value = info_dict.get(positive_key)
-            #
-            #         fail_reason = (
-            #             f"[{module_name}] {json_path}: ❌ FAILED - '{positive_key} : {actual_value}' does not match either:\n"
-            #             f"🔸 Positive: {positive_key} = {positive_value}\n"
-            #             f"🔹 Negative: {negative_key} = {negative_value}\n"
-            #             f"🔹 Error: {error_key} = {error_value}"
-            #         )
-            #         print(fail_reason)
         elif moduleName in anatomy_modules:
             overall_map = anatomy_modules[moduleName]
             expected_key, expected_value = list(overall_map.items())[0]

@@ -143,3 +143,11 @@ Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site
 [2025-04-17 17:59:39] ReturnCodeDescription: invalid input data contents | ReturnCode: -4 | ModuleName: CTA/LVO | /rapid_data/task_data/site1/angio/1080_9635/output.json
 
 [2025-04-17 17:59:43] returnCodeDescription: Input DICOM data invalid | processingTimeInSeconds: 7.14 | scanCaution: {'cautionReasons': [], 'scanCaution': False} | scanRejected: False | moduleName: CINA_IPE | /rapid_data/task_data/site1/IPE/1081_9636/output.json
+
+[2025-04-21 11:24:34] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 53.27328538894653 | NumberOfSlices: 54 | NumberOfSlicesAffected: 0 | ich_version: 3.0 | HemorrhageDetected: True | Description: ICH suspected | ModuleName: ICH | ArtifactsDetected: False | NCCTArtifactsJSONFilename: /rapid_data/task_data/site1/ncctArtifactDetection/1102_21731/artifact_output.json | /rapid_data/task_data/site1/hemorrhage/1105_21734/output.json
+
+[2025-04-21 11:36:11] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 52.88870620727539 | NumberOfSlices: 54 | NumberOfSlicesAffected: 0 | ich_version: 3.0 | HemorrhageDetected: True | Description: ICH suspected | ModuleName: ICH | ArtifactsDetected: False | NCCTArtifactsJSONFilename: /rapid_data/task_data/site1/ncctArtifactDetection/1102_21731/artifact_output.json | /rapid_data/task_data/site1/hemorrhage/1107_21736/output.json
+
+[2025-04-21 11:57:33] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 52.261722803115845 | NumberOfSlices: 54 | NumberOfSlicesAffected: 0 | ich_version: 3.0 | HemorrhageDetected: True | Description: ICH suspected | ModuleName: ICH | ArtifactsDetected: False | NCCTArtifactsJSONFilename: /rapid_data/task_data/site1/ncctArtifactDetection/1102_21731/artifact_output.json | /rapid_data/task_data/site1/hemorrhage/1110_21739/output.json
+
+[2025-04-21 12:02:59] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 24.995299816131592 | NumberOfSlices: 36 | NumberOfSlicesAffected: 17 | ich_version: 3.0 | HemorrhageDetected: False | Description: Overview of all slices | ModuleName: ICH | ArtifactsDetected: True | NCCTArtifactsJSONFilename: /rapid_data/task_data/site1/ncctArtifactDetection/1114_21743/artifact_output.json | /rapid_data/task_data/site1/hemorrhage/1114_21743/output.json
