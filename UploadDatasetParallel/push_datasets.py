@@ -18,7 +18,9 @@ def push(dataset_path, IP, port):
     # command = ["dcmsend", IP, port, "--scan-directories", "--verbose"] + dicom_files
 
     # Define the storescu command
-    command = ["storescu", IP, port, "--scan-directories", "+r", "-v", "+sd"] + dicom_files
+    # command = ["storescu", IP, port, "--scan-directories", "+r", "-v", "+sd"] + dicom_files
+
+    command = ["storescu", "--max-pdu", "1048576", IP, port, "--scan-directories", "+r", "-v", "+sd"] + dicom_files
 
     time.sleep(0.2)  # Short delay before execution
 

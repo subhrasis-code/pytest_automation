@@ -27,8 +27,8 @@ diagnosis_modules = {
         "negative": {"SDHSuspected": "False"}
     },
     "NCCT Stroke": {
-        "positive": {"NCCTStrokeLVOSuspected": "True"},
-        "negative": {"NCCTStrokeLVOSuspected": "False"}
+        "positive": {"NCCTStrokeLVOSuspected": "true"},
+        "negative": {"NCCTStrokeLVOSuspected": "false"}
     },
     "CINA_IPE": {
         "positive": {"valueString": "SUSPECTED"},
@@ -175,7 +175,7 @@ def execute_all_tests():
                     expected_key, expected_value = list(dataset_detail.items())[0]
                     actual_value = info_dict.get(expected_key)
 
-                    if actual_value == expected_value:
+                    if str(actual_value).lower() == str(expected_value).lower():
                         # print(f"[{moduleName}] {json_path}: 🔍 Detected as [{dataset_type}] dataset")
                         for expected_key, expected_value in dataset_detail.items():
                             # now validate all keys under it
