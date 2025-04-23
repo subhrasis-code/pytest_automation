@@ -106,10 +106,10 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
             print(jomManager_pod)
             break
 
-    # Snapshot before study push
-    print("📸 Taking initial snapshot of task folders...")
-    initial_task_folders = list_module_task_paths(kubeConfigFile, NAMESPACE, jomManager_pod, base_path, excluded_modules)
-    print(f"Inital task folders : {initial_task_folders}")
+    # # Snapshot before study push
+    # print("📸 Taking initial snapshot of task folders...")
+    # initial_task_folders = list_module_task_paths(kubeConfigFile, NAMESPACE, jomManager_pod, base_path, excluded_modules)
+    # print(f"Inital task folders : {initial_task_folders}")
 
     # Push Datasets
     # terminate_port_forward()
@@ -128,43 +128,45 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
         # Terminating all the processes that has kubectl after Tomcat Port Forward
         # terminate_port_forward()
         break
-    print(f"Waiting for {waitPop} seconds so that the studies get populate on Tomcat and start to process...")
-    time.sleep(waitPop)
-    start_time = time.time()
 
-    # Polling for new folders
-    print(f"⏳ Watching for new task folders (ignoring: {', '.join(excluded_modules)})...\n")
-    while time.time() - start_time < poll_duration:
-        current_task_folders = list_module_task_paths(kubeConfigFile, NAMESPACE, jomManager_pod, base_path, excluded_modules)
-        new_folders = current_task_folders - initial_task_folders
-        task_folders = is_task_folder(new_folders)
-
-        if task_folders:
-            threads = []
-            for folder in task_folders:
-                if folder.split('/')[4] != "ncctArtifactDetection":
-                    print(f"✅ New task folder detected: {folder}")
-                    module_name = folder.split('/')[4]
-
-                    # Start a thread for each folder
-                    t = threading.Thread(
-                        target=poll_for_output_files,
-                        args=(folder, module_name, kubeConfigFile, jomManager_pod, NAMESPACE)
-                    )
-                    t.start()
-                    threads.append(t)
-                else:
-                    pass
-            # Wait for all threads to finish
-            for t in threads:
-                t.join()
-
-            break  # Exit the outer loop once all threads are done
-        time.sleep(poll_interval)
-    else:
-        print("⌛ No new task folder detected within 2 minutes.")
-    # ✅ Final summary
-    print_test_summary()
+    print("Dataset pushed successfully")
+    # print(f"Waiting for {waitPop} seconds so that the studies get populate on Tomcat and start to process...")
+    # time.sleep(waitPop)
+    # start_time = time.time()
+    #
+    # # Polling for new folders
+    # print(f"⏳ Watching for new task folders (ignoring: {', '.join(excluded_modules)})...\n")
+    # while time.time() - start_time < poll_duration:
+    #     current_task_folders = list_module_task_paths(kubeConfigFile, NAMESPACE, jomManager_pod, base_path, excluded_modules)
+    #     new_folders = current_task_folders - initial_task_folders
+    #     task_folders = is_task_folder(new_folders)
+    #
+    #     if task_folders:
+    #         threads = []
+    #         for folder in task_folders:
+    #             if folder.split('/')[4] != "ncctArtifactDetection":
+    #                 print(f"✅ New task folder detected: {folder}")
+    #                 module_name = folder.split('/')[4]
+    #
+    #                 # Start a thread for each folder
+    #                 t = threading.Thread(
+    #                     target=poll_for_output_files,
+    #                     args=(folder, module_name, kubeConfigFile, jomManager_pod, NAMESPACE)
+    #                 )
+    #                 t.start()
+    #                 threads.append(t)
+    #             else:
+    #                 pass
+    #         # Wait for all threads to finish
+    #         for t in threads:
+    #             t.join()
+    #
+    #         break  # Exit the outer loop once all threads are done
+    #     time.sleep(poll_interval)
+    # else:
+    #     print("⌛ No new task folder detected within 2 minutes.")
+    # # ✅ Final summary
+    # print_test_summary()
 
 
 # Add all the dataset paths into a list

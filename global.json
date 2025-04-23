@@ -1,5 +1,5 @@
 {
-  "kubeConfigFile": "/Users/zinnov/Documents/Rapid/Performance/kubeConfigFiles/admin.ipe-op.kubeconfig",
+  "kubeConfigFile": "/Users/zinnov/Documents/Rapid/Performance/kubeConfigFiles/admin.snop.kubeconfig",
   "namespace": "rapid-apps",
   "siteName": "site1",
   "userEmail_list": ["rapid.receive@ischemaview.com"],
@@ -8,7 +8,7 @@
   "tomcatServer_remote_port": "443",
   "tomcatServer_local_port": "8443",
   "cloud_processing": "False",
-  "push_via": "jobmanager",
+  "push_via": "pipe",
 
   "enable_disable_params": {
     "emailConfig": {
@@ -25,11 +25,11 @@
 
   "upload_dataset_params":{
     "parallel_push": "True",
-    "remote_port": "5521",
+    "remote_port": "4242",
     "IP": "127.0.0.1",
     "waitPop": 60,
     "statusCheckInterval": 30,
-    "dataset_path1": "/Users/zinnov/Documents/auto_6.2.x/rapid-testpulse/test_pulse_data/dataset_bundles/MiniRegression/Ncct/"
+    "dataset_path1": "/Users/zinnov/Documents/auto_6.2.x/rapid-testpulse/test_pulse_data/dataset_bundles/MiniRegression/CTA/"
   },
 
   "fetch_logs_params": {
