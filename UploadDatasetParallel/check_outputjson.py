@@ -16,53 +16,83 @@ keys_to_extract = ["ReturnCodeDescription", "returnCodeDescription", "ReturnCode
 diagnosis_modules = {
     "Rapid PE": {
         "positive": {"Description": "Suspected PE"},
-        "negative": {"Description": "CTPA processed.\nPlease review source images."}
+        "negative": {"Description": "CTPA processed.\nPlease review source images."},
+        "ProcessingTimeInSeconds": 100
     },
     "ICH": {
         "positive": {"HemorrhageDetected": "True"},
         "negative": {"HemorrhageDetected": "False"},
+        "ProcessingTimeInSeconds": 200
     },
     "SDH": {
         "positive": {"SDHSuspected": "True"},
-        "negative": {"SDHSuspected": "False"}
+        "negative": {"SDHSuspected": "False"},
+        "ProcessingTimeInSeconds": 78
     },
     "NCCT Stroke": {
-        "positive": {"NCCTStrokeLVOSuspected": "True"},
-        "negative": {"NCCTStrokeLVOSuspected": "False"}
+        "positive": {"NCCTStrokeLVOSuspected": "true"},
+        "negative": {"NCCTStrokeLVOSuspected": "false"},
+        "ProcessingTimeInSeconds": 300
     },
     "CINA_IPE": {
         "positive": {"valueString": "SUSPECTED"},
         "negative": {"valueString": "PROCESSED"},
-        "error": {"returnCodeDescription": "Input DICOM data invalid"}
+        "error": {"returnCodeDescription": "Input DICOM data invalid"},
+        "ProcessingTimeInSeconds": 300
     },
     "ANRTN": {
         "positive": {"AneurysmSuspected": "True"},
-        "negative": {"AneurysmSuspected": "False"}
+        "negative": {"AneurysmSuspected": "False"},
+        "ProcessingTimeInSeconds": 599
     },
     "CTA": {
         "positive": {"LVODetected": "True"},
-        "negative": {"LVODetected": "False"}
+        "negative": {"LVODetected": "False"},
+        "ProcessingTimeInSeconds": 480
     },
     "LVO": {
         "positive": {"LVODetected": "True"},
-        "negative": {"LVODetected": "False"}
+        "negative": {"LVODetected": "False"},
+        "ProcessingTimeInSeconds": 480
     },
     "CTA/LVO": {
         "positive": {"LVODetected": "True"},
-        "negative": {"LVODetected": "False"}
+        "negative": {"LVODetected": "False"},
+        "ProcessingTimeInSeconds": 480
     }
 }
 
-anatomy_modules = {
-    "Rapid RV/LV": {"ReturnCode": 0},
-    "Rapid Hyperdensity": {"ReturnCode": 0},
-    "Hypodensity": {"ReturnCode": 0},
-    "RAPIDNEURO3D": {"ReturnCode": 0},
-    "ASPECTS1": {"ReturnCode": 0},
-    "ASPECTS3": {"ReturnCode": 0},
-    "Mismatch": {"ReturnCode": 0}
-    }
 
+anatomy_modules = {
+    "Rapid RV/LV": {
+        "ReturnCode": 0,
+        "ProcessingTimeInSeconds": 100
+    },
+    "Rapid Hyperdensity": {
+        "ReturnCode": 0,
+        "ProcessingTimeInSeconds": 89
+    },
+    "Hypodensity": {
+        "ReturnCode": 0,
+        "ProcessingTimeInSeconds": 219
+    },
+    "RAPIDNEURO3D": {
+        "ReturnCode": 0,
+        "ProcessingTimeInSeconds": 360
+    },
+    "ASPECTS1": {
+        "ReturnCode": 0,
+        "ProcessingTimeInSeconds": 545
+    },
+    "ASPECTS3": {
+        "ReturnCode": 0,
+        "ProcessingTimeInSeconds": 120
+    },
+    "Mismatch": {
+        "ReturnCode": 0,
+        "ProcessingTimeInSeconds": 100
+    }
+}
 
 # Global trackers
 _pending_tests = []
@@ -111,7 +141,7 @@ def check_outputjson_executor(json_path, kubeconfig_path, pod_name, namespace, m
         _printed_paths.add(json_path)
         case_name = os.path.basename(os.path.dirname(json_path))
         _pending_tests.append((module_name, case_name, json_path, kubeconfig_path, pod_name, namespace))
-        print("Going out of check_outputjson_executor method")
+        # print("Going out of check_outputjson_executor method")
 
 def execute_all_tests():
     total = len(_pending_tests)
@@ -161,10 +191,69 @@ def execute_all_tests():
         actual_value = None
         possible_module_name_keys = ["ModuleName", "moduleName", "modulename"]
         moduleName = next((info_dict.get(key) for key in possible_module_name_keys if info_dict.get(key)), "UnknownModule")
+        num_slices = info_dict.get("NumberOfSlices")
+        pt_within_limit = False  # Default value
+        threshold = None
+        actual_pt = None
+
+        raw_pt = (
+                info_dict.get("ProcessingTimeInSeconds") or
+                info_dict.get("ProcessingTimeSeconds") or
+                info_dict.get("processingTimeInSeconds")
+        )
+        try:
+            actual_pt = round(float(raw_pt), 2)
+        except (ValueError, TypeError):
+            actual_pt = None  # or handle the error appropriately
+
+        def pt_validator(actual_pt_val, threshold_val):
+            if actual_pt_val is not None and threshold_val is not None:
+                if actual_pt_val <= threshold_val:
+                    return True
+                else:
+                    return False
+            else:
+                return False
 
         if moduleName in diagnosis_modules:
             overall_map = diagnosis_modules[moduleName]
             matched_dataset = False
+
+            # raw_pt = (
+            #         info_dict.get("ProcessingTimeInSeconds") or
+            #         info_dict.get("ProcessingTimeSeconds") or
+            #         info_dict.get("processingTimeInSeconds")
+            # )
+            # try:
+            #     actual_pt = float(raw_pt)
+            # except (ValueError, TypeError):
+            #     actual_pt = None  # or handle the error appropriately
+
+            def diagnosis_threshold_calc(moduleName, num_slices):
+                threshold = None
+                pt_status_local = True #  Indicates whether the threshold was successfully calculated (e.g. valid slice count, key present, etc.)
+                pt_error_local = ""
+                if moduleName == "ICH":
+                    if num_slices is not None:
+                        try:
+                            num_slices = int(num_slices)
+                            threshold = num_slices * 5
+                        except ValueError:
+                            pt_status_local = False
+                            pt_error_local = f"[{moduleName}] {json_path}: ❌ FAILED - Invalid NumberOfSlices: {num_slices}"
+                            # summary_messages.append(pt_error_local)
+                            # threshold = None
+                    else:
+                        pt_status_local = False
+                        pt_error_local = f"[{moduleName}] {json_path}: ❌ FAILED - NumberOfSlices key not found"
+                else:
+                    threshold = (
+                            overall_map.get("ProcessingTimeInSeconds")
+                            or overall_map.get("ProcessingTimeSeconds")
+                            or overall_map.get("processingTimeInSeconds")
+                    )
+                return float(threshold) if threshold is not None else None, pt_status_local, pt_error_local
+
 
             def validate_dataset_type(moduleName, json_path, info_dict, dataset_types, overall_map):
                 for dataset_type in dataset_types:
@@ -175,7 +264,7 @@ def execute_all_tests():
                     expected_key, expected_value = list(dataset_detail.items())[0]
                     actual_value = info_dict.get(expected_key)
 
-                    if actual_value == expected_value:
+                    if str(actual_value).lower() == str(expected_value).lower():
                         # print(f"[{moduleName}] {json_path}: 🔍 Detected as [{dataset_type}] dataset")
                         for expected_key, expected_value in dataset_detail.items():
                             # now validate all keys under it
@@ -198,6 +287,16 @@ def execute_all_tests():
 
             if moduleName != "CINA_IPE":
                 matched_dataset, dataset_type, expected_key, actual_value = validate_dataset_type(moduleName, json_path, info_dict, ["positive", "negative"], overall_map)
+                threshold, pt_status_local, pt_error_local = diagnosis_threshold_calc(moduleName, num_slices)
+                if pt_status_local:
+                    print("inside pt_status_local:")
+                    pt_within_limit = pt_validator(actual_pt, threshold)
+                else:
+                    print(pt_error_local)
+                print("pt_within_limit: ", pt_within_limit)
+                print("threshold: ", threshold)
+                print("actual_pt: ", actual_pt)
+
                 if not matched_dataset:
                     status = False
                     positive_map = overall_map["positive"]
@@ -217,26 +316,72 @@ def execute_all_tests():
 
             else:  # For CINA_IPE
                 matched_dataset, dataset_type, expected_key, actual_value = validate_dataset_type(moduleName, json_path, info_dict, ["positive", "negative", "error"], overall_map)
+                threshold, pt_status_local, pt_error_local = diagnosis_threshold_calc(moduleName, num_slices)
+                if pt_status_local:
+                    pt_within_limit = pt_validator(actual_pt, threshold)
+                else:
+                    print(pt_error_local)
+                # print("pt_within_limit: ", pt_within_limit)
+                # print("threshold: ", threshold)
+                # print("actual_pt: ", actual_pt)
+
                 if not matched_dataset:
-                    status = False
-                    positive_map = overall_map["positive"]
-                    negative_map = overall_map["negative"]
-                    error_map = overall_map["error"]
-                    positive_key, positive_value = list(positive_map.items())[0]
-                    negative_key, negative_value = list(negative_map.items())[0]
-                    error_key, error_value = list(error_map.items())[0]
-                    actual_value = info_dict.get(positive_key)
-                    fail_reason = (
-                        f"[{module_name}] {json_path}: ❌ FAILED - '{positive_key} : {actual_value}' does not match either:\n"
-                        f"🔸 Positive: {positive_key} = {positive_value}\n"
-                        f"🔹 Negative: {negative_key} = {negative_value}\n"
-                        f"🔻 Error: {error_key} = {error_value}"
-                    )
-                    print(fail_reason)
+                        status = False
+                        positive_map = overall_map["positive"]
+                        negative_map = overall_map["negative"]
+                        error_map = overall_map["error"]
+                        positive_key, positive_value = list(positive_map.items())[0]
+                        negative_key, negative_value = list(negative_map.items())[0]
+                        error_key, error_value = list(error_map.items())[0]
+                        actual_value = info_dict.get(positive_key)
+                        fail_reason = (
+                            f"[{module_name}] {json_path}: ❌ FAILED - '{positive_key} : {actual_value}' does not match either:\n"
+                            f"🔸 Positive: {positive_key} = {positive_value}\n"
+                            f"🔹 Negative: {negative_key} = {negative_value}\n"
+                            f"🔻 Error: {error_key} = {error_value}"
+                        )
+                        print(fail_reason)
+
         elif moduleName in anatomy_modules:
             overall_map = anatomy_modules[moduleName]
             expected_key, expected_value = list(overall_map.items())[0]
             actual_value = info_dict.get(expected_key)
+
+            def anatomy_threshold_calc(moduleName, num_slices):
+                print("inside anatomy_threshold_calc")
+                threshold = None
+                pt_status_local = True
+                pt_error_local = ""
+                if moduleName == "RAPIDNEURO3D":
+                    if num_slices is not None:
+                        try:
+                            num_slices = int(num_slices)
+                            threshold = round(num_slices * 0.64, 2) # 0.64 seconds per slice
+                        except ValueError:
+                            pt_status_local = False
+                            pt_error_local = f"[{moduleName}] {json_path}: ❌ FAILED - Invalid NumberOfSlices: {num_slices}"
+                            # summary_messages.append(pt_error_local)
+                            # threshold = None
+                    else:
+                        pt_status_local = False
+                        pt_error_local = f"[{moduleName}] {json_path}: ❌ FAILED - NumberOfSlices key not found"
+                else:
+                    threshold = (
+                            overall_map.get("ProcessingTimeInSeconds")
+                            or overall_map.get("ProcessingTimeSeconds")
+                            or overall_map.get("processingTimeInSeconds")
+                    )
+                return float(threshold) if threshold is not None else None, pt_status_local, pt_error_local
+
+            threshold, pt_status_local, pt_error_local = anatomy_threshold_calc(moduleName, num_slices)
+            if pt_status_local:
+                print("inside pt_status_local:")
+                pt_within_limit = pt_validator(actual_pt, threshold)
+            else:
+                print(pt_error_local)
+            # print("pt_within_limit: ", pt_within_limit)
+            # print("threshold: ", threshold)
+            # print("actual_pt: ", actual_pt)
 
             if int(actual_value) == int(expected_value):
                 # print(f"[{moduleName}] {json_path}:  ✅ PASSED - processed successfully with {expected_key}:{actual_value}")
@@ -248,7 +393,8 @@ def execute_all_tests():
         else:
             print(f"[{moduleName}] {json_path}: ℹ️ No validation rule defined.")
 
-        results.append((moduleName, json_path, status, fail_reason, dataset_type, expected_key, actual_value))
+
+        results.append((moduleName, json_path, status, fail_reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices, actual_pt, threshold))
     # print(results)
 
     passed = sum(1 for result in results if result[2])  # index 2 = `status`
@@ -256,7 +402,7 @@ def execute_all_tests():
     elapsed = time.time() - _start_time
 
     print("\n=========================== test session summary ===========================")
-    for module, path, ok, reason, dataset_type, expected_key, actual_value in results:
+    for module, path, ok, reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices, actual_processing_time, threshold in results:
         label = f"[{module}] {path}"
         if ok:
             if module in diagnosis_modules:
@@ -264,12 +410,11 @@ def execute_all_tests():
                 print(f"[{module}] {path}: 🔍 Detected as [{dataset_type}] dataset")
                 print(
                     f"[{module}] {path}: ✅ PASSED - [{dataset_type}] {expected_key} = {actual_value}")
-                print("\n")
+                # print("\n")
             elif module in anatomy_modules:
                 print(f"✅ {label}: PASSED")
                 print(f"[{module}] is processed successfully with {expected_key}:{actual_value}")
-                print("\n")
-
+                # print("\n")
         else:
             print(f"❌ {label}: FAILED - {reason}")
             print("\n")
