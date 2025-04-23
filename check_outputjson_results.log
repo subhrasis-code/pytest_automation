@@ -155,3 +155,5 @@ Please review source images. | ModuleName: Rapid PE | /rapid_data/task_data/site
 [2025-04-22 12:41:42] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 54.58527159690857 | NumberOfSlices: 54 | ich_version: 3.0 | HemorrhageDetected: True | Description: ICH suspected | ModuleName: ICH | /rapid_data/task_data/site1/hemorrhage/1397_28746/output.json
 
 [2025-04-22 14:11:46] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 46.67464590072632 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site1/RVLV/1405_29456/output.json
+
+[2025-04-23 12:15:14] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 47.51584839820862 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site1/RVLV/1796_56660/output.json

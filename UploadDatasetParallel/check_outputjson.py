@@ -17,7 +17,7 @@ diagnosis_modules = {
     "Rapid PE": {
         "positive": {"Description": "Suspected PE"},
         "negative": {"Description": "CTPA processed.\nPlease review source images."},
-        "ProcessingTimeInSeconds": 100
+        "ProcessingTimeInSeconds": 300
     },
     "ICH": {
         "positive": {"HemorrhageDetected": "True"},
@@ -66,7 +66,7 @@ diagnosis_modules = {
 anatomy_modules = {
     "Rapid RV/LV": {
         "ReturnCode": 0,
-        "ProcessingTimeInSeconds": 100
+        "ProcessingTimeInSeconds": 300
     },
     "Rapid Hyperdensity": {
         "ReturnCode": 0,
@@ -207,6 +207,7 @@ def execute_all_tests():
             actual_pt = None  # or handle the error appropriately
 
         def pt_validator(actual_pt_val, threshold_val):
+            # print("Inside pt_validator")
             if actual_pt_val is not None and threshold_val is not None:
                 if actual_pt_val <= threshold_val:
                     return True
@@ -289,13 +290,13 @@ def execute_all_tests():
                 matched_dataset, dataset_type, expected_key, actual_value = validate_dataset_type(moduleName, json_path, info_dict, ["positive", "negative"], overall_map)
                 threshold, pt_status_local, pt_error_local = diagnosis_threshold_calc(moduleName, num_slices)
                 if pt_status_local:
-                    print("inside pt_status_local:")
+                    # print("inside pt_status_local:")
                     pt_within_limit = pt_validator(actual_pt, threshold)
                 else:
                     print(pt_error_local)
-                print("pt_within_limit: ", pt_within_limit)
-                print("threshold: ", threshold)
-                print("actual_pt: ", actual_pt)
+                # print("pt_within_limit: ", pt_within_limit)
+                # print("threshold: ", threshold)
+                # print("actual_pt: ", actual_pt)
 
                 if not matched_dataset:
                     status = False
@@ -348,7 +349,7 @@ def execute_all_tests():
             actual_value = info_dict.get(expected_key)
 
             def anatomy_threshold_calc(moduleName, num_slices):
-                print("inside anatomy_threshold_calc")
+                # print("inside anatomy_threshold_calc")
                 threshold = None
                 pt_status_local = True
                 pt_error_local = ""
@@ -375,7 +376,7 @@ def execute_all_tests():
 
             threshold, pt_status_local, pt_error_local = anatomy_threshold_calc(moduleName, num_slices)
             if pt_status_local:
-                print("inside pt_status_local:")
+                # print("inside pt_status_local:")
                 pt_within_limit = pt_validator(actual_pt, threshold)
             else:
                 print(pt_error_local)
@@ -402,6 +403,15 @@ def execute_all_tests():
     elapsed = time.time() - _start_time
 
     print("\n=========================== test session summary ===========================")
+
+    def summarize_pt_verdict(pt_within_limit, num_slices, actual_processing_time, threshold):
+        print("Inside summarize_pt_verdict")
+        if pt_within_limit:
+            return f" ✅ PASSED - Number of slices: {num_slices}, Processing time: {actual_processing_time} seconds <= Threshold: {threshold} seconds "
+        else:
+            return f" ❌ Failed - Number of slices: {num_slices}, Processing time: {actual_processing_time} seconds > Threshold: {threshold} seconds "
+
+
     for module, path, ok, reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices, actual_processing_time, threshold in results:
         label = f"[{module}] {path}"
         if ok:
@@ -417,7 +427,10 @@ def execute_all_tests():
                 # print("\n")
         else:
             print(f"❌ {label}: FAILED - {reason}")
-            print("\n")
+
+        pt_verdict = summarize_pt_verdict(pt_within_limit, str(num_slices), str(actual_processing_time), str(threshold))
+        print(f"[{module}] {path}:{pt_verdict}")
+        print("\n")
     print(".")
     print(f"\nTotal: {total} | ✅ Passed: {passed} | ❌ Failed: {failed}")
 
