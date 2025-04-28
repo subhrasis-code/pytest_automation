@@ -32,6 +32,7 @@ def push(dataset_path, IP, port):
 def push_in_3_batches(dataset_path, IP, port):
     """Push DICOM files using dcmsend in 3 separate batches."""
     # Get the list of DICOM files recursively from all subdirectories
+    print("Delay Push. push_in_3_batches")
     dicom_files = glob.glob(f"{dataset_path}/**/*.dcm", recursive=True)
 
     if not dicom_files:
@@ -56,12 +57,15 @@ def push_in_3_batches(dataset_path, IP, port):
             continue  # Skip empty batches
 
         print(f"\n🚀 Pushing Batch {i} with {len(batch)} files...")
-        command = ["dcmsend", IP, str(port), "--scan-directories", "--verbose"] + batch
+        # command = ["dcmsend", IP, str(port), "--scan-directories", "--verbose"] + batch
+
+        command = ["storescu", IP, port, "--scan-directories", "+r", "-v", "+sd"] + batch
         time.sleep(0.2)  # Short delay before execution
 
         try:
             subprocess.run(command, check=True)
             print(f"✅ Batch {i} successfully sent.")
+            time.sleep(25)
         except subprocess.CalledProcessError as e:
             print(f"❌ Error executing storescu for Batch {i}: {e}")
 
@@ -184,7 +188,8 @@ def push_executor(IP, port, datasets, parallel_push):
         time.sleep(0.15)
         for dataset_path in datasets:
             dataset_path_str = str(dataset_path)
-            push(dataset_path_str, IP, port)
+            # push(dataset_path_str, IP, port)
+            push_in_3_batches(dataset_path_str, IP, port)
 
             # push with delay
             # push_with_delay_introduced(dataset_path_str, IP, port)

@@ -2,10 +2,16 @@
 # === DEBUG ENVIRONMENT ===
 echo ":round_pushpin: Running from: $(pwd)"
 echo ":test_tube: Whoami: $(whoami)"
+
+# === ACTIVATE VENV ===
+echo ":sparkles: Activating virtual environment..."
+source /Users/zinnov/Documents/Auto_modules_6_2/onPrem/pytest_automation/.venv/bin/activate
+
 echo ":snake: Python path: $(which python3 || echo 'Not found')"
 echo ":package: DCMTK path (storescu): $(which storescu || echo 'Not found')"
 echo ":package: Kubectl path: $(which kubectl || echo 'Not found')"
 echo ":motorway: PATH=$PATH"
+
 # Show incoming parameters for debug
 echo ":bulb: Jenkins Parameters:"
 echo "DATASET_PATH1=$DATASET_PATH1"
@@ -15,6 +21,7 @@ echo "KUBECONFIG_FILE=$KUBECONFIG_FILE"
 echo "siteName=$siteName"
 echo "parallel_push=$parallel_push"
 echo "waitPop=$waitPop"
+
 # === SETUP ENVIRONMENT ===
 export PATH="/opt/rapid4/dcmtk/bin:/usr/local/bin:$PATH"
 # Go to script directory
@@ -48,4 +55,4 @@ else
 fi
 # === RUN TEST ===
 echo ":rocket: Running pytest..."
-pytest -s UploadDatasetParallel/test_upload_dataset.py --html=report.html --self-contained-html
+/Users/zinnov/Documents/Test_data_generator/.venv/bin/pytest -s UploadDatasetParallel/test_upload_dataset.py --html=report.html --self-contained-html
