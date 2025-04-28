@@ -188,8 +188,8 @@ def push_executor(IP, port, datasets, parallel_push):
         time.sleep(0.15)
         for dataset_path in datasets:
             dataset_path_str = str(dataset_path)
-            # push(dataset_path_str, IP, port)
-            push_in_3_batches(dataset_path_str, IP, port)
+            push(dataset_path_str, IP, port)
+            # push_in_3_batches(dataset_path_str, IP, port)
 
             # push with delay
             # push_with_delay_introduced(dataset_path_str, IP, port)
