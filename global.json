@@ -1,7 +1,7 @@
 {
   "kubeConfigFile": "/Users/zinnov/Documents/Rapid/Performance/kubeConfigFiles/admin.op-pf-test-1.kubeconfig",
   "namespace": "rapid-apps",
-  "siteName": "site2",
+  "siteName": "site1",
   "userEmail_list": ["rapid.receive@ischemaview.com"],
   "tomcatServer_username": "isvadmin",
   "tomcatServer_password": "Stroke@2013!",
@@ -28,11 +28,11 @@
 
   "upload_dataset_params":{
     "parallel_push": "False",
-    "remote_port": "4311",
+    "remote_port": "4876",
     "IP": "127.0.0.1",
     "waitPop": 60,
     "statusCheckInterval": 30,
-    "dataset_path1": "/Users/zinnov/Documents/auto_6.2.x/rapid-testpulse/test_pulse_data/dataset_bundles/MiniRegression/RVLV"
+    "dataset_path1": "/Users/zinnov/Documents/auto_6.2.x/rapid-testpulse/test_pulse_data/dataset_bundles/ANR_CTA_POSITIV"
   },
 
   "fetch_logs_params": {

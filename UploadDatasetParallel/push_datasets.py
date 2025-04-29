@@ -101,7 +101,7 @@ def push_executor(IP, port, datasets, parallel_push, multi_associations=False, b
         time.sleep(0.15)
         for dataset_path in datasets:
             dataset_path_str = str(dataset_path)
-            if multi_associations:
+            if multi_associations == "True":
                 if batch_count >= 2:
                     push_multi_associations(dataset_path_str, IP, port, batch_count, batch_delay)
                 else:
