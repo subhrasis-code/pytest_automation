@@ -8,7 +8,10 @@
   "tomcatServer_remote_port": "443",
   "tomcatServer_local_port": "8443",
   "cloud_processing": "False",
-  "push_via": "jobmanager",
+  "push_via": "pipe",
+  "multi_associations": "False",
+  "multi_asso_batch_count": 2,
+  "multi_asso_batch_delay": 25,
 
   "enable_disable_params": {
     "emailConfig": {
@@ -29,7 +32,7 @@
     "IP": "127.0.0.1",
     "waitPop": 60,
     "statusCheckInterval": 30,
-    "dataset_path1": "/Users/zinnov/Documents/auto_6.2.x/rapid-testpulse/test_pulse_data/dataset_bundles/6.3_QuickRun/iPE_Dataset/iPE-090"
+    "dataset_path1": "/Users/zinnov/Documents/auto_6.2.x/rapid-testpulse/test_pulse_data/dataset_bundles/MiniRegression/RVLV"
   },
 
   "fetch_logs_params": {

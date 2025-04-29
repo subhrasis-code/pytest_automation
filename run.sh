@@ -31,9 +31,9 @@ GLOBAL_JSON_FILE="global.json"
 export GLOBAL_JSON_FILE
 echo ":page_facing_up: Using GLOBAL_JSON_FILE=$GLOBAL_JSON_FILE"
 # === JSON PATCHING ===
-if [[ -n "$DATASET_PATH3" && -n "$REMOTE_PORT" && -n "$PUSH_VIA" && -n "$KUBECONFIG_FILE" && -n "$siteName" ]]; then
+if [[ -n "$DATASET_PATH1" && -n "$REMOTE_PORT" && -n "$PUSH_VIA" && -n "$KUBECONFIG_FILE" && -n "$siteName" ]]; then
   echo ":wrench: Updating $GLOBAL_JSON_FILE with Jenkins environment variables..."
-  jq --arg dataset_path3 "$DATASET_PATH3" \
+  jq --arg dataset_path1 "$DATASET_PATH1" \
      --arg remote_port "$REMOTE_PORT" \
      --arg push_via "$PUSH_VIA" \
      --arg kubeConfigFile "$KUBECONFIG_FILE" \
@@ -41,7 +41,7 @@ if [[ -n "$DATASET_PATH3" && -n "$REMOTE_PORT" && -n "$PUSH_VIA" && -n "$KUBECON
      --arg parallel_push "$parallel_push" \
 	 --arg waitPop "waitPop"\
      '
-     .upload_dataset_params.dataset_path3 = $dataset_path3 |
+     .upload_dataset_params.dataset_path1 = $dataset_path1 |
      .upload_dataset_params.remote_port = $remote_port |
      .upload_dataset_params.parallel_push = $parallel_push |
      .push_via = $push_via |

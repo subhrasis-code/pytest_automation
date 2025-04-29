@@ -12,10 +12,10 @@ import os
 import threading
 import re
 
-def list_module_task_paths(kubeConfigFile, NAMESPACE, jomManager_pod, base_path, excluded_modules):
+def list_module_task_paths(kubeConfigFile, NAMESPACE, jobManager_pod, base_path, excluded_modules):
     cmd = [
         "kubectl", "--kubeconfig", kubeConfigFile, "-n", NAMESPACE,
-        "exec", jomManager_pod, "--", "bash", "-c",
+        "exec", jobManager_pod, "--", "bash", "-c",
         f"cd {base_path} && find . -type d -mindepth 2 -maxdepth 2"
     ]
     result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
@@ -32,7 +32,7 @@ def list_module_task_paths(kubeConfigFile, NAMESPACE, jomManager_pod, base_path,
                 task_paths.add(f"{base_path}/{module}/{task}")
     return task_paths
 
-def poll_for_output_files(folder, module_name, kubeConfigFile, jomManager_pod, NAMESPACE):
+def poll_for_output_files(folder, module_name, kubeConfigFile, jobManager_pod, NAMESPACE):
     # if module_name == "angio":
     #     output_files_to_check = ["output.json", "output_cta.json", "output_lvo.json"]
     # elif module_name == "ncctArtifactDetection":
@@ -50,7 +50,7 @@ def poll_for_output_files(folder, module_name, kubeConfigFile, jomManager_pod, N
         # -maxdepth 1: Limits the search to the specified directory only (i.e., no recursion into subfolders).
         file_list_cmd = f"find {folder} -maxdepth 1 -type f"
         result = subprocess.run([
-            "kubectl", "exec", "-n", NAMESPACE, jomManager_pod,
+            "kubectl", "exec", "-n", NAMESPACE, jobManager_pod,
             "--", "/bin/sh", "-c", file_list_cmd
         ], capture_output=True, text=True)
 
@@ -64,7 +64,7 @@ def poll_for_output_files(folder, module_name, kubeConfigFile, jomManager_pod, N
                     time.sleep(2)
                     if output_file == "output.json" or output_file== "artifact_output.json":
                         case_id = f"{module_name.upper()}_Case{len(found_files)}"
-                        check_outputjson_executor(f, kubeConfigFile, jomManager_pod, NAMESPACE, module_name)
+                        check_outputjson_executor(f, kubeConfigFile, jobManager_pod, NAMESPACE, module_name)
 
         # if len(found_files) == len(output_files_to_check) or (module_name != "angio" and "output.json" in found_files):
         #     break
@@ -87,7 +87,7 @@ def is_task_folder(new_folders):
 
 def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push, kubeconfig_path,
              tomcatServer_local_port, tomcatServer_remote_port, tomcatServer_username, tomcatServer_password,
-             siteName, waitPop, statusCheckInterval, push_via):
+             siteName, waitPop, statusCheckInterval, push_via, multi_associations, multi_asso_batch_count, multi_asso_batch_delay):
 
     base_path = f"/rapid_data/task_data/{siteName}"
     excluded_modules = {"emailSend", "temp_ich", "temp_petn", "DicomSend"}
@@ -98,17 +98,20 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
     os.environ["KUBECONFIG"] = kubeconfig_path
     # Get the name of the JobManager pod in the specified namespace
     result = subprocess.run(["kubectl", "get", "pods", "-n", NAMESPACE], capture_output=True, text=True, check=True)
-    jomManager_pod = None
+
+    jobManager_pod = ""
+    pipe_xtention_pod = ""
     for line in result.stdout.split('\n'):
-        if "rapid-jobmanager" in line:
-            print("rapid-jobmanager exists")
-            jomManager_pod = line.split()[0]
-            print(jomManager_pod)
-            break
+        if "rapid-jobmanager" in line and not jobManager_pod:
+            jobManager_pod = line.split()[0]
+        if "rapid-pipe" in line and not pipe_xtention_pod:
+            pipe_xtention_pod = line.split()[0]
+        if jobManager_pod and pipe_xtention_pod:
+            break  # ✅ Once both found, no need to continue
 
     # Snapshot before study push
     print("📸 Taking initial snapshot of task folders...")
-    initial_task_folders = list_module_task_paths(kubeConfigFile, NAMESPACE, jomManager_pod, base_path, excluded_modules)
+    initial_task_folders = list_module_task_paths(kubeConfigFile, NAMESPACE, jobManager_pod, base_path, excluded_modules)
     print(f"Inital task folders : {initial_task_folders}")
 
     # Push Datasets
@@ -123,7 +126,7 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
     for value in forwarded_port:
         port = value
         print(f"Port forwarded to: {port}")
-        push_executor(IP, port, datasets, parallel_push)
+        push_executor(IP, port, datasets, parallel_push, multi_associations, multi_asso_batch_count, multi_asso_batch_delay)
         time.sleep(5)
         # Terminating all the processes that has kubectl after Tomcat Port Forward
         # terminate_port_forward()
@@ -137,7 +140,7 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
     # Polling for new folders
     print(f"⏳ Watching for new task folders (ignoring: {', '.join(excluded_modules)})...\n")
     while time.time() - start_time < poll_duration:
-        current_task_folders = list_module_task_paths(kubeConfigFile, NAMESPACE, jomManager_pod, base_path, excluded_modules)
+        current_task_folders = list_module_task_paths(kubeConfigFile, NAMESPACE, jobManager_pod, base_path, excluded_modules)
         new_folders = current_task_folders - initial_task_folders
         task_folders = is_task_folder(new_folders)
 
@@ -151,7 +154,7 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
                     # Start a thread for each folder
                     t = threading.Thread(
                         target=poll_for_output_files,
-                        args=(folder, module_name, kubeConfigFile, jomManager_pod, NAMESPACE)
+                        args=(folder, module_name, kubeConfigFile, jobManager_pod, NAMESPACE)
                     )
                     t.start()
                     threads.append(t)
