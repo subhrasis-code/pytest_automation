@@ -30,8 +30,8 @@ diagnosis_modules = {
         "ProcessingTimeInSeconds": 78
     },
     "NCCT Stroke": {
-        "positive": {"NCCTStrokeLVOSuspected": "true"},
-        "negative": {"NCCTStrokeLVOSuspected": "false"},
+        "positive": {"NCCTStrokeLVOSuspected": "True"},
+        "negative": {"NCCTStrokeLVOSuspected": "False"},
         "ProcessingTimeInSeconds": 300
     },
     "CINA_IPE": {
@@ -191,7 +191,7 @@ def execute_all_tests():
         actual_value = None
         possible_module_name_keys = ["ModuleName", "moduleName", "modulename"]
         moduleName = next((info_dict.get(key) for key in possible_module_name_keys if info_dict.get(key)), "UnknownModule")
-        num_slices = info_dict.get("NumberOfSlices")
+        num_slices = info_dict.get("NumberOfSlices") or info_dict.get("NumberofSlices")
         pt_within_limit = False  # Default value
         threshold = None
         actual_pt = None
@@ -358,6 +358,19 @@ def execute_all_tests():
                         try:
                             num_slices = int(num_slices)
                             threshold = round(num_slices * 0.64, 2) # 0.64 seconds per slice
+                        except ValueError:
+                            pt_status_local = False
+                            pt_error_local = f"[{moduleName}] {json_path}: ❌ FAILED - Invalid NumberOfSlices: {num_slices}"
+                            # summary_messages.append(pt_error_local)
+                            # threshold = None
+                    else:
+                        pt_status_local = False
+                        pt_error_local = f"[{moduleName}] {json_path}: ❌ FAILED - NumberOfSlices key not found"
+                elif moduleName == "Mismatch":
+                    if num_slices is not None:
+                        try:
+                            num_slices = int(num_slices)
+                            threshold = num_slices * 5
                         except ValueError:
                             pt_status_local = False
                             pt_error_local = f"[{moduleName}] {json_path}: ❌ FAILED - Invalid NumberOfSlices: {num_slices}"

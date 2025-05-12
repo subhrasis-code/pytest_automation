@@ -87,7 +87,7 @@ def is_task_folder(new_folders):
 
 def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push, kubeconfig_path,
              tomcatServer_local_port, tomcatServer_remote_port, tomcatServer_username, tomcatServer_password,
-             siteName, waitPop, statusCheckInterval, push_via, multi_associations, multi_asso_batch_count, multi_asso_batch_delay):
+             siteName, waitPop, statusCheckInterval, push_via, multi_associations, multi_asso_batch_count, multi_asso_batch_delay, assert_after_push):
 
     base_path = f"/rapid_data/task_data/{siteName}"
     excluded_modules = {"emailSend", "temp_ich", "temp_petn", "DicomSend"}
@@ -135,41 +135,45 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
     # print("Dataset pushed successfully")
     print(f"Waiting for {waitPop} seconds so that the studies get populate on Tomcat and start to process...")
     time.sleep(waitPop)
-    start_time = time.time()
 
-    # Polling for new folders
-    print(f"⏳ Watching for new task folders (ignoring: {', '.join(excluded_modules)})...\n")
-    while time.time() - start_time < poll_duration:
-        current_task_folders = list_module_task_paths(kubeConfigFile, NAMESPACE, jobManager_pod, base_path, excluded_modules)
-        new_folders = current_task_folders - initial_task_folders
-        task_folders = is_task_folder(new_folders)
+    if assert_after_push:
+        start_time = time.time()
+        # Polling for new folders
+        print(f"⏳ Watching for new task folders (ignoring: {', '.join(excluded_modules)})...\n")
+        while time.time() - start_time < poll_duration:
+            current_task_folders = list_module_task_paths(kubeConfigFile, NAMESPACE, jobManager_pod, base_path, excluded_modules)
+            new_folders = current_task_folders - initial_task_folders
+            task_folders = is_task_folder(new_folders)
 
-        if task_folders:
-            threads = []
-            for folder in task_folders:
-                if folder.split('/')[4] != "ncctArtifactDetection":
-                    print(f"✅ New task folder detected: {folder}")
-                    module_name = folder.split('/')[4]
+            if task_folders:
+                threads = []
+                for folder in task_folders:
+                    if folder.split('/')[4] != "ncctArtifactDetection":
+                        print(f"✅ New task folder detected: {folder}")
+                        module_name = folder.split('/')[4]
 
-                    # Start a thread for each folder
-                    t = threading.Thread(
-                        target=poll_for_output_files,
-                        args=(folder, module_name, kubeConfigFile, jobManager_pod, NAMESPACE)
-                    )
-                    t.start()
-                    threads.append(t)
-                else:
-                    pass
-            # Wait for all threads to finish
-            for t in threads:
-                t.join()
+                        # Start a thread for each folder
+                        t = threading.Thread(
+                            target=poll_for_output_files,
+                            args=(folder, module_name, kubeConfigFile, jobManager_pod, NAMESPACE)
+                        )
+                        t.start()
+                        threads.append(t)
+                    else:
+                        pass
+                # Wait for all threads to finish
+                for t in threads:
+                    t.join()
 
-            break  # Exit the outer loop once all threads are done
-        time.sleep(poll_interval)
+                break  # Exit the outer loop once all threads are done
+            time.sleep(poll_interval)
+        else:
+            print("⌛ No new task folder detected within 2 minutes.")
+        # ✅ Final summary
+        print_test_summary()
     else:
-        print("⌛ No new task folder detected within 2 minutes.")
-    # ✅ Final summary
-    print_test_summary()
+        print("Pushing done successfully. As assert_after_push is set to False. Skipping assert_after_push step.")
+
 
 
 # Add all the dataset paths into a list

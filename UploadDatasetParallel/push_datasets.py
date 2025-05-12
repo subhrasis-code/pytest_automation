@@ -15,11 +15,8 @@ def push_single_association(dataset_path, IP, port):
         print(f"No DICOM files found in {dataset_path}")
         return
 
-    # # Define the dcmsend command
-    # command = ["dcmsend", IP, port, "--scan-directories", "--verbose"] + dicom_files
-
     # Define the storescu command
-    command = ["storescu", IP, port, "--scan-directories", "+r", "-v", "+sd"] + dicom_files
+    command = ["storescu", IP, port, "-v"] + dicom_files
 
     time.sleep(0.2)  # Short delay before execution
 
@@ -68,9 +65,9 @@ def push_multi_associations(dataset_path, IP, port, batch_count, batch_delay):
             continue  # Skip empty batches
 
         print(f"\n🚀 Pushing Batch {i} with {len(batch)} files...")
-        # command = ["dcmsend", IP, str(port), "--scan-directories", "--verbose"] + batch
 
-        command = ["storescu", IP, port, "--scan-directories", "+r", "-v", "+sd"] + batch
+        # command = ["storescu", IP, port, "--scan-directories", "+r", "-v", "+sd"] + batch
+        command = ["storescu", IP, port, "-v"] + batch
         time.sleep(0.2)  # Short delay before execution
 
         try:
@@ -94,7 +91,9 @@ def push_executor(IP, port, datasets, parallel_push, multi_associations=False, b
             # Submit push function for each dataset path
             for dataset_path_tuple in zip(datasets):
                 dataset_path = str(dataset_path_tuple[0])
-                executor.submit(push_single_association(), dataset_path, IP, port)
+                # executor.submit(push_single_association(), dataset_path, IP, port)
+                executor.submit(push_single_association, dataset_path, IP, port)
+
     else:
         print("parallel data push : False")
         # Iterate over each dataset path and call push sequentially
@@ -109,60 +108,4 @@ def push_executor(IP, port, datasets, parallel_push, multi_associations=False, b
                     push_single_association(dataset_path_str, IP, port)
             else:
                 push_single_association(dataset_path_str, IP, port)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# def push_in_3_batches(dataset_path, IP, port):
-#     """Push DICOM files using dcmsend in 3 separate batches."""
-#     # Get the list of DICOM files recursively from all subdirectories
-#     print("Delay Push. push_in_3_batches")
-#     dicom_files = glob.glob(f"{dataset_path}/**/*.dcm", recursive=True)
-#
-#     if not dicom_files:
-#         print(f"No DICOM files found in {dataset_path}")
-#         return
-#
-#     # Define batch size
-#     batch_size = len(dicom_files) // 3
-#     if batch_size == 0:
-#         batch_size = len(dicom_files)  # If less than 3 files, send all in one batch
-#
-#     # Split files into 3 batches
-#     batch_1 = dicom_files[:batch_size]
-#     batch_2 = dicom_files[batch_size: 2 * batch_size]
-#     batch_3 = dicom_files[2 * batch_size:]
-#
-#     batches = [batch_1, batch_2, batch_3]
-#
-#     # Push each batch with a separate association
-#     for i, batch in enumerate(batches, start=1):
-#         if not batch:
-#             continue  # Skip empty batches
-#
-#         print(f"\n🚀 Pushing Batch {i} with {len(batch)} files...")
-#         # command = ["dcmsend", IP, str(port), "--scan-directories", "--verbose"] + batch
-#
-#         command = ["storescu", IP, port, "--scan-directories", "+r", "-v", "+sd"] + batch
-#         time.sleep(0.2)  # Short delay before execution
-#
-#         try:
-#             subprocess.run(command, check=True)
-#             print(f"✅ Batch {i} successfully sent.")
-#             time.sleep(25)
-#         except subprocess.CalledProcessError as e:
-#             print(f"❌ Error executing storescu for Batch {i}: {e}")
-
 
