@@ -5,8 +5,8 @@ import csv
 
 
 def get_patient_id(datasets):
-    print("\n")
-    print(f"######### CSV file will be created that will contain the PatientID of the datas to be pushed #########")
+    # print("\n")
+    # print(f"######### CSV file will be created that will contain the PatientID of the datas to be pushed #########")
     current_directory = os.getcwd()
     # Get the parent directory
     parent_directory = os.path.dirname(current_directory)

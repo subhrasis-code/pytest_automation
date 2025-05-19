@@ -1,18 +1,19 @@
 {
-  "kubeConfigFile": "/Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/kubeconfigs/admin.clus622.kubeconfig",
+  "kubeConfigFile": "/Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/kubeconfigs/admin.edge-vnv.kubeconfig",
   "namespace": "rapid-apps",
-  "siteName": "newsite",
+  "siteName": "site4",
   "userEmail_list": ["rapid.receive@ischemaview.com"],
   "tomcatServer_username": "isvadmin",
   "tomcatServer_password": "Stroke@2013!",
   "tomcatServer_remote_port": "443",
   "tomcatServer_local_port": "8443",
   "cloud_processing": "False",
-  "push_via": "jobmanager",
+  "push_via": "pipe",
+  "use_external_ip": "False",
   "multi_associations": "False",
   "multi_asso_batch_count": 3,
   "multi_asso_batch_delay": 15,
-  "assert_after_push": true,
+  "assert_after_push": "True",
 
   "enable_disable_params": {
     "emailConfig": {
@@ -28,12 +29,12 @@
   },
 
   "upload_dataset_params":{
-    "parallel_push": "False",
-    "remote_port": "4995",
+    "parallel_push": "True",
+    "remote_port": "4451",
     "IP": "127.0.0.1",
     "waitPop": 60,
     "statusCheckInterval": 30,
-    "dataset_path1": "/Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/dataset_bundles/MiniRegression/Ncct"
+    "dataset_path": "/Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/dataset_bundles/MiniRegression/Ncct, /Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/dataset_bundles/MiniRegression/RVLV"
   },
 
   "fetch_logs_params": {

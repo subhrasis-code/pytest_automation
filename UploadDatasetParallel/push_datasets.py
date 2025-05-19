@@ -2,17 +2,29 @@ import multiprocessing
 import subprocess
 import glob
 import time
+import logging
+import sys
 from concurrent.futures import ThreadPoolExecutor
+
+# Logger setup
+logger = logging.getLogger("push_datasets")
+logger.setLevel(logging.DEBUG)  # Capture all logs DEBUG and above
+
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(formatter)
+logger.addHandler(console_handler)
 
 
 
 def push_single_association(dataset_path, IP, port):
-    print("Starting to push via Single Association \n")
+    logger.info("Starting to push via Single Association \n")
     # Get the list of DICOM files recursively from all subdirectories
     dicom_files = glob.glob(f"{dataset_path}/**/*.dcm", recursive=True)
 
     if not dicom_files:
-        print(f"No DICOM files found in {dataset_path}")
+        logger.error(f"❌ No DICOM files found in {dataset_path}")
         return
 
     # Define the storescu command
@@ -22,24 +34,24 @@ def push_single_association(dataset_path, IP, port):
 
     try:
         subprocess.run(command, check=True)
-        print(f"✅ DICOM files successfully sent from: {dataset_path}")
+        logger.info(f"✅ DICOM files successfully sent from: {dataset_path}")
     except subprocess.CalledProcessError as e:
-        print(f"❌ Error executing storescu for {dataset_path}: {e}")
+        logger.error(f"❌ Error executing storescu for {dataset_path}: {e}")
 
 def push_multi_associations(dataset_path, IP, port, batch_count, batch_delay):
     """Push DICOM files using multiple associations."""
-    print("Starting to push via Multi Associations \n")
+    logger.info("Starting to push via Multi Associations \n")
     # Get the list of DICOM files recursively from all subdirectories
     dicom_files = glob.glob(f"{dataset_path}/**/*.dcm", recursive=True)
 
     if not dicom_files:
-        print(f"No DICOM files found in {dataset_path}")
+        logger.error(f"❌ No DICOM files found in {dataset_path}")
         return
 
     total_files = len(dicom_files)
     if batch_count > total_files:
-        print(f"Warning: batch_count ({batch_count}) is greater than total_files ({total_files}).")
-        print("🔁 Reducing batch_count to match the number of files.")
+        logger.warning(f"Warning: batch_count ({batch_count}) is greater than total_files ({total_files}).")
+        logger.debug("🔁 Reducing batch_count to match the number of files.")
         batch_count = total_files # One file per batch
 
     # Define batch size
@@ -61,10 +73,10 @@ def push_multi_associations(dataset_path, IP, port, batch_count, batch_delay):
     # Push each batch with a separate association
     for i, batch in enumerate(batches, start=1):
         if not batch:
-            print(f"⚠️ Batch {i} is empty. Skipping...")
+            logger.warning(f"⚠️ Batch {i} is empty. Skipping...")
             continue  # Skip empty batches
 
-        print(f"\n🚀 Pushing Batch {i} with {len(batch)} files...")
+        logger.info(f"\n🚀 Pushing Batch {i} with {len(batch)} files...")
 
         # command = ["storescu", IP, port, "--scan-directories", "+r", "-v", "+sd"] + batch
         command = ["storescu", IP, port, "-v"] + batch
@@ -72,39 +84,39 @@ def push_multi_associations(dataset_path, IP, port, batch_count, batch_delay):
 
         try:
             subprocess.run(command, check=True)
-            print(f"✅ Batch {i} successfully sent.")
+            logger.info(f"✅ Batch {i} successfully sent.")
         except subprocess.CalledProcessError as e:
-            print(f"❌ Batch {i} failed to send. Error: {e}")
-            print(f"🔄 Continuing with next batch...")
+            logger.error(f"❌ Batch {i} failed to send. Error: {e}")
+            logger.debug(f"🔄 Continuing with next batch...")
         # Sleep only if not the last batch
         if i != len(batches):
             time.sleep(batch_delay)
 
-    print("\n🎯 All batches attempted. Task finished!")
+    logger.info("\n🎯 All batches attempted. Task finished!")
 
 def push_executor(IP, port, datasets, parallel_push, multi_associations=False, batch_count=2, batch_delay=25):
     if parallel_push == "True":
-        print("parallel data push : True")
+        logger.info("parallel data push : True")
         # Create a ThreadPoolExecutor with max_workers set to the number of dataset paths
         with ThreadPoolExecutor(max_workers=len(datasets)) as executor:
             time.sleep(0.15)
             # Submit push function for each dataset path
             for dataset_path_tuple in zip(datasets):
-                dataset_path = str(dataset_path_tuple[0])
+                dataset_path = str(dataset_path_tuple[0]).strip()
                 # executor.submit(push_single_association(), dataset_path, IP, port)
                 executor.submit(push_single_association, dataset_path, IP, port)
 
     else:
-        print("parallel data push : False")
+        logger.info("parallel data push : False")
         # Iterate over each dataset path and call push sequentially
         time.sleep(0.15)
         for dataset_path in datasets:
-            dataset_path_str = str(dataset_path)
+            dataset_path_str = str(dataset_path).strip()
             if multi_associations == "True":
                 if batch_count >= 2:
                     push_multi_associations(dataset_path_str, IP, port, batch_count, batch_delay)
                 else:
-                    print(f"⚠️  batch_count is {batch_count}, must be >= 2 when using multi_associations. Falling back to single association push.")
+                    logger.warning(f"⚠️  batch_count is {batch_count}, must be >= 2 when using multi_associations. Falling back to single association push.")
                     push_single_association(dataset_path_str, IP, port)
             else:
                 push_single_association(dataset_path_str, IP, port)

@@ -48,3 +48,81 @@
 [2025-05-09 17:39:05] returnCodeDescription: Input DICOM data invalid | processingTimeInSeconds: 13.69 | valueString: FAILED | scanCaution: {'cautionReasons': [], 'scanCaution': False} | scanRejected: False | moduleName: CINA_IPE | /rapid_data/task_data/site4/IPE/167_910/output.json
 
 [2025-05-09 18:17:47] returnCodeDescription: Input DICOM data invalid | processingTimeInSeconds: 13.15 | valueString: FAILED | scanCaution: {'cautionReasons': [], 'scanCaution': False} | scanRejected: False | moduleName: CINA_IPE | /rapid_data/task_data/newsite/IPE/2_2/output.json
+
+[2025-05-12 15:01:36] returnCodeDescription: No error | processingTimeInSeconds: 87.3 | NumberOfSlices: 391 | valueString: SUSPECTED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: CINA_IPE | /rapid_data/task_data/site5/IPE/129_1642/output.json
+
+[2025-05-15 04:46:51] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 103 | ProcessingTimeSeconds: 103 | NumberOfSlices: 31 | scoreLeftHemisphere: 10 | scoreRightHemisphere: 4 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | /rapid_data/task_data/site4/Octopus/186_932/output.json
+
+[2025-05-15 04:46:55] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 47 | NumberOfSlices: 31 | HemorrhageDetected: True | Description: Hemorrhage Summary | ModuleName: ICH | /rapid_data/task_data/site4/hemorrhage/184_930/output.json
+
+[2025-05-15 04:46:58] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 129 | NumberOfSlices: 31 | Description: Report hypodensity | ModuleName: Hypodensity | /rapid_data/task_data/site4/Hypodensity/188_934/output.json
+
+[2025-05-15 04:47:01] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 0.401 | NumberOfSlices: 31 | NCCTStrokeLVOSuspected: True | Description: NCCT Stroke Summary Image | ModuleName: NCCT Stroke | /rapid_data/task_data/site4/NCCTStroke/185_931/output.json
+
+[2025-05-15 04:47:05] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 33.65951228141785 | NumberOfSlices: 31 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | /rapid_data/task_data/site4/Hyperdensity/187_933/output.json
+
+[2025-05-15 05:48:19] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 156.79649782180786 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | /rapid_data/task_data/site4/PETN/203_993/output.json
+
+[2025-05-15 05:48:22] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 69.94343137741089 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site4/RVLV/204_994/output.json
+
+[2025-05-15 06:18:41] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 105 | ProcessingTimeSeconds: 105 | NumberOfSlices: 36 | scoreLeftHemisphere: 6 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | /rapid_data/task_data/site4/Octopus/216_1029/output.json
+
+[2025-05-15 06:18:44] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 52 | NumberOfSlices: 36 | HemorrhageDetected: False | Description: Hemorrhage Overview | ModuleName: ICH | /rapid_data/task_data/site4/hemorrhage/214_1027/output.json
+
+[2025-05-15 06:18:47] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 111 | NumberOfSlices: 36 | Description: Report hypodensity | ModuleName: Hypodensity | /rapid_data/task_data/site4/Hypodensity/218_1031/output.json
+
+[2025-05-15 06:18:51] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 25.343268632888794 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | /rapid_data/task_data/site4/Hyperdensity/217_1030/output.json
+
+[2025-05-15 06:18:54] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 0.409 | NumberOfSlices: 36 | NCCTStrokeLVOSuspected: True | Description: NCCT Stroke Summary Image | ModuleName: NCCT Stroke | /rapid_data/task_data/site4/NCCTStroke/215_1028/output.json
+
+[2025-05-15 06:39:49] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 72.39683103561401 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site4/RVLV/238_1080/output.json
+
+[2025-05-15 06:39:53] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 163.64497900009155 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | /rapid_data/task_data/site4/PETN/237_1079/output.json
+
+[2025-05-15 08:52:48] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 149.54746890068054 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | /rapid_data/task_data/site4/PETN/259_1356/output.json
+
+[2025-05-15 08:52:52] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 63.74216842651367 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site4/RVLV/260_1357/output.json
+
+[2025-05-15 09:05:37] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 163.54536390304565 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | /rapid_data/task_data/site4/PETN/270_1389/output.json
+
+[2025-05-15 09:05:41] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 66.28307700157166 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site4/RVLV/271_1390/output.json
+
+[2025-05-15 09:40:47] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 161.54981803894043 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | /rapid_data/task_data/site4/PETN/281_1483/output.json
+
+[2025-05-15 09:40:51] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 66.62835454940796 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | /rapid_data/task_data/site4/RVLV/282_1484/output.json
+
+[2025-05-17 04:49:21] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 213 | NumberOfSlices: 780 | LVODetectionEnabled: False | LVODetected: True | USAVersionLimitation: True | VesselDensityRatio: 0.437 | Description: MIP I-S lvo | ModuleName: CTA/LVO | /rapid_data/task_data/site4/angio/379_6695/output.json
+
+[2025-05-17 04:49:25] returnCodeDescription: No error | processingTimeInSeconds: 86.72 | NumberOfSlices: 567 | valueString: PROCESSED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: CINA_IPE | /rapid_data/task_data/site4/IPE/390_6706/output.json
+
+[2025-05-17 04:49:31] returnCodeDescription: No error | processingTimeInSeconds: 50.72 | NumberOfSlices: 780 | valueString: PROCESSED | scanCaution: {'cautionReasons': [{'code': -1, 'reason': 'Reconstruction diameter = 178 < 200 mm'}], 'scanCaution': True} | scanRejected: False | moduleName: CINA_IPE | /rapid_data/task_data/site4/IPE/380_6696/output.json
+
+[2025-05-17 04:49:37] returnCodeDescription: No error | processingTimeInSeconds: 52.24 | NumberOfSlices: 780 | valueString: PROCESSED | scanCaution: {'cautionReasons': [{'code': -1, 'reason': 'Reconstruction diameter = 178 < 200 mm'}], 'scanCaution': True} | scanRejected: False | moduleName: CINA_IPE | /rapid_data/task_data/site4/IPE/402_6716/output.json
+
+[2025-05-17 04:49:41] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 49 | NumberOfSlices: 62 | HemorrhageDetected: False | Description: Hemorrhage Overview | ModuleName: ICH | /rapid_data/task_data/site4/hemorrhage/395_6711/output.json
+
+[2025-05-17 04:49:48] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 242.0948 | NumberOfSlices: 780 | Description: RAPID CTA MIP | ModuleName: RAPIDNEURO3D | /rapid_data/task_data/site4/neuro3d/404_6718/output.json
+
+[2025-05-17 04:49:53] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 365.634 | AneurysmSuspected: False | ModuleName: ANRTN | /rapid_data/task_data/site4/ANRTN/403_6717/output.json
+
+[2025-05-17 04:49:56] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 107 | NumberOfSlices: 62 | Description: Report hypodensity | ModuleName: Hypodensity | /rapid_data/task_data/site4/Hypodensity/399_6715/output.json
+
+[2025-05-17 04:50:00] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 0.386 | NumberOfSlices: 62 | NCCTStrokeLVOSuspected: True | Description: NCCT Stroke Summary Image | ModuleName: NCCT Stroke | /rapid_data/task_data/site4/NCCTStroke/396_6712/output.json
+
+[2025-05-17 04:50:05] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 91 | ProcessingTimeSeconds: 91 | NumberOfSlices: 62 | scoreLeftHemisphere: 8 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | /rapid_data/task_data/site4/Octopus/397_6713/output.json
+
+[2025-05-19 05:50:32] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 39.5563 | NumberOfSlices: 36 | Description: Overview of all slices | ModuleName: SDH | SDHSuspected: False | /rapid_data/task_data/site4/sdh/432_8363/output.json
+
+[2025-05-19 05:50:36] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 51 | NumberOfSlices: 36 | HemorrhageDetected: False | Description: Hemorrhage Overview | ModuleName: ICH | /rapid_data/task_data/site4/hemorrhage/430_8361/output.json
+
+[2025-05-19 05:50:40] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 106 | ProcessingTimeSeconds: 106 | NumberOfSlices: 36 | scoreLeftHemisphere: 6 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | /rapid_data/task_data/site4/Octopus/433_8364/output.json
+
+[2025-05-19 05:50:44] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 24.846274852752686 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | /rapid_data/task_data/site4/Hyperdensity/434_8365/output.json
+
+[2025-05-19 07:27:27] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 100 | ProcessingTimeSeconds: 100 | NumberOfSlices: 36 | scoreLeftHemisphere: 6 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/Octopus/471_8454/output.json
+
+[2025-05-19 07:27:30] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 51 | NumberOfSlices: 36 | HemorrhageDetected: False | Description: Hemorrhage Overview | ModuleName: ICH | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/hemorrhage/468_8451/output.json
+
+[2025-05-19 07:27:34] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 39.0105 | NumberOfSlices: 36 | Description: Overview of all slices | ModuleName: SDH | SDHSuspected: False | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/sdh/470_8453/output.json
+
+[2025-05-19 07:27:38] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 25.1885883808136 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/Hyperdensity/472_8455/output.json

@@ -6,6 +6,18 @@ import re
 import json
 import signal
 import requests
+import logging
+
+# Logger setup
+logger = logging.getLogger("portforward")
+logger.setLevel(logging.DEBUG)  # Capture all logs DEBUG and above
+
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(formatter)
+logger.addHandler(console_handler)
+
 
 def pipeExtention_port_forward(kubeconfig_path, remote_port, NAMESPACE):
     print("<---------------Port Forward Pipe Extention port--------------->")
@@ -17,14 +29,14 @@ def pipeExtention_port_forward(kubeconfig_path, remote_port, NAMESPACE):
     pipeExtention_pod = None
     for line in result.stdout.split('\n'):
         if "rapid-pipe" in line:
-            print("rapid-pipe exists")
+            logger.info("rapid-pipe exists")
             pipeExtention_pod = line.split()[0]
-            print(pipeExtention_pod)
+            logger.info(pipeExtention_pod)
             break
 
     # Check if a pipeExtention pod is found
     if not pipeExtention_pod:
-        print(f"No Pipe Extention pod found in the {NAMESPACE} namespace.")
+        logger.error(f"No Pipe Extention pod found in the {NAMESPACE} namespace.")
         sys.exit(1)
 
     # Perform port forwarding to a random local port
@@ -37,7 +49,7 @@ def pipeExtention_port_forward(kubeconfig_path, remote_port, NAMESPACE):
     # Check if the process started successfully and read its output
     if process.stdout:
         output = process.stdout.readline().decode().strip()
-        print(output)
+        logger.info(output)
 
         # Use regex to extract the local port number
         match = re.search(r"Forwarding from \S+:(\d+)", output)
@@ -46,7 +58,7 @@ def pipeExtention_port_forward(kubeconfig_path, remote_port, NAMESPACE):
             # yielding the required forwarded_port. If we return it then the process will terminate. We want it to be in running state.
             yield forwarded_port
     else:
-        print("Error: Unable to start port forwarding process")
+        logger.error("Error: Unable to start port forwarding process")
 
     # Keep the script running
     while True:
@@ -62,14 +74,14 @@ def jobManager_port_forward(kubeconfig_path, remote_port, NAMESPACE):
     jobManager_pod = None
     for line in result.stdout.split('\n'):
         if "rapid-jobmanager" in line:
-            print("rapid-jobmanager exists")
+            logger.info("rapid-jobmanager exists")
             jobManager_pod = line.split()[0]
-            print(jobManager_pod)
+            logger.info(jobManager_pod)
             break
 
     # Check if a pipeExtention pod is found
     if not jobManager_pod:
-        print(f"No JobManager pod found in the {NAMESPACE} namespace.")
+        logger.error(f"No JobManager pod found in the {NAMESPACE} namespace.")
         sys.exit(1)
 
     # Perform port forwarding to a random local port
@@ -82,7 +94,7 @@ def jobManager_port_forward(kubeconfig_path, remote_port, NAMESPACE):
     # Check if the process started successfully and read its output
     if process.stdout:
         output = process.stdout.readline().decode().strip()
-        print(output)
+        logger.info(output)
 
         # Use regex to extract the local port number
         match = re.search(r"Forwarding from \S+:(\d+)", output)
@@ -91,7 +103,7 @@ def jobManager_port_forward(kubeconfig_path, remote_port, NAMESPACE):
             # yielding the required forwarded_port. If we return it then the process will terminate. We want it to be in running state.
             yield forwarded_port
     else:
-        print("Error: Unable to start port forwarding process")
+        logger.error("Error: Unable to start port forwarding process")
 
     # Keep the script running
     while True:

@@ -23,7 +23,7 @@ keys_to_extract = ["ReturnCodeDescription", "returnCodeDescription", "ReturnCode
                    "NumberOfSlices", "NumberOfSlicesAffected", "RVLVRatio", "ich_version", "HemorrhageDetected", "scoreLeftHemisphere",
                    "scoreRightHemisphere", "aspects_version", "Region", "NCCTStrokeLVOSuspected", "AneurysmSuspected", "valueString",
                    "scanCaution", "scanRejected", "LVODetectionEnabled", "LVODetected", "USAVersionLimitation", "VesselDensityRatio",
-                   "Description", "ModuleName", "moduleName", "ArtifactsDetected", "NCCTArtifactsJSONFilename", "SDHSuspected", "PatientName", "PatientAge"]
+                   "Description", "ModuleName", "moduleName", "ArtifactsDetected", "NCCTArtifactsJSONFilename", "SDHSuspected"]
 
 
 diagnosis_modules = {
@@ -121,12 +121,12 @@ def read_json_from_pod(json_path, kubeconfig_path, pod_name, namespace):
     ]
     result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if result.returncode != 0:
-        logger.error(f"Error reading {json_path}: {result.stderr.strip()}")
+        print(f"Error reading {json_path}: {result.stderr}")
         return None
     try:
         return json.loads(result.stdout)
     except json.JSONDecodeError as e:
-        logger.error(f"Invalid JSON in {json_path}: {e}")
+        print(f"Invalid JSON in {json_path}: {e}")
         return None
 
 def find_key_recursive(json_data, target_key):
@@ -150,8 +150,7 @@ def find_key_recursive(json_data, target_key):
 
 def check_outputjson_executor(json_path, kubeconfig_path, pod_name, namespace, module_name):
     if json_path not in _printed_paths:
-        # print(f"📄 output.json created: {json_path}")
-        logger.info(f"📄 output.json created: {json_path}")
+        print(f"📄 output.json created: {json_path}")
         _printed_paths.add(json_path)
         case_name = os.path.basename(os.path.dirname(json_path))
         _pending_tests.append((module_name, case_name, json_path, kubeconfig_path, pod_name, namespace))
@@ -159,14 +158,14 @@ def check_outputjson_executor(json_path, kubeconfig_path, pod_name, namespace, m
 
 def execute_all_tests():
     total = len(_pending_tests)
-    logger.info("\n============================= test session starts =============================")
-    logger.info(f"collected {total} items")
+    print("\n============================= test session starts =============================")
+    print(f"collected {total} items")
 
     results = []
 
     for idx, (module_name, case_name, json_path, kubeconfig_path, pod_name, namespace) in enumerate(_pending_tests, 1):
         progress = int((idx / total) * 100)
-        logger.info(f"\nValidation for output.json::[{module_name}_{case_name}] PASSED [{progress}%]")
+        print(f"\nValidation for output.json::[{module_name}_{case_name}] PASSED [{progress}%]")
 
         json_data = read_json_from_pod(json_path, kubeconfig_path, pod_name, namespace)
         if not json_data:
@@ -196,7 +195,7 @@ def execute_all_tests():
             with open(_log_file_path, "a") as log_file:
                 log_file.write(log_entry + "\n")
         except Exception as e:
-            logger.warning("⚠️ Failed to write log:", e)
+            print("⚠️ Failed to write log:", e)
 
         status = True
         fail_reason = ""
@@ -206,8 +205,6 @@ def execute_all_tests():
         possible_module_name_keys = ["ModuleName", "moduleName", "modulename"]
         moduleName = next((info_dict.get(key) for key in possible_module_name_keys if info_dict.get(key)), "UnknownModule")
         num_slices = info_dict.get("NumberOfSlices") or info_dict.get("NumberofSlices")
-        patient_name = info_dict.get("PatientName")
-        patient_age = info_dict.get("PatientAge")
         pt_within_limit = False  # Default value
         threshold = None
         actual_pt = None
@@ -309,7 +306,7 @@ def execute_all_tests():
                     # print("inside pt_status_local:")
                     pt_within_limit = pt_validator(actual_pt, threshold)
                 else:
-                    logger.error(pt_error_local)
+                    print(pt_error_local)
                 # print("pt_within_limit: ", pt_within_limit)
                 # print("threshold: ", threshold)
                 # print("actual_pt: ", actual_pt)
@@ -326,7 +323,7 @@ def execute_all_tests():
                         f"🔸 Positive: {positive_key} = {positive_value}\n"
                         f"🔹 Negative: {negative_key} = {negative_value}"
                     )
-                    logger.error(fail_reason)
+                    print(fail_reason)
 
             # elif moduleName == "ICH":
                 # matched_dataset = validate_dataset_type(moduleName, json_path, info_dict, ["positive", "negative", "ncctArtifactDetection_positive", "ncctArtifactDetection_negative"], overall_map)
@@ -357,7 +354,7 @@ def execute_all_tests():
                             f"🔹 Negative: {negative_key} = {negative_value}\n"
                             f"🔻 Error: {error_key} = {error_value}"
                         )
-                        logger.error(fail_reason)
+                        print(fail_reason)
 
         elif moduleName in anatomy_modules:
             overall_map = anatomy_modules[moduleName]
@@ -421,17 +418,17 @@ def execute_all_tests():
                 fail_reason = f"{moduleName}: ❌ FAILED - Expected {expected_key}={expected_value}, but got {actual_value}"
                 # print(fail_reason)
         else:
-            logger.info(f"[{moduleName}] {json_path}: ℹ️ No validation rule defined.")
+            print(f"[{moduleName}] {json_path}: ℹ️ No validation rule defined.")
 
 
-        results.append((moduleName, json_path, status, fail_reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices, actual_pt, threshold, patient_name, patient_age))
+        results.append((moduleName, json_path, status, fail_reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices, actual_pt, threshold))
     # print(results)
 
     passed = sum(1 for result in results if result[2])  # index 2 = `status`
     failed = total - passed
     elapsed = time.time() - _start_time
 
-    logger.info("\n=========================== test session summary ===========================")
+    print("\n=========================== test session summary ===========================")
 
     def summarize_pt_verdict(pt_within_limit, num_slices, actual_processing_time, threshold):
         if pt_within_limit:
@@ -440,34 +437,31 @@ def execute_all_tests():
             return f" ❌ Failed - Number of slices: {num_slices}, Processing time: {actual_processing_time} seconds > Threshold: {threshold} seconds "
 
 
-    for module, path, ok, reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices, actual_processing_time, threshold, patient_name, patient_age in results:
+    for module, path, ok, reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices, actual_processing_time, threshold in results:
         label = f"[{module}] {path}"
         if ok:
             if module in diagnosis_modules:
-                logger.info(f"✅ {label}: PASSED")
-                logger.info(f"Patient Name : {patient_name}, Patient Age : {patient_age}")
-                logger.info(f"[{module}] {path}: 🔍 Detected as [{dataset_type}] dataset")
-                logger.info(
+                print(f"✅ {label}: PASSED")
+                print(f"[{module}] {path}: 🔍 Detected as [{dataset_type}] dataset")
+                print(
                     f"[{module}] {path}: ✅ PASSED - [{dataset_type}] {expected_key} = {actual_value}")
                 # print("\n")
             elif module in anatomy_modules:
-                logger.info(f"✅ {label}: PASSED")
-                logger.info(f"Patient Name : {patient_name}, Patient Age : {patient_age}")
-                logger.info(f"[{module}] is processed successfully with {expected_key}:{actual_value}")
+                print(f"✅ {label}: PASSED")
+                print(f"[{module}] is processed successfully with {expected_key}:{actual_value}")
                 # print("\n")
         else:
-            logger.error(f"❌ {label}: FAILED - {reason}")
-            logger.info(f"Patient Name : {patient_name}, Patient Age : {patient_age}")
+            print(f"❌ {label}: FAILED - {reason}")
 
         pt_verdict = summarize_pt_verdict(pt_within_limit, str(num_slices), str(actual_processing_time), str(threshold))
-        logger.info(f"[{module}] {path}:{pt_verdict}")
+        print(f"[{module}] {path}:{pt_verdict}")
         print("\n")
-    logger.info(".")
-    logger.debug(f"\nTotal: {total} | ✅ Passed: {passed} | ❌ Failed: {failed}")
+    print(".")
+    print(f"\nTotal: {total} | ✅ Passed: {passed} | ❌ Failed: {failed}")
 
     # Add time elapsed
     elapsed = time.time() - _start_time
-    logger.info(f"🕒 Time Elapsed: {elapsed:.2f} seconds")
+    print(f"🕒 Time Elapsed: {elapsed:.2f} seconds")
 
 def print_test_summary():
     execute_all_tests()

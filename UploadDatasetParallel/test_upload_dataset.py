@@ -30,6 +30,7 @@ def test_run_upload_dataset():
              global_data["upload_dataset_params"]['waitPop'],
              global_data["upload_dataset_params"]['statusCheckInterval'],
              global_data["push_via"],
+             global_data["use_external_ip"],
              global_data["multi_associations"],
              global_data["multi_asso_batch_count"],
              global_data["multi_asso_batch_delay"],
