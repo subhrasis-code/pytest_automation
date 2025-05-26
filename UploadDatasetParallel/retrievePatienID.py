@@ -40,7 +40,7 @@ def get_patient_id(datasets):
             x = {'Dataset': folder, 'PatientID': patient_id}
             writer.writerow(x)
     print("\n")
-    print(f"######### PatientID CSV file is successfully created and is present in {patientId_csv_path} #########")
+    # print(f"######### PatientID CSV file is successfully created and is present in {patientId_csv_path} #########")
 
 
 

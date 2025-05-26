@@ -4,8 +4,6 @@ import glob
 import time
 import logging
 import sys
-import random
-import pydicom
 from concurrent.futures import ThreadPoolExecutor
 
 # Logger setup
@@ -18,38 +16,20 @@ formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 
-def get_patient_name(random_file):
-    # Get patient name from a random DICOM file
-    patient_name = "Unknown"
-    try:
-        ds = pydicom.dcmread(random_file, stop_before_pixels=True)
-        patient_name = str(ds.PatientName) if "PatientName" in ds else "Unknown"
-    except Exception as e:
-        logger.warning(f"⚠️ Failed to read DICOM file {random_file}: {e}")
 
-    return patient_name
 
 def push_single_association(dataset_path, IP, port):
-    logger.info(f"Starting to push {dataset_path} via Single Association \n")
+    logger.info("Starting to push via Single Association \n")
     # Get the list of DICOM files recursively from all subdirectories
     dicom_files = glob.glob(f"{dataset_path}/**/*.dcm", recursive=True)
 
     if not dicom_files:
         logger.error(f"❌ No DICOM files found in {dataset_path}")
-        return "Unknown"
-
-    # # Get patient name from a random DICOM file
-    # patient_name = "Unknown"
-    random_file = random.choice(dicom_files)
-    # try:
-    #     ds = pydicom.dcmread(random_file, stop_before_pixels=True)
-    #     patient_name = str(ds.PatientName) if "PatientName" in ds else "Unknown"
-    # except Exception as e:
-    #     logger.warning(f"⚠️ Failed to read DICOM file {random_file}: {e}")
-    patient_name = get_patient_name(random_file)
+        return
 
     # Define the storescu command
     command = ["storescu", IP, port, "-v"] + dicom_files
+
     time.sleep(0.2)  # Short delay before execution
 
     try:
@@ -58,20 +38,15 @@ def push_single_association(dataset_path, IP, port):
     except subprocess.CalledProcessError as e:
         logger.error(f"❌ Error executing storescu for {dataset_path}: {e}")
 
-    return patient_name
-
 def push_multi_associations(dataset_path, IP, port, batch_count, batch_delay):
     """Push DICOM files using multiple associations."""
-    logger.info(f"Starting to push {dataset_path} via Multi Associations \n")
+    logger.info("Starting to push via Multi Associations \n")
     # Get the list of DICOM files recursively from all subdirectories
     dicom_files = glob.glob(f"{dataset_path}/**/*.dcm", recursive=True)
 
     if not dicom_files:
         logger.error(f"❌ No DICOM files found in {dataset_path}")
         return
-
-    random_file = random.choice(dicom_files)
-    patient_name = get_patient_name(random_file)
 
     total_files = len(dicom_files)
     if batch_count > total_files:
@@ -118,66 +93,31 @@ def push_multi_associations(dataset_path, IP, port, batch_count, batch_delay):
             time.sleep(batch_delay)
 
     logger.info("\n🎯 All batches attempted. Task finished!")
-    return patient_name
 
 def push_executor(IP, port, datasets, parallel_push, multi_associations=False, batch_count=2, batch_delay=25):
-    patient_names = []
     if parallel_push == "True":
-        logger.info("🔄 Parallel data push : True")
+        logger.info("parallel data push : True")
         # Create a ThreadPoolExecutor with max_workers set to the number of dataset paths
         with ThreadPoolExecutor(max_workers=len(datasets)) as executor:
             time.sleep(0.15)
-
-            # Submit jobs and collect Future objects
-            futures = []
-            for dataset_path in datasets:
-                dataset_path_clean = dataset_path.strip()
-                future = executor.submit(push_single_association, dataset_path_clean, IP, port)
-                futures.append(future)
-
-            # Wait for results and collect patient names
-            for future in futures:
-                try:
-                    patient_name = future.result() # blocks until done
-                    patient_names.append(patient_name)
-                except Exception as e:
-                    logger.error(f"❌ Error pushing dataset: {e}")
-                    patient_names.append("Unknown")
-
-
             # Submit push function for each dataset path
-            # for dataset_path_tuple in zip(datasets):
-            #     dataset_path = str(dataset_path_tuple[0]).strip()
-            #     executor.submit(push_single_association, dataset_path, IP, port)
+            for dataset_path_tuple in zip(datasets):
+                dataset_path = str(dataset_path_tuple[0]).strip()
+                # executor.submit(push_single_association(), dataset_path, IP, port)
+                executor.submit(push_single_association, dataset_path, IP, port)
 
     else:
-        logger.info("➡️ Parallel data push : False (sequential mode)")
+        logger.info("parallel data push : False")
         # Iterate over each dataset path and call push sequentially
         time.sleep(0.15)
         for dataset_path in datasets:
             dataset_path_str = str(dataset_path).strip()
-            try:
-                if multi_associations == "True":
-                    if batch_count >= 2:
-                        patient_name = push_multi_associations(dataset_path_str, IP, port, batch_count, batch_delay)
-                    else:
-                        logger.warning(
-                            f"⚠️  batch_count={batch_count} is too low for multi_associations, must be >= 2. Falling back to single association.")
-                        patient_name = push_single_association(dataset_path_str, IP, port)
+            if multi_associations == "True":
+                if batch_count >= 2:
+                    push_multi_associations(dataset_path_str, IP, port, batch_count, batch_delay)
                 else:
-                    patient_name = push_single_association(dataset_path_str, IP, port)
+                    logger.warning(f"⚠️  batch_count is {batch_count}, must be >= 2 when using multi_associations. Falling back to single association push.")
+                    push_single_association(dataset_path_str, IP, port)
+            else:
+                push_single_association(dataset_path_str, IP, port)
 
-                if patient_name:
-                    patient_names.append(patient_name)
-                else:
-                    logger.warning("⚠️  No patient name returned.")
-                    patient_names.append("Unknown")
-
-            except Exception as e:
-                logger.error(f"❌ Error pushing dataset '{dataset_path_str}': {e}")
-                patient_names.append("Unknown")
-
-    return patient_names
-
-
-# push_executor("127.0.0.1", "58742", ["/Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/dataset_bundles/MiniRegression/Ncct", "/Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/dataset_bundles/MiniRegression/Hyper"],"True")

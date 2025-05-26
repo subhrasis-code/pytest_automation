@@ -157,7 +157,14 @@ def check_outputjson_executor(json_path, kubeconfig_path, pod_name, namespace, m
         _pending_tests.append((module_name, case_name, json_path, kubeconfig_path, pod_name, namespace))
         # print("Going out of check_outputjson_executor method")
 
-def execute_all_tests():
+def compare_patient_name(patient_name, source_patient_names):
+    try:
+        return patient_name in source_patient_names
+    except Exception as e:
+        logger.error(f"Error comparing patient names: {e}")
+        return False
+
+def execute_all_tests(source_patient_names):
     total = len(_pending_tests)
     logger.info("\n============================= test session starts =============================")
     logger.info(f"collected {total} items")
@@ -211,6 +218,7 @@ def execute_all_tests():
         pt_within_limit = False  # Default value
         threshold = None
         actual_pt = None
+        patient_name_match = compare_patient_name(patient_name, source_patient_names)
 
         raw_pt = (
                 info_dict.get("ProcessingTimeInSeconds") or
@@ -424,7 +432,7 @@ def execute_all_tests():
             logger.info(f"[{moduleName}] {json_path}: ℹ️ No validation rule defined.")
 
 
-        results.append((moduleName, json_path, status, fail_reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices, actual_pt, threshold, patient_name, patient_age))
+        results.append((moduleName, json_path, status, fail_reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices, actual_pt, threshold, patient_name, patient_age, patient_name_match))
     # print(results)
 
     passed = sum(1 for result in results if result[2])  # index 2 = `status`
@@ -440,7 +448,7 @@ def execute_all_tests():
             return f" ❌ Failed - Number of slices: {num_slices}, Processing time: {actual_processing_time} seconds > Threshold: {threshold} seconds "
 
 
-    for module, path, ok, reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices, actual_processing_time, threshold, patient_name, patient_age in results:
+    for module, path, ok, reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices, actual_processing_time, threshold, patient_name, patient_age, patient_name_match in results:
         label = f"[{module}] {path}"
         if ok:
             if module in diagnosis_modules:
@@ -459,6 +467,11 @@ def execute_all_tests():
             logger.error(f"❌ {label}: FAILED - {reason}")
             logger.info(f"Patient Name : {patient_name}, Patient Age : {patient_age}")
 
+        if patient_name_match:
+            logger.info(f"✅ Result PatientName matches with source PatientName")
+        else:
+            logger.error(f"❌ Result PatientName does'nt matche with source PatientName")
+
         pt_verdict = summarize_pt_verdict(pt_within_limit, str(num_slices), str(actual_processing_time), str(threshold))
         logger.info(f"[{module}] {path}:{pt_verdict}")
         print("\n")
@@ -469,5 +482,5 @@ def execute_all_tests():
     elapsed = time.time() - _start_time
     logger.info(f"🕒 Time Elapsed: {elapsed:.2f} seconds")
 
-def print_test_summary():
-    execute_all_tests()
+def print_test_summary(source_patient_names):
+    execute_all_tests(source_patient_names)

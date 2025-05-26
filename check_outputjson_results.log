@@ -126,3 +126,41 @@
 [2025-05-19 07:27:34] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 39.0105 | NumberOfSlices: 36 | Description: Overview of all slices | ModuleName: SDH | SDHSuspected: False | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/sdh/470_8453/output.json
 
 [2025-05-19 07:27:38] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 25.1885883808136 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/Hyperdensity/472_8455/output.json
+
+[2025-05-19 13:25:45] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 105 | ProcessingTimeSeconds: 105 | NumberOfSlices: 36 | scoreLeftHemisphere: 6 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/Octopus/494_8981/output.json
+
+[2025-05-19 13:25:48] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 51 | NumberOfSlices: 36 | HemorrhageDetected: False | Description: Hemorrhage Overview | ModuleName: ICH | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/hemorrhage/491_8978/output.json
+
+[2025-05-19 13:25:53] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 39.6644 | NumberOfSlices: 36 | Description: Overview of all slices | ModuleName: SDH | SDHSuspected: False | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/sdh/493_8980/output.json
+
+[2025-05-19 13:25:58] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 24.795847415924072 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/Hyperdensity/495_8982/output.json
+
+[2025-05-20 08:53:13] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 50 | NumberOfSlices: 36 | HemorrhageDetected: False | Description: Hemorrhage Overview | ModuleName: ICH | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/hemorrhage/614_11386/output.json
+
+[2025-05-20 08:53:17] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 38.5545 | NumberOfSlices: 36 | Description: Overview of all slices | ModuleName: SDH | SDHSuspected: False | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/sdh/616_11388/output.json
+
+[2025-05-20 08:53:21] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 26.74701237678528 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/Hyperdensity/618_11390/output.json
+
+[2025-05-20 08:53:25] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 106 | ProcessingTimeSeconds: 106 | NumberOfSlices: 36 | scoreLeftHemisphere: 6 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/Octopus/617_11389/output.json
+
+[2025-05-20 08:53:29] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 0.4 | NumberOfSlices: 36 | NCCTStrokeLVOSuspected: True | Description: NCCT Stroke Summary Image | ModuleName: NCCT Stroke | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/NCCTStroke/615_11387/output.json
+
+[2025-05-20 10:14:55] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 52 | NumberOfSlices: 36 | HemorrhageDetected: False | Description: Hemorrhage Overview | ModuleName: ICH | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/hemorrhage/642_11486/output.json
+
+[2025-05-20 10:14:59] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 107 | ProcessingTimeSeconds: 107 | NumberOfSlices: 36 | scoreLeftHemisphere: 6 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/Octopus/645_11489/output.json
+
+[2025-05-20 10:15:03] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 112 | NumberOfSlices: 36 | Description: Report hypodensity | ModuleName: Hypodensity | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/Hypodensity/647_11495/output.json
+
+[2025-05-20 10:15:07] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 38.4456 | NumberOfSlices: 36 | Description: Overview of all slices | ModuleName: SDH | SDHSuspected: False | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/sdh/644_11488/output.json
+
+[2025-05-20 10:15:10] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 26.83656096458435 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/Hyperdensity/646_11490/output.json
+
+[2025-05-20 10:15:14] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 0.279 | NumberOfSlices: 36 | NCCTStrokeLVOSuspected: True | Description: NCCT Stroke Summary Image | ModuleName: NCCT Stroke | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/site4/NCCTStroke/643_11487/output.json
+
+[2025-05-20 10:15:21] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 163.37864685058594 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | PatientName: rv_12,rv_12 | PatientAge: 105Y | /rapid_data/task_data/site4/PETN/660_11504/output.json
+
+[2025-05-20 10:15:28] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 72.04772591590881 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | PatientName: rv_12,rv_12 | PatientAge: 105Y | /rapid_data/task_data/site4/RVLV/661_11505/output.json
+
+[2025-05-21 11:46:20] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 74 | ProcessingTimeSeconds: 74 | NumberOfSlices: 36 | scoreLeftHemisphere: 6 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/sitefour/Octopus/707_2392/output.json
+
+[2025-05-21 11:46:22] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 20 | NumberOfSlices: 36 | HemorrhageDetected: False | Description: Hemorrhage Overview | ModuleName: ICH | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/sitefour/hemorrhage/706_2391/output.json

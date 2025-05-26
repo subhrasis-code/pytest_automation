@@ -158,10 +158,11 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
         for value in forwarded_port:
             port = value
             logger.info(f"Port forwarded to: {port}")
-            push_executor(IP, port, datasets, parallel_push, multi_associations, multi_asso_batch_count, multi_asso_batch_delay)
+            patient_names = push_executor(IP, port, datasets, parallel_push, multi_associations, multi_asso_batch_count, multi_asso_batch_delay)
             time.sleep(5)
             # terminate_port_forward()
-            break
+            # break
+            return patient_names
 
     # Push Datasets
     result = get_kube_resource("services", NAMESPACE)
@@ -185,16 +186,17 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
         if not external_ip:
             logger.info(f"No external IP present, pushing files via Port Forwarding ({push_via}).")
             forwarded_port = port_forward_func(kubeConfigFile, remote_port, NAMESPACE)
-            call_push_exec(forwarded_port)
+            patient_names = call_push_exec(forwarded_port)
         else:
             logger.info(f"Pushing files directly to external IP: {external_ip}")
-            push_executor(external_ip, remote_port, datasets, parallel_push, multi_associations, multi_asso_batch_count, multi_asso_batch_delay)
+            patient_names = push_executor(external_ip, remote_port, datasets, parallel_push, multi_associations, multi_asso_batch_count, multi_asso_batch_delay)
     else:
         logger.info(f"Pushing files via Port Forwarding ({push_via})")
         forwarded_port = port_forward_func(kubeConfigFile, remote_port, NAMESPACE)
-        call_push_exec(forwarded_port)
+        patient_names = call_push_exec(forwarded_port)
 
     logger.info("Dataset pushed successfully")
+    logger.info(f"Source Patient Names pushed : {patient_names}")
     logger.info(f"Waiting for {waitPop} seconds so that the studies get populated on Tomcat and start to process...")
     time.sleep(waitPop)
 
@@ -229,7 +231,7 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
         else:
             logger.warning("No new task folder detected within 3 minutes.")
         logger.info("Final test summary:")
-        print_test_summary()
+        print_test_summary(patient_names)
     else:
         logger.info("assert_after_push set to False, skipping assert_after_push step.")
 
