@@ -12,6 +12,7 @@ from portForward import pipeExtention_port_forward, terminate_port_forward, tomc
 from push_datasets import push_executor
 # from retrievePatienID import get_patient_id
 from check_outputjson import check_outputjson_executor, print_test_summary
+
 # from tomcatStatusCheck import tomcatModuleStatusChecker
 # import requests
 
@@ -126,7 +127,8 @@ def get_service_details(service_name, NAMESPACE, result):
 
 def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push, kubeconfig_path,
              tomcatServer_local_port, tomcatServer_remote_port, tomcatServer_username, tomcatServer_password,
-             siteName, waitPop, statusCheckInterval, push_via, use_external_ip, multi_associations, multi_asso_batch_count, multi_asso_batch_delay, assert_after_push):
+             siteName, waitPop, statusCheckInterval, push_via, use_external_ip, multi_associations, multi_asso_batch_count,
+             multi_asso_batch_delay, assert_after_push):
 
     base_path = f"/rapid_data/task_data/{siteName}"
     excluded_modules = {"emailSend", "temp_ich", "temp_petn", "DicomSend"}
@@ -158,11 +160,11 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
         for value in forwarded_port:
             port = value
             logger.info(f"Port forwarded to: {port}")
-            patient_names = push_executor(IP, port, datasets, parallel_push, multi_associations, multi_asso_batch_count, multi_asso_batch_delay)
+            series_descriptions_list, series_instance_uids_list, study_instance_uids_list, patient_names_list = push_executor(IP, port, datasets, parallel_push, multi_associations, multi_asso_batch_count, multi_asso_batch_delay)
             time.sleep(5)
             # terminate_port_forward()
             # break
-            return patient_names
+            return series_descriptions_list, series_instance_uids_list, study_instance_uids_list, patient_names_list
 
     # Push Datasets
     result = get_kube_resource("services", NAMESPACE)
@@ -186,17 +188,23 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
         if not external_ip:
             logger.info(f"No external IP present, pushing files via Port Forwarding ({push_via}).")
             forwarded_port = port_forward_func(kubeConfigFile, remote_port, NAMESPACE)
-            patient_names = call_push_exec(forwarded_port)
+            series_descriptions_list, series_instance_uids_list, study_instance_uids_list, patient_names_list = call_push_exec(forwarded_port)
         else:
             logger.info(f"Pushing files directly to external IP: {external_ip}")
-            patient_names = push_executor(external_ip, remote_port, datasets, parallel_push, multi_associations, multi_asso_batch_count, multi_asso_batch_delay)
+            series_descriptions_list, series_instance_uids_list, study_instance_uids_list, patient_names_list = push_executor(external_ip, remote_port, datasets, parallel_push, multi_associations, multi_asso_batch_count, multi_asso_batch_delay)
     else:
         logger.info(f"Pushing files via Port Forwarding ({push_via})")
         forwarded_port = port_forward_func(kubeConfigFile, remote_port, NAMESPACE)
-        patient_names = call_push_exec(forwarded_port)
+        series_descriptions_list, series_instance_uids_list, study_instance_uids_list, patient_names_list = call_push_exec(forwarded_port)
 
     logger.info("Dataset pushed successfully")
-    logger.info(f"Source Patient Names pushed : {patient_names}")
+    logger.info(
+        f"\n🧠📂 ===== Source Datasets DICOM Info =====\n"
+        f"🔸 PatientNames       : {patient_names_list}\n"
+        f"🔸 StudyInstanceUIDs  : {study_instance_uids_list}\n"
+        f"🔸 SeriesInstanceUIDs : {series_instance_uids_list}\n"
+        f"🔸 SeriesDescriptions : {series_descriptions_list}\n"
+    )
     logger.info(f"Waiting for {waitPop} seconds so that the studies get populated on Tomcat and start to process...")
     time.sleep(waitPop)
 
@@ -231,7 +239,7 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
         else:
             logger.warning("No new task folder detected within 3 minutes.")
         logger.info("Final test summary:")
-        print_test_summary(patient_names)
+        print_test_summary(series_descriptions_list, series_instance_uids_list, study_instance_uids_list, patient_names_list)
     else:
         logger.info("assert_after_push set to False, skipping assert_after_push step.")
 
@@ -243,6 +251,7 @@ def dataset_list(config_data):
             datasets = config_data[key].split(",")
     logger.debug(f"Dataset list created: {datasets}")
     return datasets
+
 
 # def dataset_list(config_data):
 #     datasets = []

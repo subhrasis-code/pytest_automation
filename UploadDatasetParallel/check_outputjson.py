@@ -19,11 +19,13 @@ logger.addHandler(console_handler)
 
 
 # Keys to look for
-keys_to_extract = ["ReturnCodeDescription", "returnCodeDescription", "ReturnCode", "ProcessingTimeInSeconds", "ProcessingTimeSeconds", "processingTimeInSeconds",
-                   "NumberOfSlices", "NumberOfSlicesAffected", "RVLVRatio", "ich_version", "HemorrhageDetected", "scoreLeftHemisphere",
-                   "scoreRightHemisphere", "aspects_version", "Region", "NCCTStrokeLVOSuspected", "AneurysmSuspected", "valueString",
-                   "scanCaution", "scanRejected", "LVODetectionEnabled", "LVODetected", "USAVersionLimitation", "VesselDensityRatio",
-                   "Description", "ModuleName", "moduleName", "ArtifactsDetected", "NCCTArtifactsJSONFilename", "SDHSuspected", "PatientName", "PatientAge"]
+keys_to_extract = ["ReturnCodeDescription", "returnCodeDescription", "ReturnCode", "ProcessingTimeInSeconds", "ProcessingTimeSeconds",
+                   "processingTimeInSeconds", "NumberOfSlices", "NumberOfSlicesAffected", "RVLVRatio", "ich_version", "HemorrhageDetected",
+                   "scoreLeftHemisphere", "scoreRightHemisphere", "aspects_version", "Region", "NCCTStrokeLVOSuspected", "AneurysmSuspected",
+                   "valueString", "scanCaution", "scanRejected", "LVODetectionEnabled", "LVODetected", "USAVersionLimitation", "VesselDensityRatio",
+                   "Description", "ModuleName", "moduleName", "ArtifactsDetected", "NCCTArtifactsJSONFilename", "SDHSuspected", "PatientName",
+                   "PatientAge", "SeriesDescription", "SeriesInstanceUID", "StudyInstanceUID"
+                   ]
 
 
 diagnosis_modules = {
@@ -148,6 +150,49 @@ def find_key_recursive(json_data, target_key):
                 return result
     return None
 
+
+def find_all_keys_recursive(json_data):
+    """
+    Recursively search for all occurrences of target keys in a nested dictionary/list.
+    Returns 3 separate lists: SeriesDescriptions, SeriesInstanceUIDs, StudyInstanceUIDs.
+    """
+    result_series_descriptions_list = []
+    result_series_instance_uids_list = []
+    result_study_instance_uids_list = []
+
+    def _recursive_search(data):
+        # Check if the current level of data is a dictionary
+        if isinstance(data, dict):
+            for key, value in data.items():
+                # If the key is "SeriesDescription", append its value to the corresponding list
+                if key == "SeriesDescription":
+                    result_series_descriptions_list.append(value)
+                # If the key is "SeriesInstanceUID", append its value to the corresponding list
+                elif key == "SeriesInstanceUID":
+                    result_series_instance_uids_list.append(value)
+                # If the key is "StudyInstanceUID", append its value to the corresponding list
+                elif key == "StudyInstanceUID":
+                    result_study_instance_uids_list.append(value)
+
+                # Recursively call the function to go deeper into nested structures
+                _recursive_search(value)
+
+        # If the current level is a list, iterate through each item
+        elif isinstance(data, list):
+            for item in data:
+                # Recursively call the function for each item in the list
+                _recursive_search(item)
+
+    # Start the recursive search on the input JSON data
+    _recursive_search(json_data)
+
+    return (
+        result_series_descriptions_list,
+        result_series_instance_uids_list,
+        result_study_instance_uids_list
+    )
+
+
 def check_outputjson_executor(json_path, kubeconfig_path, pod_name, namespace, module_name):
     if json_path not in _printed_paths:
         # print(f"📄 output.json created: {json_path}")
@@ -157,14 +202,14 @@ def check_outputjson_executor(json_path, kubeconfig_path, pod_name, namespace, m
         _pending_tests.append((module_name, case_name, json_path, kubeconfig_path, pod_name, namespace))
         # print("Going out of check_outputjson_executor method")
 
-def compare_patient_name(patient_name, source_patient_names):
+def compare_patient_name(patient_name, source_patinet_names):
     try:
-        return patient_name in source_patient_names
+        return patient_name in source_patinet_names
     except Exception as e:
         logger.error(f"Error comparing patient names: {e}")
         return False
 
-def execute_all_tests(source_patient_names):
+def execute_all_tests(source_series_descs, source_series_uids, source_study_uids, source_patinet_names):
     total = len(_pending_tests)
     logger.info("\n============================= test session starts =============================")
     logger.info(f"collected {total} items")
@@ -182,13 +227,16 @@ def execute_all_tests(source_patient_names):
 
         extracted_values = []
         for key in keys_to_extract:
-            value = find_key_recursive(json_data, key)
-            if value is None:
-                continue  # Skip if value is None
-            if isinstance(value, dict):
+            if key not in ["SeriesDescription", "SeriesInstanceUID", "StudyInstanceUID"]:
+                value = find_key_recursive(json_data, key)
+                if value is None:
+                    continue  # Skip if value is None
                 extracted_values.append(f"{key}: {value}")
-            else:
-                extracted_values.append(f"{key}: {value}")
+                # if isinstance(value, dict):
+                #     extracted_values.append(f"{key}: {value}")
+                # else:
+                #     extracted_values.append(f"{key}: {value}")
+        res_series_descs, res_series_uids, res_study_uids = find_all_keys_recursive(json_data)
 
         # Convert list of "Key: Value" strings to a dictionary
         info_dict = {}
@@ -218,7 +266,7 @@ def execute_all_tests(source_patient_names):
         pt_within_limit = False  # Default value
         threshold = None
         actual_pt = None
-        patient_name_match = compare_patient_name(patient_name, source_patient_names)
+        patient_name_match = compare_patient_name(patient_name, source_patinet_names)
 
         raw_pt = (
                 info_dict.get("ProcessingTimeInSeconds") or
@@ -432,7 +480,9 @@ def execute_all_tests(source_patient_names):
             logger.info(f"[{moduleName}] {json_path}: ℹ️ No validation rule defined.")
 
 
-        results.append((moduleName, json_path, status, fail_reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices, actual_pt, threshold, patient_name, patient_age, patient_name_match))
+        results.append((moduleName, json_path, status, fail_reason, dataset_type, expected_key, actual_value, pt_within_limit,
+                        num_slices, actual_pt, threshold, patient_name, patient_age, patient_name_match,
+                        res_series_descs, res_series_uids, res_study_uids))
     # print(results)
 
     passed = sum(1 for result in results if result[2])  # index 2 = `status`
@@ -447,33 +497,42 @@ def execute_all_tests(source_patient_names):
         else:
             return f" ❌ Failed - Number of slices: {num_slices}, Processing time: {actual_processing_time} seconds > Threshold: {threshold} seconds "
 
+    for (module, path, ok, reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices,
+         actual_processing_time,
+         threshold, patient_name, patient_age, patient_name_match, res_series_descs, res_series_uids,
+         res_study_uids) in results:
 
-    for module, path, ok, reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices, actual_processing_time, threshold, patient_name, patient_age, patient_name_match in results:
         label = f"[{module}] {path}"
+        common_info = (
+            f"PatientName : {patient_name}, PatientAge : {patient_age}\n"
+            f"SeriesDescription : {res_series_descs}\n"
+            f"SeriesInstanceUID : {res_series_uids}\n"
+            f"StudyInstanceUID : {res_study_uids}"
+        )
+
         if ok:
+            logger.info(f"✅ {label}: PASSED")
+            logger.info(common_info)
+
             if module in diagnosis_modules:
-                logger.info(f"✅ {label}: PASSED")
-                logger.info(f"Patient Name : {patient_name}, Patient Age : {patient_age}")
-                logger.info(f"[{module}] {path}: 🔍 Detected as [{dataset_type}] dataset")
-                logger.info(
-                    f"[{module}] {path}: ✅ PASSED - [{dataset_type}] {expected_key} = {actual_value}")
-                # print("\n")
+                logger.info(f"{label}: 🔍 Detected as [{dataset_type}] dataset")
+                logger.info(f"{label}: ✅ PASSED - [{dataset_type}] {expected_key} = {actual_value}")
+
             elif module in anatomy_modules:
-                logger.info(f"✅ {label}: PASSED")
-                logger.info(f"Patient Name : {patient_name}, Patient Age : {patient_age}")
                 logger.info(f"[{module}] is processed successfully with {expected_key}:{actual_value}")
-                # print("\n")
+
         else:
             logger.error(f"❌ {label}: FAILED - {reason}")
-            logger.info(f"Patient Name : {patient_name}, Patient Age : {patient_age}")
+            logger.info(common_info)
 
-        if patient_name_match:
-            logger.info(f"✅ Result PatientName matches with source PatientName")
-        else:
-            logger.error(f"❌ Result PatientName does'nt matche with source PatientName")
+        # Patient name match status
+        match_patient_name_msg = "✅ Result PatientName matches with source PatientName" if patient_name_match \
+            else "❌ Result PatientName does'nt matche with source PatientName"
+        logger.info(match_patient_name_msg)
 
+        # Processing time verdict
         pt_verdict = summarize_pt_verdict(pt_within_limit, str(num_slices), str(actual_processing_time), str(threshold))
-        logger.info(f"[{module}] {path}:{pt_verdict}")
+        logger.info(f"{label}:{pt_verdict}")
         print("\n")
     logger.info(".")
     logger.debug(f"\nTotal: {total} | ✅ Passed: {passed} | ❌ Failed: {failed}")
@@ -482,5 +541,5 @@ def execute_all_tests(source_patient_names):
     elapsed = time.time() - _start_time
     logger.info(f"🕒 Time Elapsed: {elapsed:.2f} seconds")
 
-def print_test_summary(source_patient_names):
-    execute_all_tests(source_patient_names)
+def print_test_summary(series_descriptions_list, series_instance_uids_list, study_instance_uids_list, source_patinet_names):
+    execute_all_tests(series_descriptions_list, series_instance_uids_list, study_instance_uids_list, source_patinet_names)

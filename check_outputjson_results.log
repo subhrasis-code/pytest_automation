@@ -164,3 +164,23 @@
 [2025-05-21 11:46:20] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 74 | ProcessingTimeSeconds: 74 | NumberOfSlices: 36 | scoreLeftHemisphere: 6 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/sitefour/Octopus/707_2392/output.json
 
 [2025-05-21 11:46:22] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 20 | NumberOfSlices: 36 | HemorrhageDetected: False | Description: Hemorrhage Overview | ModuleName: ICH | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/sitefour/hemorrhage/706_2391/output.json
+
+[2025-05-28 08:10:33] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 23 | NumberOfSlices: 36 | HemorrhageDetected: False | Description: Hemorrhage Overview | ModuleName: ICH | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/sitefour/hemorrhage/905_36962/output.json
+
+[2025-05-28 08:10:36] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 35.5904 | NumberOfSlices: 36 | Description: Overview of all slices | ModuleName: SDH | SDHSuspected: False | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/sitefour/sdh/907_36964/output.json
+
+[2025-05-28 08:10:39] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 26.071157932281494 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/sitefour/Hyperdensity/909_36966/output.json
+
+[2025-05-28 08:10:42] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 79 | ProcessingTimeSeconds: 79 | NumberOfSlices: 36 | scoreLeftHemisphere: 6 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/sitefour/Octopus/908_36965/output.json
+
+[2025-05-28 08:10:45] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 5.55 | NumberOfSlices: 36 | NCCTStrokeLVOSuspected: True | Description: NCCT Stroke Summary Image | ModuleName: NCCT Stroke | PatientName: ncct_01,ncct_01 | PatientAge: 061Y | /rapid_data/task_data/sitefour/NCCTStroke/906_36963/output.json
+
+[2025-05-28 09:02:09] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 89.64470028877258 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | PatientName: rv_12,rv_12 | PatientAge: 105Y | /rapid_data/task_data/sitefour/PETN/921_37118/output.json
+
+[2025-05-28 09:02:13] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 40.9089879989624 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | PatientName: rv_12,rv_12 | PatientAge: 105Y | /rapid_data/task_data/sitefour/RVLV/922_37119/output.json
+
+[2025-05-28 09:02:16] ReturnCodeDescription: Input data with invalid image or pixel dimensions | ReturnCode: -7 | ProcessingTimeInSeconds: 15.5187 | ModuleName: RAPIDNEURO3D | /rapid_data/task_data/sitefour/neuro3d/931_37148/output.json
+
+[2025-05-28 09:02:19] ReturnCodeDescription: Input data invalid | ReturnCode: -2 | ProcessingTimeInSeconds: 5.269 | ModuleName: ANRTN | /rapid_data/task_data/sitefour/ANRTN/930_37147/output.json
+
+[2025-05-28 09:02:23] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 138 | NumberOfSlices: 780 | LVODetectionEnabled: False | LVODetected: True | USAVersionLimitation: True | VesselDensityRatio: 0.437 | Description: MIP I-S lvo | ModuleName: CTA/LVO | PatientName: larry3,larry3 | PatientAge: 058Y | /rapid_data/task_data/sitefour/angio/929_37146/output.json
