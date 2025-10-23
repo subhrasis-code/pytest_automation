@@ -34,4 +34,5 @@ def test_run_upload_dataset():
              global_data["multi_associations"],
              global_data["multi_asso_batch_count"],
              global_data["multi_asso_batch_delay"],
-             global_data["assert_after_push"])
+             global_data["assert_after_push"]
+             )

@@ -1,8 +1,10 @@
 {
-  "kubeConfigFile": "/Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/kubeconfigs/admin.edge-vnv.kubeconfig",
+  "kubeConfigFile": "/Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/kubeconfigs/admin.runedge.kubeconfig",
   "namespace": "rapid-apps",
-  "siteName": "site4",
-  "userEmail_list": ["rapid.receive@ischemaview.com"],
+  "siteName": "rmaqa2run",
+  "userEmail_list": [
+    "rapid.receive@ischemaview.com"
+  ],
   "tomcatServer_username": "isvadmin",
   "tomcatServer_password": "Stroke@2013!",
   "tomcatServer_remote_port": "443",
@@ -11,32 +13,48 @@
   "push_via": "pipe",
   "use_external_ip": "False",
   "multi_associations": "False",
-  "multi_asso_batch_count": 3,
-  "multi_asso_batch_delay": 15,
-  "assert_after_push": "True",
-
+  "multi_asso_batch_count": 1,
+  "multi_asso_batch_delay": 1,
+  "assert_after_push": "False",
   "enable_disable_params": {
     "emailConfig": {
-        "<smtpserverip>": "email-smtp.us-west-2.amazonaws.com",
-        "<smtpusername>": "AKIAZWWTQMHQHIKDQWEB",
-        "<smtppassword>": "BEyYiYvfoEmFTPhWeEjkwYfbp0aRRW/OTc+B79zffWcp",
-        "<rapidreceiveemailaddress>": "sahu@ischemaview.com",
-        "<smtpuseextendedparams>": 1,
-        "<smtpport>": 587
+      "<smtpserverip>": "email-smtp.us-west-2.amazonaws.com",
+      "<smtpusername>": "AKIAXLKMVTTUU2BSCNYI",
+      "<smtppassword>": "BCC1d+JWi2LUXz3Gk0bfME/vTmExsOIm2oekADboSTiO",
+      "<rapidreceiveemailaddress>": "sahu@ischemaview.com",
+      "<smtpuseextendedparams>": 1,
+      "<smtpport>": 587
     },
-    "moduleToEnable": ["<enableich>"],
-    "list_of_modules": ["<hypodensitystandalone>", "<hypodensitywithctp>", "<enablehyperdensity>", "<enablehvs>", "<enablectpa>", "<enableich>", "<enableaspects>", "<enableNcctArtifactDetection>", "<enablencctstroke>", "<enableneuro3d>", "<enableanrtn>", "<enablepetn>", "<enablervlv>", "<enablecta>", "<enablemismatch>", "<enablesdh>"]
+    "moduleToEnable": [
+      "<enableich>"
+    ],
+    "list_of_modules": [
+      "<hypodensitystandalone>",
+      "<hypodensitywithctp>",
+      "<enablehyperdensity>",
+      "<enablehvs>",
+      "<enablectpa>",
+      "<enableich>",
+      "<enableaspects>",
+      "<enableNcctArtifactDetection>",
+      "<enablencctstroke>",
+      "<enableneuro3d>",
+      "<enableanrtn>",
+      "<enablepetn>",
+      "<enablervlv>",
+      "<enablecta>",
+      "<enablemismatch>",
+      "<enablesdh>"
+    ]
   },
-
-  "upload_dataset_params":{
+  "upload_dataset_params": {
     "parallel_push": "True",
-    "remote_port": "4451",
+    "remote_port": "4299",
     "IP": "127.0.0.1",
-    "waitPop": 60,
+    "waitPop": 2,
     "statusCheckInterval": 30,
-    "dataset_path": "/Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/dataset_bundles/MiniRegression/Ncct, /Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/dataset_bundles/MiniRegression/RVLV"
+    "dataset_path": ""
   },
-
   "fetch_logs_params": {
     "s3_server_name": "serverquail",
     "s3bucket_name": "ischemaview-qa-us-west-2",
@@ -45,9 +63,8 @@
     "conductorUI_local_port": "5000",
     "time_traversed": 24
   },
-
   "cloud_conductorUI_params": {
-    "region":  "us-west-2",
+    "region": "us-west-2",
     "profile": "qa",
     "cluster_name": "gamma-stg188d692",
     "alias": "gamma-stg188d692",
@@ -55,7 +72,6 @@
     "cloud_conductorUI_remote_port": "5001",
     "cloud_conductorUI_local_port": "5000"
   },
-
   "performance_params": {
     "onPrem_conductorServer_local_port": "8080",
     "onPrem_conductorServer_remote_port": "8080",
@@ -63,5 +79,4 @@
     "onCloud_conductorServer_remote_port": "8080",
     "duration": "4h"
   }
-
 }

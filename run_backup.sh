@@ -7,6 +7,8 @@ echo ":test_tube: Whoami: $(whoami)"
 echo ":sparkles: Activating virtual environment..."
 source /Users/zinnov/Documents/Auto_modules_6_2/onPrem/pytest_automation/.venv/bin/activate
 
+# === INSTALL REQUIREMENTS ===
+
 echo ":snake: Python path: $(which python3 || echo 'Not found')"
 echo ":package: DCMTK path (storescu): $(which storescu || echo 'Not found')"
 echo ":package: Kubectl path: $(which kubectl || echo 'Not found')"

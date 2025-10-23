@@ -131,6 +131,59 @@ def read_json_from_pod(json_path, kubeconfig_path, pod_name, namespace):
         logger.error(f"Invalid JSON in {json_path}: {e}")
         return None
 
+def read_image_files_from_pod(results_folder_path, kubeconfig_path, pod_name, namespace, module_name):
+    """
+        Search for .dcm, .png, .jpg, .jpeg files inside a folder in the pod.
+        Returns: dict with counts + filenames for each type.
+    """
+    if module_name != "neuro3d":
+        pass
+    else:
+        sub_folder = "/mip_a_p_rot_vessel_view"
+        results_folder_path = results_folder_path + sub_folder
+    # print("Inside read_image_files_from_pod function")
+    cmd = ["kubectl", "--kubeconfig", kubeconfig_path, "-n", namespace,
+           "exec", pod_name, "--",
+           "find", results_folder_path, "-type", "f",
+           "-regex", ".*\\(\\.dcm\\|\\.png\\|\\.jpg\\|\\.jpeg\\)$"
+           ]
+    result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+    if result.returncode != 0:
+        logger.error(f"Error finding image files in {results_folder_path}: {result.stderr.strip()}")
+        return {}
+
+    image_files = result.stdout.strip().split("\n") if result.stdout.strip() else []
+    image_info = {
+        "png":[],
+        "dcm":[],
+        "jpg":[],
+        "jpeg":[]
+    }
+    # print(f"ImageFiles : {image_files}")
+
+    for file in image_files:
+        # print("Inside for loop")
+        # print(file)
+        root, ext = os.path.splitext(file)
+        ext = ext.lower()
+        if ext == ".dcm":
+            image_info["dcm"].append(file)
+        elif ext == ".png":
+            image_info["png"].append(file)
+        elif ext == ".jpg":
+            image_info["jpg"].append(file)
+        elif ext == ".jpeg":
+            image_info["jpeg"].append(file)
+
+    summary = {
+        "count": {key: len(value) for key, value in image_info.items()},
+        "files": image_info
+    }
+
+    # logger.info(f"In Results folder, Found image files summary: {summary}")
+    return summary
+
 def find_key_recursive(json_data, target_key):
     """
     Recursively search for a key in a nested dictionary/list.
@@ -193,13 +246,14 @@ def find_all_keys_recursive(json_data):
     )
 
 
-def check_outputjson_executor(json_path, kubeconfig_path, pod_name, namespace, module_name):
+def check_outputjson_executor(json_path, kubeconfig_path, pod_name, namespace, module_name, results_folder_path):
     if json_path not in _printed_paths:
         # print(f"📄 output.json created: {json_path}")
         logger.info(f"📄 output.json created: {json_path}")
         _printed_paths.add(json_path)
         case_name = os.path.basename(os.path.dirname(json_path))
-        _pending_tests.append((module_name, case_name, json_path, kubeconfig_path, pod_name, namespace))
+        # _pending_tests.append((module_name, case_name, json_path, kubeconfig_path, pod_name, namespace))
+        _pending_tests.append((module_name, case_name, json_path, kubeconfig_path, pod_name, namespace, results_folder_path))
         # print("Going out of check_outputjson_executor method")
 
 def compare_patient_name(patient_name, source_patinet_names):
@@ -216,8 +270,12 @@ def execute_all_tests(source_series_descs, source_series_uids, source_study_uids
 
     results = []
 
-    for idx, (module_name, case_name, json_path, kubeconfig_path, pod_name, namespace) in enumerate(_pending_tests, 1):
+    for idx, (module_name, case_name, json_path, kubeconfig_path, pod_name, namespace, results_folder_path) in enumerate(_pending_tests, 1):
         progress = int((idx / total) * 100)
+
+        logger.info(f"\nValidation for results folder::[{module_name}_{case_name}] PASSED [{progress}%]")
+        folder_data = read_image_files_from_pod(results_folder_path, kubeconfig_path, pod_name, namespace, module_name)
+
         logger.info(f"\nValidation for output.json::[{module_name}_{case_name}] PASSED [{progress}%]")
 
         json_data = read_json_from_pod(json_path, kubeconfig_path, pod_name, namespace)
@@ -482,7 +540,7 @@ def execute_all_tests(source_series_descs, source_series_uids, source_study_uids
 
         results.append((moduleName, json_path, status, fail_reason, dataset_type, expected_key, actual_value, pt_within_limit,
                         num_slices, actual_pt, threshold, patient_name, patient_age, patient_name_match,
-                        res_series_descs, res_series_uids, res_study_uids))
+                        res_series_descs, res_series_uids, res_study_uids, folder_data))
     # print(results)
 
     passed = sum(1 for result in results if result[2])  # index 2 = `status`
@@ -500,7 +558,7 @@ def execute_all_tests(source_series_descs, source_series_uids, source_study_uids
     for (module, path, ok, reason, dataset_type, expected_key, actual_value, pt_within_limit, num_slices,
          actual_processing_time,
          threshold, patient_name, patient_age, patient_name_match, res_series_descs, res_series_uids,
-         res_study_uids) in results:
+         res_study_uids, folder_data) in results:
 
         label = f"[{module}] {path}"
         common_info = (
@@ -524,6 +582,14 @@ def execute_all_tests(source_series_descs, source_series_uids, source_study_uids
         else:
             logger.error(f"❌ {label}: FAILED - {reason}")
             logger.info(common_info)
+
+        if folder_data is not None:
+            if len(folder_data) > 0:
+                logger.info(f"Contents of result folder : {folder_data}")
+            else:
+                logger.warning(f"⚠️ Result folder is present but empty.")
+        else:
+            logger.error(f"❌ No result images found in output folder for {label}.")
 
         # Patient name match status
         match_patient_name_msg = "✅ Result PatientName matches with source PatientName" if patient_name_match \

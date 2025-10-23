@@ -1,0 +1,75 @@
+Result 1
+Verified that Admin user do have permission to view the module result and source images
+
+ 
+
+Result 2
+Verified that Service and Clinical user do have permission to view the module result and source images
+
+ 
+
+Result 3
+Verified that Service user do have permission to re-trigger the study
+
+ 
+
+Result 4
+Verified that Admin and Clinical user do have permission to re-trigger the study
+
+ 
+
+Result 5
+Verified that Service user do have permission to modify the setting and able to re-trigger the study
+
+ 
+
+Result 6
+Verified that Admin and Clinical user do have permission to re-trigger the study
+
+ 
+
+Result 7
+Verified that Service user do have permission to view the processing log
+
+ 
+
+Result 8
+Verified that Admin user do have permission to view the processing log Clinical user do not have permission to view the processing log
+
+ 
+
+Result 9
+Verified that Service user do have permission to add the user mail
+
+ 
+
+Result 10
+Verified that Admin user do have permission to add the user mail Clinical user do not have permission to add the user mail
+
+ 
+
+Result 11
+Verified that Service user do have permission to create one more service account
+
+ 
+
+Result 12
+Verified that Admin user do have permission to create one more admin account
+
+ 
+
+Result 13
+Verified that Clinical user do not have permission to create one more clinical account
+
+ 
+
+Result 14
+Verified that Service user do have permission to delete the service account
+
+ 
+
+Result 15
+Verified that Admin user do have permission to delete the service account Clinical user do not have permission to delete the service account
+
+
+

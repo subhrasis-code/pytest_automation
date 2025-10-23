@@ -55,7 +55,8 @@ def push_single_association(dataset_path, IP, port):
         return
 
     # Define the storescu command
-    command = ["storescu", IP, port, "-v"] + dicom_files
+    # command = ["storescu", IP, port, "-v"] + dicom_files
+    command = ["storescu", IP, port, "-v", "+t", "+xi"] + dicom_files
 
     time.sleep(0.2)  # Short delay before execution
 
@@ -64,6 +65,7 @@ def push_single_association(dataset_path, IP, port):
         logger.info(f"✅ DICOM files successfully sent from: {dataset_path}")
     except subprocess.CalledProcessError as e:
         logger.error(f"❌ Error executing storescu for {dataset_path}: {e}")
+        raise RuntimeError(f"storescu command failed for {dataset_path}") from e
 
 def push_multi_associations(dataset_path, IP, port, batch_count, batch_delay):
     """Push DICOM files using multiple associations."""
@@ -122,52 +124,87 @@ def push_multi_associations(dataset_path, IP, port, batch_count, batch_delay):
     logger.info("\n🎯 All batches attempted. Task finished!")
 
 def push_executor(IP, port, datasets, parallel_push, multi_associations=False, batch_count=2, batch_delay=25):
+    failed_datasets = []
+    successful_datasets = []
 
     for dataset_path in datasets:
         try:
             dataset_path = str(dataset_path).strip()
-
-            # Get the list of DICOM files recursively from all subdirectories
             dicom_files = glob.glob(f"{dataset_path}/**/*.dcm", recursive=True)
 
             if not dicom_files:
                 logger.error(f"⚠️ No DICOM files found in: {dataset_path}")
+                failed_datasets.append(dataset_path)
                 continue
             extract_dicom_info(dicom_files)
         except Exception as e:
             logger.error(f"❌ Error extracting Dicom Info for dataset at '{dataset_path}': {e}")
-
-    # print(series_descriptions_list)
-    # print(series_instance_uids_list)
-    # print(study_instance_uids_list)
-    # print(patient_names_list)
+            failed_datasets.append(dataset_path)
+            continue
 
     if parallel_push == "True":
         logger.info("parallel data push : True")
-        # Create a ThreadPoolExecutor with max_workers set to the number of dataset paths
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+
         with ThreadPoolExecutor(max_workers=len(datasets)) as executor:
             time.sleep(0.15)
-            # Submit push function for each dataset path
-            for dataset_path_tuple in zip(datasets):
-                dataset_path = str(dataset_path_tuple[0]).strip()
-                # executor.submit(push_single_association(), dataset_path, IP, port)
-                executor.submit(push_single_association, dataset_path, IP, port)
+            future_to_dataset = {
+                executor.submit(push_single_association, str(dataset).strip(), IP, port): str(dataset).strip()
+                for dataset in datasets if str(dataset).strip() not in failed_datasets
+            }
+
+            for future in as_completed(future_to_dataset):
+                dataset_path = future_to_dataset[future]
+                try:
+                    future.result()
+                    successful_datasets.append(dataset_path)
+                    logger.info(f"✅ Successfully completed push for dataset: {dataset_path}")
+                except Exception as e:
+                    failed_datasets.append(dataset_path)
+                    logger.error(f"❌ Failed to push dataset {dataset_path}: {e}")
+                    # Continue with other datasets instead of sys.exit()
+                    continue
 
     else:
         logger.info("parallel data push : False")
-        # Iterate over each dataset path and call push sequentially
         time.sleep(0.15)
         for dataset_path in datasets:
             dataset_path_str = str(dataset_path).strip()
-            if multi_associations == "True":
-                if batch_count >= 2:
-                    push_multi_associations(dataset_path_str, IP, port, batch_count, batch_delay)
+            if dataset_path_str in failed_datasets:
+                continue
+
+            try:
+                if multi_associations == "True":
+                    if batch_count >= 2:
+                        push_multi_associations(dataset_path_str, IP, port, batch_count, batch_delay)
+                    else:
+                        logger.warning(f"⚠️ batch_count is {batch_count}, must be >= 2 when using multi_associations. Falling back to single association push.")
+                        push_single_association(dataset_path_str, IP, port)
                 else:
-                    logger.warning(f"⚠️  batch_count is {batch_count}, must be >= 2 when using multi_associations. Falling back to single association push.")
                     push_single_association(dataset_path_str, IP, port)
-            else:
-                push_single_association(dataset_path_str, IP, port)
+                successful_datasets.append(dataset_path_str)
+            except Exception as e:
+                failed_datasets.append(dataset_path_str)
+                logger.error(f"❌ Push failed for dataset {dataset_path_str}: {e}")
+                continue  # Continue with next dataset instead of sys.exit()
+
+    # Summary report
+    total_datasets = len(datasets)
+    logger.info("\n=== Dataset Push Summary ===")
+    logger.info(f"Total Datasets: {total_datasets}")
+    logger.info(f"Successfully Pushed: {len(successful_datasets)}")
+    logger.info(f"Failed: {len(failed_datasets)}")
+    if failed_datasets:
+        logger.info("Failed Datasets:")
+        for failed in failed_datasets:
+            logger.info(f"  - {failed}")
+
+    # Only exit with error if all datasets failed
+    if len(failed_datasets) == total_datasets:
+        logger.error("❌ All dataset pushes failed")
+        sys.exit(1)
 
     return series_descriptions_list, series_instance_uids_list, study_instance_uids_list, patient_names_list
+
 
 # push_executor("127.0.0.1", "58742", ["/Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/dataset_bundles/Datasets/Stroke_Demo_Larry_LVO", "/Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/dataset_bundles/MiniRegression/Hyper"],"True")

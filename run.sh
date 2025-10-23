@@ -39,7 +39,6 @@ echo "Job name: $JOB_NAME"
 echo "Build number: $BUILD_NUMBER"
 echo "Build path: $BUILD_PATH_HOME"
 
-
 # Copies the original global.json to the Jenkins workspace for editing.
 global_json_file="/onPrem/pytest_automation/global.json"
 cp "$global_json_file" "$BUILD_PATH_HOME/global.json"
@@ -78,6 +77,7 @@ jq  --arg dataset_path "$DATASET_PATH" \
      .upload_dataset_params.remote_port = $remote_port |
      .upload_dataset_params.parallel_push = $parallel_push |
      .push_via = $push_via |
+     .clear_site = $clear_site |
      .use_external_ip = $use_external_ip |
      .multi_associations = $multi_associations |
      .multi_asso_batch_count = ($multi_asso_batch_count | tonumber) |

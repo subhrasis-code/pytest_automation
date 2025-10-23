@@ -26,12 +26,13 @@ def status(local_task_workflow_id_CSV_path, conductorUI_local_port):
             reader = csv.reader(csvfile)
             # Skip the header row
             next(reader)
-
+            print(reader)
             # Iterate over each row in the CSV file
             for row in reader:
                 correlation_id = row[2]
+                print(f"correlation_id : {correlation_id}")
                 search_workflows_url = f"http://localhost:{conductorUI_local_port}/api/workflow/search?start=0&size=5&sort=startTime%3ADESC&freeText={correlation_id}&query="
-
+                print(f"search_workflows_url : {search_workflows_url}")
                 try:
                     response = requests.get(url=search_workflows_url)
                     time.sleep(0.1)
@@ -79,6 +80,6 @@ def status(local_task_workflow_id_CSV_path, conductorUI_local_port):
     print(f"Result is ready in {current_directory}/logger.log.")
 
 
-# status(
-#     "/Users/subhrasis/Documents/Rapid_pythonScripts/Auto_modules_6_2/onPrem/fetchTaskIDWorkflowID/logger/local_task_workflow_ids.csv",
-#     "5000")
+status(
+    "/Users/zinnov/Documents/Auto_modules_6_2/onPrem/pytest_automation/fetchTaskIDWorkflowID/local_task_workflow_ids.csv",
+    "5000")
