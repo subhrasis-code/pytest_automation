@@ -210,3 +210,261 @@
 [2025-07-02 20:51:26] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 63.5146107673645 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | PatientName: rv_12,rv_12 | PatientAge: 105Y | /rapid_data/task_data/site1/RVLV/131_2813/output.json
 
 [2025-07-09 14:08:55] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 51.9549400806427 | NumberOfSlices: 54 | ich_version: 3.0 | HemorrhageDetected: True | Description: ICH suspected | ModuleName: ICH | PatientName: ich_01,ich_01 | PatientAge: 027Y | /rapid_data/task_data/site1/hemorrhage/768_7923/output.json
+
+[2025-10-30 12:40:21] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 20.846906900405884 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | PatientName: Lisa^Ashley^Smith | PatientAge: 032Y | /rapid_data/task_data/rma_atri/Hyperdensity/118_118/output.json
+
+[2025-10-30 12:40:26] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 19.5561 | NumberOfSlices: 36 | Description: Overview of all slices | ModuleName: SDH | SDHSuspected: False | PatientName: Lisa^Ashley^Smith | PatientAge: 032Y | /rapid_data/task_data/rma_atri/sdh/116_116/output.json
+
+[2025-10-30 12:40:32] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 36 | NumberOfSlices: 36 | HemorrhageDetected: False | Description: Hemorrhage Overview | ModuleName: ICH | PatientName: Lisa^Ashley^Smith | PatientAge: 032Y | /rapid_data/task_data/rma_atri/hemorrhage/114_114/output.json
+
+[2025-10-30 12:40:37] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 65 | NumberOfSlices: 36 | Description: Report hypodensity | ModuleName: Hypodensity | PatientName: Lisa^Ashley^Smith | PatientAge: 032Y | /rapid_data/task_data/rma_atri/Hypodensity/119_119/output.json
+
+[2025-10-30 12:40:43] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 0.233 | NumberOfSlices: 36 | NCCTStrokeLVOSuspected: False | Description: NCCT Stroke Overview Image | ModuleName: NCCT Stroke | PatientName: Lisa^Ashley^Smith | PatientAge: 032Y | /rapid_data/task_data/rma_atri/NCCTStroke/115_115/output.json
+
+[2025-10-30 12:40:48] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 75 | ProcessingTimeSeconds: 75 | NumberOfSlices: 36 | scoreLeftHemisphere: 9 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | PatientName: Lisa^Ashley^Smith | PatientAge: 032Y | /rapid_data/task_data/rma_atri/Octopus/117_117/output.json
+
+[2025-10-30 13:14:47] returnCodeDescription: No error | processingTimeInSeconds: 1.4424 | NumberOfSlices: 36 | valueString: REJECTED | scanCaution:  | scanRejected: True | moduleName: OH | PatientName: Crystal^Amy^Frederick | PatientAge: 015Y | /rapid_data/task_data/rma_atri/OH/137_137/output.json
+
+[2025-10-30 13:26:47] returnCodeDescription: No error | processingTimeInSeconds: 1.4221 | NumberOfSlices: 36 | valueString: REJECTED | scanCaution:  | scanRejected: True | moduleName: OH | PatientName: Hannah^Kristina^Wilson | PatientAge: 085Y | /rapid_data/task_data/rma_atri/OH/143_143/output.json
+
+[2025-10-30 13:34:35] returnCodeDescription: No error | processingTimeInSeconds: 1.4331 | NumberOfSlices: 36 | valueString: REJECTED | scanCaution:  | scanRejected: True | moduleName: OH | PatientName: Allison^Amy^Johnson | PatientAge: 016Y | /rapid_data/task_data/rma_atri/OH/149_149/output.json
+
+[2025-10-31 12:34:14] returnCodeDescription: No error | processingTimeInSeconds: 1.2558 | NumberOfSlices: 36 | valueString: REJECTED | scanCaution:  | scanRejected: True | moduleName: OH | PatientName: Sabrina^Rhonda^Baker | PatientAge: 003Y | /rapid_data/task_data/rma_atri/OH/157_157/output.json
+
+[2025-10-31 12:34:20] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 70 | ProcessingTimeSeconds: 70 | NumberOfSlices: 36 | scoreLeftHemisphere: 9 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | PatientName: Sabrina^Rhonda^Baker | PatientAge: 003Y | /rapid_data/task_data/rma_atri/Octopus/156_156/output.json
+
+[2025-11-04 14:17:05] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeSeconds: 94 | NumberOfSlices: 11 | Description: CBF/Tmax Mismatch | ModuleName: Mismatch | PatientName: 911_3638348 | PatientAge: 083Y | /rapid_data/task_data/site1/Mismatch/224_9209/output.json
+
+[2025-11-05 11:36:05] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 18.100855588912964 | NumberOfSlices: 36 | NumberOfSlicesAffected: 17 | ich_version: 3.0 | HemorrhageDetected: False | Description: Overview of all slices | ModuleName: ICH | ArtifactsDetected: True | NCCTArtifactsJSONFilename: /rapid_data/task_data/ghrmsite/ncctArtifactDetection/2_2/artifact_output.json | PatientName: Tiffany^Jeffrey | PatientAge: 003Y | /rapid_data/task_data/ghrmsite/hemorrhage/2_2/output.json
+
+[2025-11-05 11:36:10] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 18.8611 | NumberOfSlices: 36 | NumberOfSlicesAffected: 17 | Description: Overview of all slices | ModuleName: SDH | ArtifactsDetected: True | NCCTArtifactsJSONFilename: /rapid_data/task_data/ghrmsite/ncctArtifactDetection/2_2/artifact_output.json | SDHSuspected: False | PatientName: Tiffany^Jeffrey | PatientAge: 003Y | /rapid_data/task_data/ghrmsite/sdh/4_8/output.json
+
+[2025-11-05 11:36:16] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 0.21 | NumberOfSlices: 36 | NCCTStrokeLVOSuspected: False | Description: NCCT Stroke Overview Image | ModuleName: NCCT Stroke | ArtifactsDetected: True | PatientName: Tiffany^Jeffrey | PatientAge: 003Y | /rapid_data/task_data/ghrmsite/NCCTStroke/3_3/output.json
+
+[2025-11-05 12:04:03] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 17.900514364242554 | NumberOfSlices: 36 | NumberOfSlicesAffected: 17 | ich_version: 3.0 | HemorrhageDetected: False | Description: Overview of all slices | ModuleName: ICH | ArtifactsDetected: True | NCCTArtifactsJSONFilename: /rapid_data/task_data/ghrmsite/ncctArtifactDetection/30_30/artifact_output.json | PatientName: ncct_05,ncct_05^ | PatientAge: 031Y | /rapid_data/task_data/ghrmsite/hemorrhage/30_30/output.json
+
+[2025-11-05 12:04:08] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 18.8979 | NumberOfSlices: 36 | NumberOfSlicesAffected: 17 | Description: Overview of all slices | ModuleName: SDH | ArtifactsDetected: True | NCCTArtifactsJSONFilename: /rapid_data/task_data/ghrmsite/ncctArtifactDetection/30_30/artifact_output.json | SDHSuspected: False | PatientName: ncct_05,ncct_05^ | PatientAge: 031Y | /rapid_data/task_data/ghrmsite/sdh/32_36/output.json
+
+[2025-11-05 12:04:14] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 0.174 | NumberOfSlices: 36 | NCCTStrokeLVOSuspected: False | Description: NCCT Stroke Overview Image | ModuleName: NCCT Stroke | ArtifactsDetected: True | PatientName: ncct_05,ncct_05^ | PatientAge: 031Y | /rapid_data/task_data/ghrmsite/NCCTStroke/31_31/output.json
+
+[2025-11-05 12:04:20] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 78.34928035736084 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | PatientName: rvlv_08,rvlv_08^ | PatientAge: 077Y | /rapid_data/task_data/ghrmsite/PETN/42_42/output.json
+
+[2025-11-05 12:04:25] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 46.131431579589844 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | PatientName: rvlv_08,rvlv_08^ | PatientAge: 077Y | /rapid_data/task_data/ghrmsite/RVLV/43_43/output.json
+
+[2025-11-05 12:13:39] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 53.54072546958923 | NumberOfSlices: 54 | NumberOfSlicesAffected: 0 | ich_version: 3.0 | HemorrhageDetected: True | Description: ICH suspected | ModuleName: ICH | ArtifactsDetected: False | NCCTArtifactsJSONFilename: /rapid_data/task_data/ghrmsite/ncctArtifactDetection/59_59/artifact_output.json | PatientName: ich_v3,ich_v3^ | PatientAge: 029Y | /rapid_data/task_data/ghrmsite/hemorrhage/59_59/output.json
+
+[2025-11-05 12:13:44] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 83 | ProcessingTimeSeconds: 83 | NumberOfSlices: 44 | scoreLeftHemisphere: 10 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | ArtifactsDetected: True | PatientName: asp11,asp11^ | PatientAge: 052Y | /rapid_data/task_data/ghrmsite/Octopus/58_58/output.json
+
+[2025-11-05 13:00:16] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 141 | NumberOfSlices: 510 | LVODetectionEnabled: False | LVODetected: True | USAVersionLimitation: True | VesselDensityRatio: 0.444 | Description: MIP I-S lvo | ModuleName: CTA/LVO | PatientName: cta_006,cta_006^ | PatientAge: 065Y | /rapid_data/task_data/ghrmsite/angio/79_79/output.json
+
+[2025-11-05 13:00:22] returnCodeDescription: No error | processingTimeInSeconds: 47.72 | NumberOfSlices: 510 | valueString: PROCESSED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: CINA_IPE | PatientName: cta_006,cta_006^ | PatientAge: 065Y | /rapid_data/task_data/ghrmsite/IPE/80_80/output.json
+
+[2025-11-05 13:00:29] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeSeconds: 135 | NumberOfSlices: 11 | Description: CBF/Tmax Mismatch | ModuleName: Mismatch | PatientName: mis_03,mis_03^ | PatientAge: 033Y | /rapid_data/task_data/ghrmsite/Mismatch/95_95/output.json
+
+[2025-11-05 13:00:35] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 282.0028 | NumberOfSlices: 510 | Description: RAPID CTA MIP | ModuleName: RAPIDNEURO3D | PatientName: cta_006,cta_006^ | PatientAge: 065Y | /rapid_data/task_data/ghrmsite/neuro3d/82_82/output.json
+
+[2025-11-05 16:18:28] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 106.29553866386414 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | PatientName: rvlv_prem,rvlv_prem | PatientAge: 077Y | /rapid_data/task_data/ghrmsite/PETN/126_128/output.json
+
+[2025-11-05 16:18:34] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 62.804961919784546 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | PatientName: rvlv_prem,rvlv_prem | PatientAge: 077Y | /rapid_data/task_data/ghrmsite/RVLV/127_129/output.json
+
+[2025-11-05 16:18:39] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 0.291 | NumberOfSlices: 36 | NCCTStrokeLVOSuspected: False | Description: NCCT Stroke Overview Image | ModuleName: NCCT Stroke | ArtifactsDetected: True | PatientName: ncct_prem,ncct_prem | PatientAge: 031Y | /rapid_data/task_data/ghrmsite/NCCTStroke/124_124/output.json
+
+[2025-11-05 17:13:38] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 71.93430066108704 | NumberOfSlices: 54 | NumberOfSlicesAffected: 0 | ich_version: 3.0 | HemorrhageDetected: True | Description: ICH suspected | ModuleName: ICH | ArtifactsDetected: False | NCCTArtifactsJSONFilename: /rapid_data/task_data/ghrmsite/ncctArtifactDetection/179_182/artifact_output.json | PatientName: ich_v3_prem,ich_v3_prem | PatientAge: 029Y | /rapid_data/task_data/ghrmsite/hemorrhage/179_182/output.json
+
+[2025-11-05 17:13:44] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 95 | ProcessingTimeSeconds: 95 | NumberOfSlices: 44 | scoreLeftHemisphere: 10 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | ArtifactsDetected: True | PatientName: asp_prem,asp_prem | PatientAge: 052Y | /rapid_data/task_data/ghrmsite/Octopus/180_183/output.json
+
+[2025-11-05 18:11:09] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 275.3351 | NumberOfSlices: 510 | Description: RAPID CTA MIP | ModuleName: RAPIDNEURO3D | PatientName: cta_neuro,cta_neuro^ | PatientAge: 065Y | /rapid_data/task_data/ghrmsite/neuro3d/195_198/output.json
+
+[2025-11-06 09:35:02] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 46.393731355667114 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | PatientName: rvlv_rma,rvlv_rma^ | PatientAge: 079Y | /rapid_data/task_data/ghrmsite/RVLV/228_231/output.json
+
+[2025-11-06 09:35:08] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 81.41982984542847 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | PatientName: rvlv_rma,rvlv_rma^ | PatientAge: 079Y | /rapid_data/task_data/ghrmsite/PETN/227_230/output.json
+
+[2025-11-24 16:35:00] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 111 | ProcessingTimeSeconds: 111 | NumberOfSlices: 44 | scoreLeftHemisphere: 10 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | PatientName: asp1_prem,asp1_prem | PatientAge: 052Y | /rapid_data/task_data/site1/Octopus/585_4411/output.json
+
+[2025-11-24 17:12:32] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 60 | NumberOfSlices: 44 | HemorrhageDetected: False | Description: Hemorrhage Overview | ModuleName: ICH | PatientName: asp1,asp1 | PatientAge: 052Y | /rapid_data/task_data/site1/hemorrhage/610_4437/output.json
+
+[2025-11-24 17:12:37] ReturnCodeDescription: No Error | ReturnCode: 0 | ProcessingTimeSeconds: 48 | NumberOfSlices: 54 | HemorrhageDetected: True | Description: Hemorrhage Summary | ModuleName: ICH | PatientName: Sterling^Olinda | PatientAge: 090Y | /rapid_data/task_data/site1/hemorrhage/612_4439/output.json
+
+[2025-11-24 17:19:52] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 82.01160597801208 | NumberOfSlices: 54 | ich_version: 3.0 | HemorrhageDetected: True | Description: ICH suspected | ModuleName: ICH | PatientName: ich_v3_prem,ich_v3_prem | PatientAge: 029Y | /rapid_data/task_data/site1/hemorrhage/624_4451/output.json
+
+[2025-11-24 17:52:49] returnCodeDescription: No error | processingTimeInSeconds: 26.7905 | NumberOfSlices: 50 | valueString: SUSPECTED | scanCaution: {'cautionReasons': []} | moduleName: OH | PatientName: oh_susp,oh_susp | PatientAge: 014Y | /rapid_data/task_data/site1/OH/637_4464/output.json
+
+[2025-11-24 17:52:55] returnCodeDescription: no error | processingTimeInSeconds: 52.6074 | NumberOfSlices: 36 | scanCaution: {'cautionReasons': [], 'scanCaution': False} | scanRejected: False | moduleName: MLS | PatientName: 1052 | /rapid_data/task_data/site1/MLS/634_4461/output.json
+
+[2025-11-24 17:53:00] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 51.4884 | NumberOfSlices: 36 | Description: Suspected Hemispheric SDH | ModuleName: SDH | SDHSuspected: True | PatientName: 1052 | PatientAge:  | /rapid_data/task_data/site1/sdh/633_4460/output.json
+
+[2025-11-24 18:41:02] returnCodeDescription: No error | processingTimeInSeconds: 192.35 | NumberOfSlices: 161 | valueString: SUSPECTED | scanCaution: {'cautionReasons': [], 'scanCaution': False} | scanRejected: False | moduleName: CINA_CSPINE | PatientName: cspine_pos,cspine_pos | PatientAge: 056Y | /rapid_data/task_data/site1/CSPINE/654_4481/output.json
+
+[2025-11-25 12:57:58] returnCodeDescription: No error | processingTimeInSeconds: 1.3834 | NumberOfSlices: 36 | valueString: REJECTED | scanCaution:  | scanRejected: True | moduleName: OH | PatientName: Tiffany^Jeffrey^Powers | PatientAge: 003Y | /rapid_data/task_data/rma_66/OH/2_2/output.json
+
+[2025-11-25 12:58:04] returnCodeDescription: No Error | processingTimeInSeconds: 202.632 | NumberOfSlices: 510 | valueString: SUSPECTED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: VOPLUS | PatientName: cta_neuro,cta_neuro | PatientAge: 065Y | /rapid_data/task_data/rma_66/VOPLUS/10_10/output.json
+
+[2025-11-25 14:49:58] returnCodeDescription: No error | processingTimeInSeconds: 29.0253 | NumberOfSlices: 50 | valueString: SUSPECTED | scanCaution:  | moduleName: OH | PatientName: kohop,a029 | PatientAge: 065Y | /rapid_data/task_data/rma_66/OH/29_29/output.json
+
+[2025-11-25 16:36:25] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 27.446162462234497 | NumberOfSlices: 36 | ich_version: 3.0 | HemorrhageDetected: False | Description: Overview of all slices | ModuleName: ICH | PatientName: Tiffany^Jeffrey^Powers | PatientAge: 003Y | /rapid_data/task_data/rma_66/hemorrhage/58_58/output.json
+
+[2025-11-25 16:36:30] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 90 | NumberOfSlices: 36 | Description: Report hypodensity | ModuleName: Hypodensity | PatientName: Tiffany^Jeffrey^Powers | PatientAge: 003Y | /rapid_data/task_data/rma_66/Hypodensity/63_63/output.json
+
+[2025-11-25 16:36:36] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 28.7245 | NumberOfSlices: 36 | Description: Overview of all slices | ModuleName: SDH | SDHSuspected: False | PatientName: Tiffany^Jeffrey^Powers | PatientAge: 003Y | /rapid_data/task_data/rma_66/sdh/60_60/output.json
+
+[2025-11-25 16:36:41] returnCodeDescription: No error | processingTimeInSeconds: 1.4346 | NumberOfSlices: 36 | valueString: REJECTED | scanCaution:  | scanRejected: True | moduleName: OH | PatientName: Tiffany^Jeffrey^Powers | PatientAge: 003Y | /rapid_data/task_data/rma_66/OH/64_64/output.json
+
+[2025-11-25 16:36:46] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 287 | ProcessingTimeSeconds: 287 | NumberOfSlices: 36 | scoreLeftHemisphere: 7 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS1 | PatientName: Tiffany^Jeffrey^Powers | PatientAge: 003Y | /rapid_data/task_data/rma_66/Octopus/61_61/output.json
+
+[2025-11-25 16:36:52] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 168.08385252952576 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | PatientName: rvlv_rma,rvlv_rma | PatientAge: 079Y | /rapid_data/task_data/rma_66/PETN/71_71/output.json
+
+[2025-11-25 16:36:58] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 25.8920476436615 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | PatientName: Tiffany^Jeffrey^Powers | PatientAge: 003Y | /rapid_data/task_data/rma_66/Hyperdensity/62_62/output.json
+
+[2025-11-25 16:37:04] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 75.26660084724426 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | PatientName: rvlv_rma,rvlv_rma | PatientAge: 079Y | /rapid_data/task_data/rma_66/RVLV/73_76/output.json
+
+[2025-11-25 20:08:37] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeSeconds: 140 | NumberOfSlices: 11 | Description: CBF/Tmax Mismatch | ModuleName: Mismatch | PatientName: mis_new1,mis_new1 | PatientAge: 033Y | /rapid_data/task_data/rma_66/Mismatch/176_329/output.json
+
+[2025-11-26 13:45:27] returnCodeDescription: no error | processingTimeInSeconds: 52.6734 | NumberOfSlices: 36 | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: MLS | PatientName: mls_susp_2,mls_susp_2 | PatientAge: 034Y | /rapid_data/task_data/rma_eco/MLS/91_1932/output.json
+
+[2025-11-26 13:45:31] returnCodeDescription: No error | processingTimeInSeconds: 187.83 | NumberOfSlices: 161 | valueString: SUSPECTED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: CINA_CSPINE | PatientName: cspine_pos,cspine_pos | PatientAge: 056Y | /rapid_data/task_data/rma_eco/CSPINE/96_1937/output.json
+
+[2025-11-26 15:07:10] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 33.175119400024414 | NumberOfSlices: 67 | ich_version: 3.0 | HemorrhageDetected: False | Description: Overview of all slices | ModuleName: ICH | PatientName: ich_ncct^no_hem_no_motion | PatientAge: 041Y | /rapid_data/task_data/rma_eco/hemorrhage/142_2471/output.json
+
+[2025-11-26 15:07:14] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 36.1749 | NumberOfSlices: 67 | Description: Overview of all slices | ModuleName: SDH | SDHSuspected: False | PatientName: ich_ncct^no_hem_no_motion | PatientAge: 041Y | /rapid_data/task_data/rma_eco/sdh/144_2473/output.json
+
+[2025-11-26 15:07:17] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 25.181755542755127 | NumberOfSlices: 67 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | PatientName: ich_ncct^no_hem_no_motion | PatientAge: 041Y | /rapid_data/task_data/rma_eco/Hyperdensity/146_2475/output.json
+
+[2025-11-26 15:07:21] returnCodeDescription: No error | processingTimeInSeconds: 20.0811 | NumberOfSlices: 67 | valueString: PROCESSED | scanCaution: {'cautionReasons': []} | moduleName: OH | PatientName: ich_ncct^no_hem_no_motion | PatientAge: 041Y | /rapid_data/task_data/rma_eco/OH/149_2483/output.json
+
+[2025-11-26 15:07:26] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 136 | NumberOfSlices: 67 | Description: Report hypodensity | ModuleName: Hypodensity | PatientName: ich_ncct^no_hem_no_motion | PatientAge: 041Y | /rapid_data/task_data/rma_eco/Hypodensity/147_2476/output.json
+
+[2025-11-26 15:07:30] returnCodeDescription: no error | processingTimeInSeconds: 52.9671 | NumberOfSlices: 67 | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: MLS | PatientName: ich_ncct^no_hem_no_motion | PatientAge: 041Y | /rapid_data/task_data/rma_eco/MLS/150_2478/output.json
+
+[2025-11-26 15:07:33] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 0.21 | NumberOfSlices: 67 | NCCTStrokeLVOSuspected: False | Description: NCCT Stroke Overview Image | ModuleName: NCCT Stroke | PatientName: ich_ncct^no_hem_no_motion | PatientAge: 041Y | /rapid_data/task_data/rma_eco/NCCTStroke/143_2472/output.json
+
+[2025-11-26 15:07:36] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 251 | ProcessingTimeSeconds: 251 | NumberOfSlices: 67 | scoreLeftHemisphere: 10 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS1 | PatientName: ich_ncct^no_hem_no_motion | PatientAge: 041Y | /rapid_data/task_data/rma_eco/Octopus/145_2474/output.json
+
+[2025-11-26 18:04:50] returnCodeDescription: No error | processingTimeInSeconds: 554.251 | NumberOfSlices: 611 | AneurysmSuspected: True | valueString: SUSPECTED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: ANRTN | PatientAge: 019Y | /rapid_data/task_data/rma_66/ANRTN/182_335/output.json
+
+[2025-11-27 13:20:19] returnCodeDescription: No error | processingTimeInSeconds: 561.037 | NumberOfSlices: 611 | AneurysmSuspected: True | valueString: SUSPECTED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: ANRTN | PatientAge: 047Y | /rapid_data/task_data/rma_66/ANRTN/189_342/output.json
+
+[2025-11-27 14:09:57] returnCodeDescription: No error | processingTimeInSeconds: 575.266 | NumberOfSlices: 611 | AneurysmSuspected: True | valueString: SUSPECTED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: ANRTN | PatientAge: 059Y | /rapid_data/task_data/rma_66/ANRTN/196_349/output.json
+
+[2025-11-27 22:41:50] returnCodeDescription: No error | processingTimeInSeconds: 541.666 | NumberOfSlices: 611 | AneurysmSuspected: True | valueString: SUSPECTED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: ANRTN | PatientName: anr_q3,anr_q3 | PatientAge: 060Y | /rapid_data/task_data/rma_66/ANRTN/203_356/output.json
+
+[2025-11-28 12:57:57] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 46.920947790145874 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | PatientName: rvlv_new_1,rvlv_new_1 | PatientAge: 063Y | /rapid_data/task_data/rma_66/RVLV/210_363/output.json
+
+[2025-11-28 14:08:25] returnCodeDescription: No error | processingTimeInSeconds: 552.231 | NumberOfSlices: 611 | AneurysmSuspected: True | valueString: SUSPECTED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: ANRTN | PatientAge: 060Y | /rapid_data/task_data/rma_eco/ANRTN/226_7415/output.json
+
+[2025-11-28 14:33:33] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 48.66481876373291 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | PatientName: rvlv_new_1,rvlv_new_1 | PatientAge: 063Y | /rapid_data/task_data/rma_eco/RVLV/231_7424/output.json
+
+[2025-12-01 18:41:25] returnCodeDescription: No error | processingTimeInSeconds: 65.2 | NumberOfSlices: 601 | valueString: PROCESSED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: CINA_VCF | PatientName: Andy AAA | PatientAge: 072Y | /rapid_data/task_data/rma_66/VCF/250_471/output.json
+
+[2025-12-02 22:00:16] returnCodeDescription: No error | processingTimeInSeconds: 1.1284 | NumberOfSlices: 36 | valueString: REJECTED | scanCaution:  | scanRejected: True | moduleName: OH | PatientName: ich_aspects,ich_aspects | PatientAge: 003Y | /rapid_data/task_data/rm_sand/OH/8_8/output.json
+
+[2025-12-02 22:00:22] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 29.6735 | NumberOfSlices: 36 | Description: Overview of all slices | ModuleName: SDH | SDHSuspected: False | PatientName: ich_aspects,ich_aspects | PatientAge: 003Y | /rapid_data/task_data/rm_sand/sdh/4_4/output.json
+
+[2025-12-02 22:00:28] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 96 | NumberOfSlices: 36 | Description: Report hypodensity | ModuleName: Hypodensity | PatientName: ich_aspects,ich_aspects | PatientAge: 003Y | /rapid_data/task_data/rm_sand/Hypodensity/7_7/output.json
+
+[2025-12-02 22:00:34] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 298 | ProcessingTimeSeconds: 298 | NumberOfSlices: 36 | scoreLeftHemisphere: 7 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS1 | PatientName: ich_aspects,ich_aspects | PatientAge: 003Y | /rapid_data/task_data/rm_sand/Octopus/5_5/output.json
+
+[2025-12-02 22:00:40] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 29.932019233703613 | NumberOfSlices: 36 | ich_version: 3.0 | HemorrhageDetected: False | Description: Overview of all slices | ModuleName: ICH | PatientName: ich_aspects,ich_aspects | PatientAge: 003Y | /rapid_data/task_data/rm_sand/hemorrhage/2_2/output.json
+
+[2025-12-02 22:00:47] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 214 | NumberOfSlices: 510 | LVODetectionEnabled: False | LVODetected: True | USAVersionLimitation: True | VesselDensityRatio: 0.444 | Description: MIP I-S lvo | ModuleName: CTA/LVO | PatientName: cta_new,cta_new | PatientAge: 065Y | /rapid_data/task_data/rm_sand/angio/33_33/output.json
+
+[2025-12-02 22:00:53] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 187.76987648010254 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | PatientName: rvlv_new_1,rvlv_new_1 | PatientAge: 063Y | /rapid_data/task_data/rm_sand/PETN/21_21/output.json
+
+[2025-12-02 22:00:59] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 76.68898606300354 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | PatientName: rvlv_new_1,rvlv_new_1 | PatientAge: 063Y | /rapid_data/task_data/rm_sand/RVLV/22_22/output.json
+
+[2025-12-02 22:01:05] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeSeconds: 183 | NumberOfSlices: 11 | Description: CBF/Tmax Mismatch | ModuleName: Mismatch | PatientName: mis_new1,mis_new1 | PatientAge: 033Y | /rapid_data/task_data/rm_sand/Mismatch/39_39/output.json
+
+[2025-12-03 01:25:38] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 77.21508550643921 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | PatientName: rvlv_new_1,rvlv_new_1 | PatientAge: 063Y | /rapid_data/task_data/rm_sand/RVLV/57_281/output.json
+
+[2025-12-03 01:25:46] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 174.70071053504944 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | PatientName: rvlv_new_1,rvlv_new_1 | PatientAge: 063Y | /rapid_data/task_data/rm_sand/PETN/56_280/output.json
+
+[2025-12-03 02:53:25] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 74.209 | NumberOfSlices: 50 | Description: Suspected Hemispheric SDH | ModuleName: SDH | SDHSuspected: True | PatientName: oh_susp,oh_susp | PatientAge: 014Y | /rapid_data/task_data/rm_sand/sdh/73_467/output.json
+
+[2025-12-03 02:53:31] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 105.6599 | NumberOfSlices: 175 | Description: Suspected Hemispheric SDH | ModuleName: SDH | SDHSuspected: True | PatientName: sdh_new,sdh_new | PatientAge: 021Y | /rapid_data/task_data/rm_sand/sdh/85_483/output.json
+
+[2025-12-03 02:53:36] returnCodeDescription: No error | processingTimeInSeconds: 41.0794 | NumberOfSlices: 175 | valueString: PROCESSED | scanCaution:  | moduleName: OH | PatientName: sdh_new,sdh_new | PatientAge: 021Y | /rapid_data/task_data/rm_sand/OH/86_484/output.json
+
+[2025-12-03 02:53:41] returnCodeDescription: No error | processingTimeInSeconds: 27.6797 | NumberOfSlices: 50 | valueString: SUSPECTED | scanCaution:  | moduleName: OH | PatientName: oh_susp,oh_susp | PatientAge: 014Y | /rapid_data/task_data/rm_sand/OH/74_468/output.json
+
+[2025-12-10 16:31:18] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 214 | ProcessingTimeSeconds: 214 | NumberOfSlices: 44 | scoreLeftHemisphere: 10 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS1 | PatientName: asp_new,asp_new | PatientAge: 052Y | /rapid_data/task_data/rm_67/Octopus/7_7/output.json
+
+[2025-12-10 16:31:26] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 45.512593030929565 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | PatientName: rvlv_new_1,rvlv_new_1 | PatientAge: 063Y | /rapid_data/task_data/rm_67/RVLV/14_14/output.json
+
+[2025-12-10 16:31:36] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 147 | NumberOfSlices: 510 | LVODetectionEnabled: False | LVODetected: True | USAVersionLimitation: True | VesselDensityRatio: 0.444 | Description: MIP I-S lvo | ModuleName: CTA/LVO | PatientName: cta_new,cta_new | PatientAge: 065Y | /rapid_data/task_data/rm_67/angio/25_25/output.json
+
+[2025-12-10 16:31:45] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 81.58056974411011 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | PatientName: rvlv_new_1,rvlv_new_1 | PatientAge: 063Y | /rapid_data/task_data/rm_67/PETN/13_13/output.json
+
+[2025-12-10 16:31:55] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeSeconds: 134 | NumberOfSlices: 11 | Description: CBF/Tmax Mismatch | ModuleName: Mismatch | PatientName: mis_new1,mis_new1 | PatientAge: 033Y | /rapid_data/task_data/rm_67/Mismatch/38_38/output.json
+
+[2025-12-11 10:12:12] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 45.3253288269043 | NumberOfSlices: 44 | ich_version: 3.0 | HemorrhageDetected: False | Description: Overview of all slices | ModuleName: ICH | PatientName: asp_new3,asp_new3 | PatientAge: 052Y | /rapid_data/task_data/rm_67/hemorrhage/70_70/output.json
+
+[2025-12-11 10:12:21] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 81.29396390914917 | NumberOfSlices: 54 | ich_version: 3.0 | HemorrhageDetected: True | Description: ICH suspected | ModuleName: ICH | PatientName: ich_new,ich_new | PatientAge: 029Y | /rapid_data/task_data/rm_67/hemorrhage/73_79/output.json
+
+[2025-12-11 10:12:30] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 75 | ProcessingTimeSeconds: 75 | NumberOfSlices: 44 | scoreLeftHemisphere: 10 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS3 | PatientName: asp_new3,asp_new3 | PatientAge: 052Y | /rapid_data/task_data/rm_67/Octopus/71_71/output.json
+
+[2025-12-11 11:14:30] returnCodeDescription: No error | processingTimeInSeconds: 551.164 | NumberOfSlices: 611 | AneurysmSuspected: True | valueString: SUSPECTED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: ANRTN | PatientAge: 060Y | /rapid_data/task_data/rm_67/ANRTN/101_102/output.json
+
+[2025-12-11 12:46:41] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 18.6087 | NumberOfSlices: 36 | Description: Overview of all slices | ModuleName: SDH | SDHSuspected: False | PatientName: ncct_prem_1,ncct_prem_1 | PatientAge: 031Y | /rapid_data/task_data/rm_67/sdh/113_114/output.json
+
+[2025-12-11 12:46:50] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 0.161 | NumberOfSlices: 36 | NCCTStrokeLVOSuspected: False | Description: NCCT Stroke Overview Image | ModuleName: NCCT Stroke | PatientName: ncct_prem_1,ncct_prem_1 | PatientAge: 031Y | /rapid_data/task_data/rm_67/NCCTStroke/112_113/output.json
+
+[2025-12-11 12:47:03] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 33.9121 | NumberOfSlices: 36 | Description: Suspected Hemispheric SDH | ModuleName: SDH | SDHSuspected: True | PatientName: mls_susp_2,mls_susp_2 | PatientAge: 034Y | /rapid_data/task_data/rm_67/sdh/110_111/output.json
+
+[2025-12-11 13:10:13] returnCodeDescription: No error | processingTimeInSeconds: 27.0794 | NumberOfSlices: 50 | valueString: SUSPECTED | scanCaution:  | moduleName: OH | PatientName: kohop,a029 | PatientAge: 065Y | /rapid_data/task_data/rm_67/OH/141_144/output.json
+
+[2025-12-11 13:52:07] returnCodeDescription: No error | processingTimeInSeconds: 184.82 | NumberOfSlices: 161 | valueString: SUSPECTED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: CINA_CSPINE | PatientName: cspine_pos,cspine_pos | PatientAge: 056Y | /rapid_data/task_data/rm_67/CSPINE/149_152/output.json
+
+[2025-12-11 13:52:17] returnCodeDescription: No Error | processingTimeInSeconds: 179.072 | NumberOfSlices: 600 | valueString: SUSPECTED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: VO | PatientName: LVO_suspected1,LVO_suspected1 | PatientAge: 019Y | /rapid_data/task_data/rm_67/VO/156_159/output.json
+
+[2025-12-11 15:59:51] returnCodeDescription: No Error | processingTimeInSeconds: 46.204 | NumberOfSlices: 475 | valueString: REJECTED | scanCaution: {'scanCaution': False} | scanRejected: True | moduleName: VOPLUS | PatientName: vcf_suspected1,vcf_suspected1 | PatientAge: 019Y | /rapid_data/task_data/rm_67/VOPLUS/164_167/output.json
+
+[2025-12-12 13:54:44] returnCodeDescription: No error | processingTimeInSeconds: 114.711 | NumberOfSlices: 67 | scanCaution: {'cautionReasons': [{'code': 500, 'reason': 'using_std_head_position'}], 'scanCaution': True} | scanRejected: False | moduleName: DeltaFuse | PatientName: ich_ncct^no_hem_no_motion | PatientAge: 041Y | /rapid_data/task_data/rm_67/DELTAFUSE/220_223/output.json
+
+[2025-12-15 17:26:00] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 0.227 | NumberOfSlices: 44 | NCCTStrokeLVOSuspected: False | Description: NCCT Stroke Overview Image | ModuleName: NCCT Stroke | PatientName: asp_new3,asp_new3 | PatientAge: 052Y | /rapid_data/task_data/rma_site_67/NCCTStroke/50_49/output.json
+
+[2025-12-15 17:26:10] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 222 | ProcessingTimeSeconds: 222 | NumberOfSlices: 36 | scoreLeftHemisphere: 7 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS1 | PatientName: ncct_prem_1,ncct_prem_1 | PatientAge: 031Y | /rapid_data/task_data/rma_site_67/Octopus/46_46/output.json
+
+[2025-12-15 17:26:19] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 18.641 | NumberOfSlices: 36 | Description: Overview of all slices | ModuleName: SDH | SDHSuspected: False | PatientName: ncct_prem_1,ncct_prem_1 | PatientAge: 031Y | /rapid_data/task_data/rma_site_67/sdh/45_45/output.json
+
+[2025-12-15 17:26:29] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 0.208 | NumberOfSlices: 36 | NCCTStrokeLVOSuspected: False | Description: NCCT Stroke Overview Image | ModuleName: NCCT Stroke | PatientName: ncct_prem_1,ncct_prem_1 | PatientAge: 031Y | /rapid_data/task_data/rma_site_67/NCCTStroke/44_44/output.json
+
+[2025-12-15 17:26:38] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 42.6105170249939 | NumberOfSlices: 44 | ich_version: 3.0 | HemorrhageDetected: False | Description: Overview of all slices | ModuleName: ICH | PatientName: asp_new3,asp_new3 | PatientAge: 052Y | /rapid_data/task_data/rma_site_67/hemorrhage/49_58/output.json
+
+[2025-12-15 17:26:47] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 29.593928575515747 | NumberOfSlices: 36 | ich_version: 3.0 | HemorrhageDetected: False | Description: Overview of all slices | ModuleName: ICH | PatientName: ncct_prem_1,ncct_prem_1 | PatientAge: 031Y | /rapid_data/task_data/rma_site_67/hemorrhage/43_43/output.json
+
+[2025-12-15 17:26:56] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 223 | ProcessingTimeSeconds: 223 | NumberOfSlices: 44 | scoreLeftHemisphere: 10 | scoreRightHemisphere: 10 | Region: ROW | Description: input image, detilted and head holder removed | ModuleName: ASPECTS1 | PatientName: asp_new3,asp_new3 | PatientAge: 052Y | /rapid_data/task_data/rma_site_67/Octopus/51_50/output.json
+
+[2025-12-15 17:27:06] returnCodeDescription: No error | processingTimeInSeconds: 536.402 | NumberOfSlices: 611 | AneurysmSuspected: True | valueString: SUSPECTED | scanCaution: {'cautionReasons': [], 'scanCaution': False} | scanRejected: False | moduleName: ANRTN | PatientName: anr_q3,anr_q3 | PatientAge: 060Y | /rapid_data/task_data/rma_site_67/ANRTN/81_81/output.json
+
+[2025-12-22 18:28:03] returnCodeDescription: no error | processingTimeInSeconds: 48.7051 | NumberOfSlices: 36 | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: MLS | PatientName: mls_susp,mls_susp | PatientAge: 034Y | /rapid_data/task_data/site1/MLS/80_82/output.json
+
+[2025-12-22 18:28:15] returnCodeDescription: No error | processingTimeInSeconds: 53.85 | NumberOfSlices: 475 | valueString: REJECTED | scanCaution: {'scanCaution': False} | scanRejected: True | moduleName: CINA_IPE | PatientName: VCF,VCF | PatientAge: 019Y | /rapid_data/task_data/site1/IPE/128_138/output.json
+
+[2025-12-22 18:28:26] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 78.68455290794373 | NumberOfSlices: 228 | Description: Suspected PE | ModuleName: Rapid PE | PatientName: rvlv_pe,rvlv_pe | PatientAge: 063Y | /rapid_data/task_data/site1/PETN/112_117/output.json
+
+[2025-12-22 18:28:37] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 44.65792727470398 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | PatientName: rvlv_pe,rvlv_pe | PatientAge: 063Y | /rapid_data/task_data/site1/RVLV/113_118/output.json
+
+[2025-12-22 18:28:50] returnCodeDescription: No Error | processingTimeInSeconds: 32.651 | NumberOfSlices: 475 | valueString: REJECTED | scanCaution: {'scanCaution': False} | scanRejected: True | moduleName: VO | PatientName: VCF,VCF | PatientAge: 019Y | /rapid_data/task_data/site1/VO/133_143/output.json
+
+[2025-12-22 18:29:01] returnCodeDescription: No error | processingTimeInSeconds: 74.79 | NumberOfSlices: 567 | valueString: PROCESSED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: CINA_IPE | PatientName: neuro_01,neuro_01 | PatientAge: 050Y | /rapid_data/task_data/site1/IPE/150_169/output.json
+
+[2025-12-22 18:29:11] ReturnCodeDescription: no error | ReturnCode: 0 | ProcessingTimeInSeconds: 139 | NumberOfSlices: 510 | LVODetectionEnabled: False | LVODetected: True | USAVersionLimitation: True | VesselDensityRatio: 0.444 | Description: MIP I-S lvo | ModuleName: CTA/LVO | PatientName: cta_new,cta_new | PatientAge: 065Y | /rapid_data/task_data/site1/angio/137_147/output.json
+
+[2025-12-22 18:29:24] returnCodeDescription: No Error | processingTimeInSeconds: 38.49 | NumberOfSlices: 475 | valueString: REJECTED | scanCaution: {'scanCaution': False} | scanRejected: True | moduleName: VOPLUS | PatientName: VCF,VCF | PatientAge: 019Y | /rapid_data/task_data/site1/VOPLUS/132_142/output.json
+
+[2025-12-22 18:29:35] returnCodeDescription: No error | processingTimeInSeconds: 36.71 | NumberOfSlices: 510 | valueString: PROCESSED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: CINA_IPE | PatientName: cta_new,cta_new | PatientAge: 065Y | /rapid_data/task_data/site1/IPE/138_148/output.json
+
+[2025-12-22 18:29:45] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 26.025084257125854 | NumberOfSlices: 36 | Description: HYPE volume report | ModuleName: Rapid Hyperdensity | PatientName: mls_susp,mls_susp | PatientAge: 034Y | /rapid_data/task_data/site1/Hyperdensity/78_80/output.json
+
+[2025-12-22 18:29:54] returnCodeDescription: No error | processingTimeInSeconds: 25.7121 | NumberOfSlices: 50 | valueString: SUSPECTED | scanCaution:  | moduleName: OH | PatientName: OH_susp,OH_susp | PatientAge: 065Y | /rapid_data/task_data/site1/OH/84_86/output.json
+
+[2025-12-22 18:30:03] ReturnCodeDescription:  | ReturnCode: 0 | ProcessingTimeInSeconds: 57 | NumberOfSlices: 36 | Description: Report hypodensity | ModuleName: Hypodensity | PatientName: mls_susp,mls_susp | PatientAge: 034Y | /rapid_data/task_data/site1/Hypodensity/79_81/output.json
+
+[2025-12-22 18:30:15] returnCodeDescription: No Error | processingTimeInSeconds: 190.169 | NumberOfSlices: 510 | valueString: SUSPECTED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: VOPLUS | PatientName: cta_new,cta_new | PatientAge: 065Y | /rapid_data/task_data/site1/VOPLUS/142_160/output.json
+
+[2025-12-22 18:30:30] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 275.3035 | NumberOfSlices: 510 | Description: RAPID CTA MIP | ModuleName: RAPIDNEURO3D | PatientName: cta_new,cta_new | PatientAge: 065Y | /rapid_data/task_data/site1/neuro3d/140_156/output.json
+
+[2025-12-22 18:30:42] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 279.2716 | NumberOfSlices: 567 | Description: RAPID CTA MIP | ModuleName: RAPIDNEURO3D | PatientName: neuro_01,neuro_01 | PatientAge: 050Y | /rapid_data/task_data/site1/neuro3d/152_175/output.json
+
+[2025-12-22 18:30:53] returnCodeDescription: No error | processingTimeInSeconds: 950.227 | NumberOfSlices: 475 | AneurysmSuspected: True | valueString: SUSPECTED | scanCaution: {'scanCaution': False} | scanRejected: False | moduleName: ANRTN | PatientAge: 019Y | /rapid_data/task_data/site1/ANRTN/131_141/output.json
+
+[2026-01-06 08:43:26] ReturnCodeDescription: No error | ReturnCode: 0 | ProcessingTimeInSeconds: 45.00417399406433 | NumberOfSlices: 228 | RVLVRatio: 0.99 | Description: RV/LV Analysis Report | ModuleName: Rapid RV/LV | PatientName: rvlvMod,rvlvMod | PatientAge: 063Y | /rapid_data/task_data/site1/RVLV/744_4624/output.json

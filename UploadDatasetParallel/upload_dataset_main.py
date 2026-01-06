@@ -479,7 +479,7 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
             if task_folders:
                 threads = []
                 for folder in task_folders:
-                    if folder.split('/')[4] != "ncctArtifactDetection":
+                    if folder.split('/')[4] not in ["ncctArtifactDetection", "SOURCE"]:
                         logger.info(f"New task folder detected: {folder}")
                         module_name = folder.split('/')[4]
 
@@ -490,7 +490,8 @@ def executor(kubeConfigFile, remote_port, NAMESPACE, IP, datasets, parallel_push
                         t.start()
                         threads.append(t)
                     else:
-                        logger.debug(f"Skipping folder (ncctArtifactDetection): {folder}")
+                        logger.debug(f"The {folder} is excluded")
+                        # logger.debug(f"Skipping folder (ncctArtifactDetection)/(SOURCE): {folder}")
                 for t in threads:
                     t.join()
 

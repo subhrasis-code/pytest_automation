@@ -1,7 +1,7 @@
 {
   "kubeConfigFile": "/Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/kubeconfigs/admin.runedge.kubeconfig",
   "namespace": "rapid-apps",
-  "siteName": "rmaqa2run",
+  "siteName": "site1",
   "userEmail_list": [
     "rapid.receive@ischemaview.com"
   ],
@@ -15,7 +15,7 @@
   "multi_associations": "False",
   "multi_asso_batch_count": 1,
   "multi_asso_batch_delay": 1,
-  "assert_after_push": "False",
+  "assert_after_push": "True",
   "enable_disable_params": {
     "emailConfig": {
       "<smtpserverip>": "email-smtp.us-west-2.amazonaws.com",
@@ -49,11 +49,11 @@
   },
   "upload_dataset_params": {
     "parallel_push": "True",
-    "remote_port": "4299",
+    "remote_port": "9000",
     "IP": "127.0.0.1",
-    "waitPop": 2,
+    "waitPop": 180,
     "statusCheckInterval": 30,
-    "dataset_path": ""
+    "dataset_path": "/Users/zinnov/Documents/Auto_modules_6_2/test_pulse_data/dataset_bundles/MiniRegression/RVLV/Dataset_RVLV"
   },
   "fetch_logs_params": {
     "s3_server_name": "serverquail",

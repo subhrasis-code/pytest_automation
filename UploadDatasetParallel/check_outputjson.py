@@ -52,6 +52,7 @@ diagnosis_modules = {
     "CINA_IPE": {
         "positive": {"valueString": "SUSPECTED"},
         "negative": {"valueString": "PROCESSED"},
+        "rejected": {"valueString": "REJECTED"},
         "error": {"returnCodeDescription": "Input DICOM data invalid"},
         "ProcessingTimeInSeconds": 300
     },
@@ -74,6 +75,41 @@ diagnosis_modules = {
         "positive": {"LVODetected": "True"},
         "negative": {"LVODetected": "False"},
         "ProcessingTimeInSeconds": 480
+    },
+    "OH": {
+        "positive": {"valueString": "SUSPECTED"},
+        "negative": {"valueString": "PROCESSED"},
+        "rejected": {"valueString": "REJECTED"},
+        "error": {"returnCodeDescription": "Input DICOM data invalid"},
+        "ProcessingTimeInSeconds": 180
+    },
+    "VO": {
+        "positive": {"valueString": "SUSPECTED"},
+        "negative": {"valueString": "PROCESSED"},
+        "rejected": {"valueString": "REJECTED"},
+        "error": {"returnCodeDescription": "Input DICOM data invalid"},
+        "ProcessingTimeInSeconds": 300
+    },
+    "VOPLUS": {
+        "positive": {"valueString": "SUSPECTED"},
+        "negative": {"valueString": "PROCESSED"},
+        "rejected": {"valueString": "REJECTED"},
+        "error": {"returnCodeDescription": "Input DICOM data invalid"},
+        "ProcessingTimeInSeconds": 300
+    },
+    "VCF": {
+        "positive": {"valueString": "SUSPECTED"},
+        "negative": {"valueString": "PROCESSED"},
+        "rejected": {"valueString": "REJECTED"},
+        "error": {"returnCodeDescription": "Input DICOM data invalid"},
+        "ProcessingTimeInSeconds": 300
+    },
+    "C-SPINE": {
+        "positive": {"valueString": "SUSPECTED"},
+        "negative": {"valueString": "PROCESSED"},
+        "rejected": {"valueString": "REJECTED"},
+        "error": {"returnCodeDescription": "Input DICOM data invalid"},
+        "ProcessingTimeInSeconds": 300
     }
 }
 
@@ -416,7 +452,7 @@ def execute_all_tests(source_series_descs, source_series_uids, source_study_uids
                         return True, dataset_type, expected_key, actual_value  # ✅ Matching dataset found
                 return False, None, None, None  # ❌ No match
 
-            if moduleName != "CINA_IPE":
+            if moduleName != "CINA_IPE" or moduleName != "OH":
                 matched_dataset, dataset_type, expected_key, actual_value = validate_dataset_type(moduleName, json_path, info_dict, ["positive", "negative"], overall_map)
                 threshold, pt_status_local, pt_error_local = diagnosis_threshold_calc(moduleName, num_slices)
                 if pt_status_local:
@@ -445,8 +481,8 @@ def execute_all_tests(source_series_descs, source_series_uids, source_study_uids
             # elif moduleName == "ICH":
                 # matched_dataset = validate_dataset_type(moduleName, json_path, info_dict, ["positive", "negative", "ncctArtifactDetection_positive", "ncctArtifactDetection_negative"], overall_map)
 
-            else:  # For CINA_IPE
-                matched_dataset, dataset_type, expected_key, actual_value = validate_dataset_type(moduleName, json_path, info_dict, ["positive", "negative", "error"], overall_map)
+            else:  # For CINA_IPE and OH module
+                matched_dataset, dataset_type, expected_key, actual_value = validate_dataset_type(moduleName, json_path, info_dict, ["positive", "negative", "error", "rejected"], overall_map)
                 threshold, pt_status_local, pt_error_local = diagnosis_threshold_calc(moduleName, num_slices)
                 if pt_status_local:
                     pt_within_limit = pt_validator(actual_pt, threshold)
@@ -461,14 +497,18 @@ def execute_all_tests(source_series_descs, source_series_uids, source_study_uids
                         positive_map = overall_map["positive"]
                         negative_map = overall_map["negative"]
                         error_map = overall_map["error"]
+                        rejected_map = overall_map["rejected"]
+
                         positive_key, positive_value = list(positive_map.items())[0]
                         negative_key, negative_value = list(negative_map.items())[0]
                         error_key, error_value = list(error_map.items())[0]
+                        rejected_key, rejected_value = list(rejected_map.items())[0]
                         actual_value = info_dict.get(positive_key)
                         fail_reason = (
                             f"[{module_name}] {json_path}: ❌ FAILED - '{positive_key} : {actual_value}' does not match either:\n"
                             f"🔸 Positive: {positive_key} = {positive_value}\n"
                             f"🔹 Negative: {negative_key} = {negative_value}\n"
+                            f"🔸 Rejected: {rejected_key} = {rejected_value}\n"
                             f"🔻 Error: {error_key} = {error_value}"
                         )
                         logger.error(fail_reason)
